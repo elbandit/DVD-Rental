@@ -1,5 +1,37 @@
 # Business Requirements #
 
+**Membership Levels**   
+
+Level 1:   
+
+- New Releases (last 30 days): 1 a month   
+- Standard Release: 1 a month
+- Out at any one time: 1
+- Price: £5.99
+
+Level 2:   
+
+- New Releases (last 30 days): 2 a month   
+- Standard Release: 2 a month
+- Out at any one time: 1
+- Price: £7.99
+
+Level 3:   
+
+- New Releases (last 30 days): Unlimited   
+- Standard Release: Unlimited
+- Out at any one time: 1
+- Price: £9.99
+
+Level 4:   
+
+- New Releases (last 30 days): Unlimited   
+- Standard Release: Unlimited
+- Out at any one time: 2
+- Price: £11.99
+
+
+
 **Age Restrictions**  
 If you have lists for younger members they will be restricted to rentals for their age level.
 
