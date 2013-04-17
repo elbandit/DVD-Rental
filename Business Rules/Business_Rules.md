@@ -1,6 +1,6 @@
 # Business Requirements #
 
-**Membership Levels**   
+**Subscriptions**   
 
 Level 1:   
 
