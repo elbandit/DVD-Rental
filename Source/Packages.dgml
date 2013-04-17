@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="LeftToRight" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Agatha.DVDRental.Returns.Ui" Label="Agatha.DVDRental.Returns.Ui" Category="Project" />
+    <Node Id="EntityFramework 4.1.10331.0" Label="EntityFramework 4.1.10331.0" Category="Package" />
+    <Node Id="jQuery 1.5.1" Label="jQuery 1.5.1" Category="Package" />
+    <Node Id="jQuery.UI.Combined 1.8.11" Label="jQuery.UI.Combined 1.8.11" Category="Package" />
+    <Node Id="jQuery.Validation 1.8.0" Label="jQuery.Validation 1.8.0" Category="Package" />
+    <Node Id="jQuery.vsdoc 1.5.1" Label="jQuery.vsdoc 1.5.1" Category="Package" />
+    <Node Id="Modernizr 1.7" Label="Modernizr 1.7" Category="Package" />
+    <Node Id="Application\Agatha.DVDRental.Infrastructure" Label="Agatha.DVDRental.Infrastructure" Category="Project" />
+    <Node Id="RavenDB.Client 2.0.2330" Label="RavenDB.Client 2.0.2330" Category="Package" />
+    <Node Id="Application\Agatha.DVDRental.LoanDvdPolicy" Label="Agatha.DVDRental.LoanDvdPolicy" Category="Project" />
+    <Node Id="log4net 1.2.10" Label="log4net 1.2.10" Category="Package" />
+    <Node Id="NServiceBus 3.3.5" Label="NServiceBus 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Host 3.3.5" Label="NServiceBus.Host 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Interfaces 3.3.5" Label="NServiceBus.Interfaces 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Structuremap 3.3.5" Label="NServiceBus.Structuremap 3.3.5" Category="Package" />
+    <Node Id="structuremap 2.6.4.1" Label="structuremap 2.6.4.1" Category="Package" />
+    <Node Id="Application\Agatha.DVDRental.Application" Label="Agatha.DVDRental.Application" Category="Project" />
+    <Node Id="log4net 1.2.10" Label="log4net 1.2.10" Category="Package" />
+    <Node Id="NServiceBus 3.3.5" Label="NServiceBus 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Host 3.3.5" Label="NServiceBus.Host 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Interfaces 3.3.5" Label="NServiceBus.Interfaces 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Structuremap 3.3.5" Label="NServiceBus.Structuremap 3.3.5" Category="Package" />
+    <Node Id="structuremap 2.6.4.1" Label="structuremap 2.6.4.1" Category="Package" />
+    <Node Id="Agatha.DVDRental.Ui" Label="Agatha.DVDRental.Ui" Category="Project" />
+    <Node Id="EntityFramework 4.1.10331.0" Label="EntityFramework 4.1.10331.0" Category="Package" />
+    <Node Id="jQuery 1.9.1" Label="jQuery 1.9.1" Category="Package" />
+    <Node Id="jQuery.UI.Combined 1.8.24" Label="jQuery.UI.Combined 1.8.24" Category="Package" />
+    <Node Id="jQuery.Validation 1.8.1" Label="jQuery.Validation 1.8.1" Category="Package" />
+    <Node Id="jQuery.vsdoc 1.6" Label="jQuery.vsdoc 1.6" Category="Package" />
+    <Node Id="log4net 1.2.10" Label="log4net 1.2.10" Category="Package" />
+    <Node Id="Modernizr 1.7" Label="Modernizr 1.7" Category="Package" />
+    <Node Id="NServiceBus 3.3.5" Label="NServiceBus 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Host 3.3.5" Label="NServiceBus.Host 3.3.5" Category="Package" />
+    <Node Id="NServiceBus.Interfaces 3.3.5" Label="NServiceBus.Interfaces 3.3.5" Category="Package" />
+    <Node Id="Twitter.Bootstrap 2.3.1" Label="Twitter.Bootstrap 2.3.1" Category="Package" />
+  </Nodes>
+  <Links>
+    <Link Source="jQuery.UI.Combined 1.8.11" Target="jQuery 1.5.1" Category="Package Dependency" />
+    <Link Source="jQuery.Validation 1.8.0" Target="jQuery 1.5.1" Category="Package Dependency" />
+    <Link Source="jQuery.vsdoc 1.5.1" Target="jQuery 1.5.1" Category="Package Dependency" />
+    <Link Source="Agatha.DVDRental.Returns.Ui" Target="EntityFramework 4.1.10331.0" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Returns.Ui" Target="jQuery 1.5.1" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Returns.Ui" Target="jQuery.UI.Combined 1.8.11" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Returns.Ui" Target="jQuery.Validation 1.8.0" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Returns.Ui" Target="jQuery.vsdoc 1.5.1" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Returns.Ui" Target="Modernizr 1.7" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.Infrastructure" Target="RavenDB.Client 2.0.2330" Category="Installed Package" />
+    <Link Source="NServiceBus 3.3.5" Target="NServiceBus.Interfaces 3.3.5" Category="Package Dependency" />
+    <Link Source="NServiceBus 3.3.5" Target="log4net 1.2.10" Category="Package Dependency" />
+    <Link Source="NServiceBus.Host 3.3.5" Target="NServiceBus 3.3.5" Category="Package Dependency" />
+    <Link Source="NServiceBus.Structuremap 3.3.5" Target="structuremap 2.6.4.1" Category="Package Dependency" />
+    <Link Source="NServiceBus.Structuremap 3.3.5" Target="NServiceBus 3.3.5" Category="Package Dependency" />
+    <Link Source="Application\Agatha.DVDRental.LoanDvdPolicy" Target="log4net 1.2.10" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.LoanDvdPolicy" Target="NServiceBus 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.LoanDvdPolicy" Target="NServiceBus.Host 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.LoanDvdPolicy" Target="NServiceBus.Interfaces 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.LoanDvdPolicy" Target="NServiceBus.Structuremap 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.LoanDvdPolicy" Target="structuremap 2.6.4.1" Category="Installed Package" />
+    <Link Source="NServiceBus 3.3.5" Target="NServiceBus.Interfaces 3.3.5" Category="Package Dependency" />
+    <Link Source="NServiceBus 3.3.5" Target="log4net 1.2.10" Category="Package Dependency" />
+    <Link Source="NServiceBus.Host 3.3.5" Target="NServiceBus 3.3.5" Category="Package Dependency" />
+    <Link Source="NServiceBus.Structuremap 3.3.5" Target="structuremap 2.6.4.1" Category="Package Dependency" />
+    <Link Source="NServiceBus.Structuremap 3.3.5" Target="NServiceBus 3.3.5" Category="Package Dependency" />
+    <Link Source="Application\Agatha.DVDRental.Application" Target="log4net 1.2.10" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.Application" Target="NServiceBus 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.Application" Target="NServiceBus.Host 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.Application" Target="NServiceBus.Interfaces 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.Application" Target="NServiceBus.Structuremap 3.3.5" Category="Installed Package" />
+    <Link Source="Application\Agatha.DVDRental.Application" Target="structuremap 2.6.4.1" Category="Installed Package" />
+    <Link Source="jQuery.UI.Combined 1.8.24" Target="jQuery 1.9.1" Category="Package Dependency" />
+    <Link Source="jQuery.Validation 1.8.1" Target="jQuery 1.9.1" Category="Package Dependency" />
+    <Link Source="jQuery.vsdoc 1.6" Target="jQuery 1.9.1" Category="Package Dependency" />
+    <Link Source="NServiceBus 3.3.5" Target="NServiceBus.Interfaces 3.3.5" Category="Package Dependency" />
+    <Link Source="NServiceBus 3.3.5" Target="log4net 1.2.10" Category="Package Dependency" />
+    <Link Source="NServiceBus.Host 3.3.5" Target="NServiceBus 3.3.5" Category="Package Dependency" />
+    <Link Source="Twitter.Bootstrap 2.3.1" Target="jQuery 1.9.1" Category="Package Dependency" />
+    <Link Source="Agatha.DVDRental.Ui" Target="EntityFramework 4.1.10331.0" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="jQuery 1.9.1" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="jQuery.UI.Combined 1.8.24" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="jQuery.Validation 1.8.1" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="jQuery.vsdoc 1.6" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="log4net 1.2.10" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="Modernizr 1.7" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="NServiceBus 3.3.5" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="NServiceBus.Host 3.3.5" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="NServiceBus.Interfaces 3.3.5" Category="Installed Package" />
+    <Link Source="Agatha.DVDRental.Ui" Target="Twitter.Bootstrap 2.3.1" Category="Installed Package" />
+  </Links>
+  <Categories>
+    <Category Id="Project" />
+    <Category Id="Package" />
+  </Categories>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Project" ValueLabel="True">
+      <Condition Expression="HasCategory('Project')" />
+      <Setter Property="Background" Value="Blue" />
+    </Style>
+    <Style TargetType="Link" GroupLabel="Package Dependency" ValueLabel="True">
+      <Condition Expression="HasCategory('Package Dependency')" />
+      <Setter Property="Background" Value="Yellow" />
+    </Style>
+  </Styles>
+</DirectedGraph>
