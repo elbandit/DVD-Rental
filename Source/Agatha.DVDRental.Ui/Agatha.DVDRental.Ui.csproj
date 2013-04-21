@@ -52,6 +52,10 @@
     <Reference Include="NServiceBus.Host">
       <HintPath>..\packages\NServiceBus.Host.3.3.5\lib\net40\NServiceBus.Host.exe</HintPath>
     </Reference>
+    <Reference Include="Raven.Client.Lightweight, Version=2.0.3.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL" />
+    <Reference Include="StructureMap, Version=2.6.4.0, Culture=neutral, PublicKeyToken=e60ad81abae3c223, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -76,10 +80,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BootStrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RentalListController.cs" />
+    <Compile Include="Controllers\StructureMapControllerFactory.cs" />
+    <Compile Include="DocumentStoreFactory.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -202,6 +209,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Agatha.DVDRental.ApplicationService\Agatha.DVDRental.ApplicationService.csproj">
+      <Project>{0758A98F-0FD2-4CD8-B507-0604281D7483}</Project>
+      <Name>Agatha.DVDRental.ApplicationService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Application\Agatha.DVDRental.Application.csproj">
       <Project>{ECC71DE4-C79D-4F56-9CBC-8286134E300C}</Project>
       <Name>Agatha.DVDRental.Application</Name>

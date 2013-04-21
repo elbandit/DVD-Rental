@@ -5,9 +5,9 @@ using NServiceBus;
 
 namespace Agatha.DVDRental.Application.OperationalFunctions
 {
-    public class ReturnFilmHandler : IHandleMessages<ReturnFilm>
+    public class ReturnFilmHandler : IHandleMessages<ReturnAFilm>
     {
-        public void Handle(ReturnFilm message)
+        public void Handle(ReturnAFilm message)
         {
             
         }

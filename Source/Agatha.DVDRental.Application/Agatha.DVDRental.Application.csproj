@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -61,13 +64,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerFunctions\CancelPackageHandler.cs" />
-    <Compile Include="CustomerFunctions\RemoveFilmFromListHandler.cs" />
+    <Compile Include="CustomerFunctions\CustomerWantsToCancelSubscriptionHandler.cs" />
+    <Compile Include="CustomerFunctions\CustomerNoLongerWantsToRentFilmHandler.cs" />
+    <Compile Include="CustomerFunctions\CustomerWantsToChangeSubscriptionHandler.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="OperationalFunctions\AddFilmStockHandler.cs" />
-    <Compile Include="OperationalFunctions\FulfillFilmRentalRequestHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CustomerFunctions\AddFilmToListHandler.cs" />
+    <Compile Include="CustomerFunctions\CustomerWantsToRentFilmHandler.cs" />
     <Compile Include="OperationalFunctions\ReturnFilmHandler.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +91,7 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

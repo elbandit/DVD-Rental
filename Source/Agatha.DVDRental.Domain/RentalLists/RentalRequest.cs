@@ -9,7 +9,7 @@ namespace Agatha.DVDRental.Domain.RentalLists
     {
         public string Id { get; private set; }
         public int _filmId { get; private set; }
-        public int _memberId { get; private set; }
+        public int _memberId { get; set; }
 
         public RentalRequest(int filmId, int memberId)
         {

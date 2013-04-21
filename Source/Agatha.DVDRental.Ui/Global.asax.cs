@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Agatha.DVDRental.Ui.Controllers;
 using NServiceBus;
+using Raven.Client.Document;
 
 namespace Agatha.DVDRental.Ui
 {
@@ -47,6 +49,12 @@ namespace Agatha.DVDRental.Ui
                .MsmqTransport()
                .UnicastBus()
                .SendOnly();
+
+            DocumentStoreFactory.InitializeDocumentStore();
+
+            BootStrapper.ConfigureDependencies();
+
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }
     }
 }
