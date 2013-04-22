@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Agatha.DVDRental.Application.CustomerFunctions;
-using Agatha.DVDRental.ApplicationService;
+using Agatha.DVDRental.Ui.Application;
 
 namespace Agatha.DVDRental.Ui.Controllers
 {

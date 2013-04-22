@@ -36,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=2.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
@@ -80,6 +81,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\ApplicationViews\FilmView.cs" />
+    <Compile Include="Application\Renting.cs" />
     <Compile Include="BootStrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmsController.cs" />
@@ -209,13 +212,13 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Agatha.DVDRental.ApplicationService\Agatha.DVDRental.ApplicationService.csproj">
-      <Project>{0758A98F-0FD2-4CD8-B507-0604281D7483}</Project>
-      <Name>Agatha.DVDRental.ApplicationService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Application\Agatha.DVDRental.Application.csproj">
       <Project>{ECC71DE4-C79D-4F56-9CBC-8286134E300C}</Project>
       <Name>Agatha.DVDRental.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">
+      <Project>{82EB53BC-3479-4C7C-8F95-1C6CD2A847E7}</Project>
+      <Name>Agatha.DVDRental.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj">
       <Project>{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}</Project>

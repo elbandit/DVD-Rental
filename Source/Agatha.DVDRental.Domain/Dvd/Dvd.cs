@@ -8,20 +8,20 @@ namespace Agatha.DVDRental.Domain.Dvd
 {
     public class Dvd
     {
-        private int _id { get; set; }
-        private int _filmId { get; set; }
-        private CurrentLoan _currentLoan { get; set; }
+        public int Id { get; private set; }
+        public int FilmId { get; private set; }
+        public CurrentLoan CurrentLoan { get; private set; }
 
         public void LoanTo(int memberId)
         {
-            _currentLoan = new CurrentLoan(memberId, DateTime.Now);
+            CurrentLoan = new CurrentLoan(memberId, DateTime.Now);
 
-            DomainEvents.Raise(new FilmLoanedToMember(_filmId, memberId));  // Needs to remove from rental list            
+            DomainEvents.Raise(new FilmLoanedToMember(FilmId, memberId));  // Needs to remove from rental list            
         }
 
         public void ReturnLoan()
         {
-            _currentLoan = null;
+            CurrentLoan = null;
 
             DomainEvents.Raise(new FilmReturned()); // Needs to remove from rental list
         }

@@ -4,7 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Agatha.DVDRental.Domain.Films;
+using Agatha.DVDRental.Ui.Application.ApplicationViews;
 using Agatha.DVDRental.Ui.Controllers;
+using AutoMapper;
 using NServiceBus;
 using Raven.Client.Document;
 
@@ -14,9 +17,7 @@ namespace Agatha.DVDRental.Ui
     // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
-    {
-        public static IBus Bus { get; set; }
-
+    {            
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -39,20 +40,13 @@ namespace Agatha.DVDRental.Ui
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
-            RegisterRoutes(RouteTable.Routes);
-
-            Bus = NServiceBus.Configure.WithWeb()
-               .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Agatha.DVDRental.Messages"))
-               .DefaultBuilder()
-               .Log4Net()
-               .XmlSerializer()
-               .MsmqTransport()
-               .UnicastBus()
-               .SendOnly();
+            RegisterRoutes(RouteTable.Routes);            
 
             DocumentStoreFactory.InitializeDocumentStore();
 
             BootStrapper.ConfigureDependencies();
+
+            Mapper.CreateMap<Film, FilmView>();
 
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }

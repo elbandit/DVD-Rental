@@ -35,9 +35,7 @@ namespace Agatha.DVDRental.Application.CustomerFunctions
         {                        
             using (DomainEvents.Register(CallbackToHandleDomainEvent()))
             {
-                //Film film = _filmRepository.FindBy(message.FilmId);            
-
-                var film = new Film(message.FilmId, DateTime.Now);
+                Film film = _filmRepository.FindBy(message.FilmId);                         
 
                 RentalList rentalList = _rentalListRepository.FindBy(message.MemberId);
 

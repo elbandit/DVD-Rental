@@ -6,16 +6,16 @@ using System.Text;
 namespace Agatha.DVDRental.Domain.RentalLists
 {
     public class RentalRequest
-    {
-        public string Id { get; private set; }
-        public int _filmId { get; private set; }
-        public int _memberId { get; set; }
-
+    {      
         public RentalRequest(int filmId, int memberId)
         {
-            _filmId = filmId;
-            _memberId = memberId;
+            FilmId = filmId;
+            MemberId = memberId;
         }
+
+        public string Id { get; private set; }
+        public int FilmId { get; private set; }
+        public int MemberId { get; private set; }
 
         public void fulfilledWith(int dvdId)
         {

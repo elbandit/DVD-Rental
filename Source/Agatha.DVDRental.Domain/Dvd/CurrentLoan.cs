@@ -6,14 +6,14 @@ using System.Text;
 namespace Agatha.DVDRental.Domain.Dvd
 {
     public class CurrentLoan
-    {
-        private readonly int _member;
-        private readonly DateTime _dateLoanedOut;
-
+    {       
         public CurrentLoan(int member, DateTime dateLoanedOut)
         {
-            _member = member;
-            _dateLoanedOut = dateLoanedOut;
+            MemberId = member;
+            DateLoanedOut = dateLoanedOut;
         }
+
+        public int MemberId { get; private set; }
+        public DateTime DateLoanedOut { get; private set; }
     }
 }

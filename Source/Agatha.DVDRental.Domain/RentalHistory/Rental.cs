@@ -3,18 +3,18 @@
 namespace Agatha.DVDRental.Domain.RentalHistory
 {
     public class Rental
-    {
-        private int _dvdId;
-        private int _memberId;
-        private readonly DateTime _sentOut;
-        private readonly DateTime _returned;
-
+    {       
         public Rental(int dvdId, int memberId, DateTime sentOut, DateTime returned)
         {
-            _dvdId = dvdId;
-            _memberId = memberId;
-            _sentOut = sentOut;
-            _returned = returned;
+            DvdId = dvdId;
+            MemberId = memberId;
+            DateSentOut = sentOut;
+            DateReturned = returned;
         }
+
+        public int DvdId { get; private set; }
+        public int MemberId { get; private set; }
+        public DateTime DateSentOut { get; private set; }
+        public DateTime DateReturned { get; private set; }
     }
 }

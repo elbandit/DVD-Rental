@@ -17,9 +17,7 @@ namespace Agatha.DVDRental.Ui.Controllers
         // GET: /Account/LogOn
 
         public ActionResult LogOn()
-        {
-            MvcApplication.Bus.Send(new CustomerNoLongerWantsToRentFilm {FilmId = 4, MemberId = 8});
-
+        {           
             return View();
         }
 
