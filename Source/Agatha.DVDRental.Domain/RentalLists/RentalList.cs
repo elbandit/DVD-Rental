@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Agatha.DVDRental.Domain.Films;
 using Agatha.DVDRental.Domain.Membership;
+using System.Linq;
 
 namespace Agatha.DVDRental.Domain.RentalLists
 {
@@ -33,5 +35,10 @@ namespace Agatha.DVDRental.Domain.RentalLists
 
             return request;
         }
+
+        public RentalRequest RemoveFromTheList(int filmId)
+        {
+            return _rentalRequests.SingleOrDefault(x => x.FilmId == filmId);         
+        } 
     }
 }

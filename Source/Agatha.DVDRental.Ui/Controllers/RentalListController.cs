@@ -24,7 +24,6 @@ namespace Agatha.DVDRental.Ui.Controllers
             return View();
         }
 
-
         [HttpPost]
         public ActionResult AddFilmToList(int filmId)
         {
@@ -33,5 +32,12 @@ namespace Agatha.DVDRental.Ui.Controllers
             return RedirectToAction("Index", "Films");
         }
 
+        [HttpPost]
+        public ActionResult RemoveFilmFromList(int filmId)
+        {
+            _renting.CustomerDoesNotWantToRentTheFim(filmId, 1);
+
+            return RedirectToAction("Index", "Films");
+        }
     }
 }

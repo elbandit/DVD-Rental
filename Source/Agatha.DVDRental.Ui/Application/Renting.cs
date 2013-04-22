@@ -51,5 +51,12 @@ namespace Agatha.DVDRental.Ui.Application
 
             _bus.Send(new CustomerWantsToRentFilm() {FilmId = filmid, MemberId = memberId});
         }
+
+        public void CustomerDoesNotWantToRentTheFim(int filmid, int memberId)
+        {
+            // quick check for valid command
+
+            _bus.Send(new CustomerNoLongerWantsToRentFilm() { FilmId = filmid, MemberId = memberId });
+        }
     }
 }
