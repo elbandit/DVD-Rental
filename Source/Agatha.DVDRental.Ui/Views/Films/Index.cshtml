@@ -8,19 +8,22 @@
 @foreach (FilmView film in Model)
    {
        <div class="span2">
-           <h3>@film.Id</h3>
-           <img src="@Url.Content("~/Content/images/noimage-140x200.png")" />   
-           @if (film.IsOnRentalList)
+           @using (Html.BeginForm("AddFilmToList", "RentalList", new { FilmID = film.Id }))
            {
-                <p><input class="btn btn-block" value="Remove from list" type="submit" /></p>
-           }
-           else if (film.IsCurrentlyOnLoan)
-           {
+               <h3>@film.Id</h3>
+               <img src="@Url.Content("~/Content/images/noimage-140x200.png")" />
+                if (film.IsOnRentalList)
+                {
+                    <p><input class="btn btn-block" value="Remove from list" type="submit" /></p>
+                }
+                else if (film.IsCurrentlyOnLoan)
+                {
 
-           }
-           else 
-           {
-               <p><input class="btn btn-block" value="Rent &raquo;" type="submit" /></p>
+                }
+                else
+                {
+                    <p><input class="btn btn-block" value="Rent &raquo;" type="submit" /></p>
+                }                               
            }
        </div>
    }

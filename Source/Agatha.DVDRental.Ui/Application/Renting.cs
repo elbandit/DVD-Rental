@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Agatha.DVDRental.Domain.Films;
 using Agatha.DVDRental.Domain.RentalLists;
+using Agatha.DVDRental.Messages.CustomerScenarios.Commands;
 using Agatha.DVDRental.Ui.Application.ApplicationViews;
 using AutoMapper;
 using NServiceBus;
@@ -22,8 +23,7 @@ namespace Agatha.DVDRental.Ui.Application
         }
 
         public IEnumerable<FilmView> CustomerWantsToViewFilmsAvailableForRent(int memberId)
-        {
-          
+        {          
             // Find all films
             var all_films = _ravenDbSession.Query<Film>().Take(10).ToList();
 
@@ -45,11 +45,11 @@ namespace Agatha.DVDRental.Ui.Application
             return all_filmviews;
         }
 
-        public void CustomerWantsToRentTheFim(int filmid)
+        public void CustomerWantsToRentTheFim(int filmid, int memberId)
         {
             // quick check for valid command
 
-            _bus.Send();
+            _bus.Send(new CustomerWantsToRentFilm() {FilmId = filmid, MemberId = memberId});
         }
     }
 }

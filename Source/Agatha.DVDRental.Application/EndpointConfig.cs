@@ -27,7 +27,7 @@ namespace Agatha.DVDRental.Application
             Configure.With()
                 .StructureMapBuilder()
                 //this overrides the NServiceBus default convention of IEvent                
-                .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.Contains("Messages"));
+                .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.Contains("Agatha.DVDRental.Messages"));
 
         }
 

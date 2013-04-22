@@ -35,17 +35,15 @@ namespace Agatha.DVDRental.Application.CustomerFunctions
         {                        
             using (DomainEvents.Register(CallbackToHandleDomainEvent()))
             {
-                Film film = _filmRepository.FindBy(message.FilmId);                         
+                Film film = _filmRepository.FindBy(message.FilmId);
 
                 RentalList rentalList = _rentalListRepository.FindBy(message.MemberId);
 
                 var request = rentalList.CreateRequestFor(film, new Member(message.MemberId));
 
                 _rentalListRepository.Add(request);
-
-                //throw new ApplicationException("Test");
-
-                Console.Out.WriteLine(@"Member '{0}' has added film '{1}' to his list. {2}", message.MemberId, message.FilmId, _filmRepository.SayHello());
+               
+                Console.Out.WriteLine(@"Member '{0}' has added film '{1}' to his list.", message.MemberId, message.FilmId);
             }
 
             _ravenDbSession.SaveChanges(); // NServiceBus will promote this to a distributed transaction.    

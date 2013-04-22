@@ -15,31 +15,16 @@ namespace Agatha.DVDRental.Infrastructure
 
         public static DocumentStore DocumentStore
         {
-            get {
-
+            get
+            {
                 if (_DocumentStore == null)
                 {
-                    _DocumentStore = new DocumentStore {Url = "http://localhost:8081"};
-                    _DocumentStore.Initialize();
-                    //_DocumentStore.Conventions.JsonContractResolver = new IncludeNonPublicMembersContractResolver();
-                    _DocumentStore.DatabaseCommands.EnsureDatabaseExists("AgathasDVDRentals");
+                    _DocumentStore = new DocumentStore { ConnectionStringName = "RavenDB" };
+                    _DocumentStore.Initialize();                    
                 }
 
                 return _DocumentStore;
             }
         }
-    }
-
-    public class IncludeNonPublicMembersContractResolver : DefaultContractResolver
-    {
-        public IncludeNonPublicMembersContractResolver()
-            {
-                    DefaultMembersSearchFlags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic;
-            }
-
-            protected override System.Collections.Generic.List<MemberInfo> GetSerializableMembers(System.Type objectType)
-            {
-            return base.GetSerializableMembers(objectType).Where(m => m.MemberType == MemberTypes.Property).ToList();
-            }
     }
 }

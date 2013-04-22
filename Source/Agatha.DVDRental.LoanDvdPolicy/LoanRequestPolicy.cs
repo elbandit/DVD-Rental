@@ -23,7 +23,7 @@ namespace Agatha.DVDRental.LoanDvdPolicy
             // Monthly allowance
             // Fair usage policy
 
-            Console.Out.WriteLine(@"FilmAddedToListHandler event fired: {0}", _filmRepository.SayHello());
+            Console.Out.WriteLine(@"FilmAddedToListHandler event fired");
         }
 
         

@@ -18,12 +18,7 @@ namespace Agatha.DVDRental.Infrastructure
 
         public Film FindBy(int filmId)
         {
-            return _documentSession.Load<Film>(filmId);
-        }
-
-        public string SayHello()
-        {
-            return "hello";
+            return _documentSession.Load<Film>("Films/" + filmId);
         }
     }
 }
