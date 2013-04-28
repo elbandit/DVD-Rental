@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Domain.Films;
 using Agatha.DVDRental.Domain.RentalLists;
-using Agatha.DVDRental.Messages.CustomerScenarios.Commands;
+using Agatha.DVDRental.Domain.Subscriptions.RentalRequests;
+using Agatha.DVDRental.Infrastructure;
+using Agatha.DVDRental.Messages.OperationalScenarios.Commands;
 using Agatha.DVDRental.Ui.Application.ApplicationViews;
 using AutoMapper;
 using NServiceBus;
@@ -15,11 +18,16 @@ namespace Agatha.DVDRental.Ui.Application
     {
         private readonly IDocumentSession _ravenDbSession;
         private readonly IBus _bus;
+        private readonly RentalRequestRepository _rentalRequestRepository;
+        private readonly FilmRepository _filmRepository;
 
-        public Renting(IDocumentSession ravenDbSession, IBus bus)
+        public Renting(IDocumentSession ravenDbSession, IBus bus, 
+                       RentalRequestRepository rentalRequestRepository, FilmRepository filmRepository)
         {
             _ravenDbSession = ravenDbSession;
             _bus = bus;
+            _rentalRequestRepository = rentalRequestRepository;
+            _filmRepository = filmRepository;
         }
 
         public IEnumerable<FilmView> CustomerWantsToViewFilmsAvailableForRent(int memberId)
@@ -49,14 +57,40 @@ namespace Agatha.DVDRental.Ui.Application
         {
             // quick check for valid command
 
-            _bus.Send(new CustomerWantsToRentFilm() {FilmId = filmid, MemberId = memberId});
+            Film film = _filmRepository.FindBy(filmid);
+
+            using (DomainEvents.Register(AllocateFilm()))
+            {
+                RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(memberId);
+
+                var request = rentalRequestList.CreateRequestFor(film, memberId); // try and create
+
+                _rentalRequestRepository.Add(request);
+                _ravenDbSession.SaveChanges();
+            }
+        }
+
+        private Action<FilmRequested> AllocateFilm()
+        {
+            return (FilmRequested s) => _bus.Send(new AllocateRentalRequest());
         }
 
         public void CustomerDoesNotWantToRentTheFim(int filmid, int memberId)
-        {
-            // quick check for valid command
+        {            
+            RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(memberId);
 
-            _bus.Send(new CustomerNoLongerWantsToRentFilm() { FilmId = filmid, MemberId = memberId });
+            using (DomainEvents.Register(DeAllocateFilm()))
+            {
+                var rentalRequest = rentalRequestList.RemoveFromTheList(filmid);
+
+                _ravenDbSession.Delete(rentalRequest);
+                _ravenDbSession.SaveChanges(); // Need to hook this up to HttpRequest           
+            }
+        }
+
+        private Action<RentalRequestRemoved> DeAllocateFilm()
+        {
+            return (RentalRequestRemoved s) => _bus.Send(new AllocateRentalRequest()); // See if someone else wants this film
         }
     }
 }

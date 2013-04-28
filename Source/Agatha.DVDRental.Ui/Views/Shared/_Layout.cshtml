@@ -86,7 +86,16 @@
                              <li>@Html.ActionLink("Films", "Index", "Films")</li>
                              <li>@Html.ActionLink("Rental List", "Index", "RentalList")</li>
                              <li><a href="#">How it works</a></li>
-                             <li><a href="#">Sign in </a></li>
+                             <li>
+                                 @if(Request.IsAuthenticated) 
+                                     {
+                                         @Html.ActionLink("Log Off", "LogOff", "Account")
+                                     }
+                                     else
+                                     {
+                                     @Html.ActionLink("Log On", "LogOn", "Account")
+                                     }                 
+                             </li>
                          </ul>
                      </div>
                  </div>
@@ -99,11 +108,7 @@
          </div>
        
             
-            @*<div id="logindisplay">
-                @Html.Partial("_LogOnPartial")
-            </div>
-          *@
-        
+       
         <div id="main">
             @RenderBody()
         </div>

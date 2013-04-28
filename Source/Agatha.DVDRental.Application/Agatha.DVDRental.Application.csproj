@@ -65,17 +65,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerFunctions\CustomerWantsToCancelSubscriptionHandler.cs" />
-    <Compile Include="CustomerFunctions\CustomerNoLongerWantsToRentFilmHandler.cs" />
     <Compile Include="CustomerFunctions\CustomerWantsToChangeSubscriptionHandler.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="OperationalFunctions\AddFilmStockHandler.cs" />
+    <Compile Include="OperationalFunctions\AllocateDvdToRentalRequestHandler.cs" />
+    <Compile Include="OperationalFunctions\RentalHistoryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CustomerFunctions\CustomerWantsToRentFilmHandler.cs" />
-    <Compile Include="OperationalFunctions\ReturnFilmHandler.cs" />
+    <Compile Include="OperationalFunctions\CustomerHasReturnedAFilmHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">
-      <Project>{82EB53BC-3479-4C7C-8F95-1C6CD2A847E7}</Project>
+      <Project>{96BFCC1C-266F-4750-8C2C-F2EC595A04EF}</Project>
       <Name>Agatha.DVDRental.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">

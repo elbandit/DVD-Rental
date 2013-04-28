@@ -201,7 +201,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -217,8 +216,12 @@
       <Name>Agatha.DVDRental.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">
-      <Project>{82EB53BC-3479-4C7C-8F95-1C6CD2A847E7}</Project>
+      <Project>{96BFCC1C-266F-4750-8C2C-F2EC595A04EF}</Project>
       <Name>Agatha.DVDRental.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
+      <Project>{90422275-5A87-47BC-8630-5829E1BD1F96}</Project>
+      <Name>Agatha.DVDRental.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj">
       <Project>{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}</Project>

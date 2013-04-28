@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Agatha.DVDRental.Application.Commands;
+using Agatha.DVDRental.Messages.OperationalScenarios.Commands;
 using NServiceBus;
 
 namespace Agatha.DVDRental.Application.OperationalFunctions

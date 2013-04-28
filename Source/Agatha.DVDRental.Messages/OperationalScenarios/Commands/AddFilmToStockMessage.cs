@@ -1,8 +1,8 @@
-﻿
+﻿using NServiceBus;
 
 namespace Agatha.DVDRental.Messages.OperationalScenarios.Commands
 {
-    public class ReturnFilmMessage 
+    public class AddFilmToStockMessage : ICommand
     {
     }
 }

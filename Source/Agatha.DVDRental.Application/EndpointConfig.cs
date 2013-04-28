@@ -36,7 +36,7 @@ namespace Agatha.DVDRental.Application
             public ControllerRegistry()
             {
                 For<IFilmRepository>().Use<FilmRepository>();
-                For<IRentalListRepository>().Use<RentalListRepository>();
+                For<IRentalRequestRepository>().Use<RentalRequestRepository>();
 
                 For<IDocumentStore>().Singleton()
                                 .Use(DocumentStoreFactory.DocumentStore);

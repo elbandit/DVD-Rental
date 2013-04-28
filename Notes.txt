@@ -1,0 +1,30 @@
+
+
+In order to loan out a film we need...
+
+1. Knowledge of Stock
+2. Knowledge of current films on loan
+3. Knowledge of how many Dvds have they had out in this billing period
+
+
+1. Work out if a customer is elligable
+2. see if we have stock
+
+CustomerElligableForLoan:
+
+1. Knowledge of current films on loan
+   - If 1 DVd on loan but can have multiple then ok
+2. Knowledge of how many Dvds have they had out in this billing period
+   - If unlimited then ok
+
+
+
+Allocation - Elligable Customers List?
+  - Customer elligable yes/no
+  - who is first? (doesn't matter here)
+  - What is on their list
+
+  - Updated on these events:
+     - DVD returned
+     - Dvd sent out
+     - 

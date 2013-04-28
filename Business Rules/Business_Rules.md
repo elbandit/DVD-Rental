@@ -42,6 +42,9 @@ To cancel your membership with us, two things must happen:
 - You tell us that you want to cancel (so that we stop sending you any more rental discs)
 - We receive back all rental discs that you have out on loan 
 
+**Upgrade subscription**   
+Any reduction in your bill resulting from a downgrade will take effect at the next billing period after any outstanding discs have been received to us. Any increase in your bill resulting from an upgrade will take effect immediately, being pro-rated to the remainder of your billing period, and the increase will be charged immediately (without changing any subsequent billing dates). Additional charges, resulting from an upgrade, are non-refundable.
+
 **How can I down grade my subscriptions?**  
 Only if you don’t have more than your allotted number of discs out. And only after I invoice, i.e. can only change at the end of the month. Note: You can change your plan at any time during your billing month. You will be charged the new price from your next billing date, provided you have returned the correct number of Discs.
 For example: if you are on the 3-Disc plan and want to downgrade to a 2-Disc plan, your account will not change until we have received 1 of the 3 Discs you currently possess.
@@ -53,6 +56,10 @@ If the relevant number of Discs have not been returned by your next billing date
 
 **What happens if I go on holiday?**  
 If you chose an unlimited package, you can take a payment holiday for up to three months.
+
+You will only be able to take two account holidays per year. For example, if you take your first account holiday on 15-03-13 and your second account holiday on 15-06-13, your next account holiday will only be available again from 15-03-14.
+
+You can take an account holiday at any time for a period of up to 90 days (and a minimum of 1 week). Simply use the drop down boxes on the Payment Holiday page to select the date you want your account holiday to start and how long you want it to last. 
 
 
 **When taking a payment holiday how is my monthly payment worked out?**  

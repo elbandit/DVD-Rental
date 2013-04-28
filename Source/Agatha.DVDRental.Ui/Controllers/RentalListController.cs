@@ -17,7 +17,7 @@ namespace Agatha.DVDRental.Ui.Controllers
         }
 
         //
-        // GET: /RentalList/
+        // GET: /RentalRequestList/
 
         public ActionResult Index()
         {
