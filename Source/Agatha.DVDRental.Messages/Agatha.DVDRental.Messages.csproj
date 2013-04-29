@@ -54,7 +54,6 @@
     <Compile Include="OperationalScenarios\Commands\AllocateRentalRequest.cs" />
     <Compile Include="OperationalScenarios\Events\ReturnAFilm.cs" />
     <Compile Include="CustomerScenarios\Events\DvdReturnedMessage.cs" />
-    <Compile Include="CustomerScenarios\Events\FilmRequestedMessage.cs" />
     <Compile Include="OperationalScenarios\Commands\ReturnFilmMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubscriptionCancelled.cs" />
