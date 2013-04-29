@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Agatha.DVDRental.Domain.Fulfilment;
-using Agatha.DVDRental.Domain.Subscriptions.RentalRequests;
+using Agatha.DVDRental.Domain.RentalHistory;
 using Agatha.DVDRental.Infrastructure.Subscription;
-using Agatha.DVDRental.Infrastructure.Subscription.RentalHistory;
 
 namespace Agatha.DVDRental.Domain.Subscriptions
 {

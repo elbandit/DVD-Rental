@@ -53,12 +53,15 @@
     <Compile Include="Allocation\IAllocationRepository.cs" />
     <Compile Include="Fulfilment\IFulfilmentRepository.cs" />
     <Compile Include="Fulfilment\FulfilmentRequest.cs" />
+    <Compile Include="RentalHistory\CurrentPeriodRentals.cs" />
+    <Compile Include="RentalHistory\IRentalRepository.cs" />
+    <Compile Include="RentalHistory\Rental.cs" />
     <Compile Include="Subscriptions\DeliveryAddress.cs" />
     <Compile Include="Subscriptions\Money.cs" />
-    <Compile Include="Subscriptions\RentalRequests\FilmRequested.cs" />
-    <Compile Include="Subscriptions\RentalRequests\IRentalRequestRepository.cs" />
-    <Compile Include="Subscriptions\RentalRequests\RentalRequestList.cs" />
-    <Compile Include="Subscriptions\RentalRequests\RentalRequest.cs" />
+    <Compile Include="RentalRequests\FilmRequested.cs" />
+    <Compile Include="RentalRequests\IRentalRequestRepository.cs" />
+    <Compile Include="RentalRequests\RentalRequestList.cs" />
+    <Compile Include="RentalRequests\RentalRequest.cs" />
     <Compile Include="Stock\CurrentLoan.cs" />
     <Compile Include="Stock\Dvd.cs" />
     <Compile Include="Stock\DvdReturned.cs" />
@@ -78,9 +81,6 @@
     <Compile Include="Subscriptions\NewReleaseSpecification.cs" />
     <Compile Include="Subscriptions\Package.cs" />
     <Compile Include="Subscriptions\PaymentHoliday.cs" />
-    <Compile Include="Subscriptions\RentalHistory\CurrentPeriodRentals.cs" />
-    <Compile Include="Subscriptions\RentalHistory\IRentalRepository.cs" />
-    <Compile Include="Subscriptions\RentalHistory\Rental.cs" />
     <Compile Include="Subscriptions\Subscription.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,8 +89,6 @@
   <ItemGroup>
     <Folder Include="Billing\Holidays\" />
     <Folder Include="Billing\Payment\" />
-    <Folder Include="Subscriptions\Account\" />
-    <Folder Include="Subscriptions\PackageHistory\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
