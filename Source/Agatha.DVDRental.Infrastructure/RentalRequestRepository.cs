@@ -25,8 +25,8 @@ namespace Agatha.DVDRental.Infrastructure
           
             results = _documentSession.Query<RentalRequest>()
                     .Where(x => x.MemberId == memberId).ToList();
-           
-            return new RentalRequestList(results);
+
+            return new RentalRequestList(results, memberId);
         }
 
         public void Add(RentalRequest request)
