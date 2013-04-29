@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Agatha.DVDRental.Domain.Films;
-using Agatha.DVDRental.Ui.Application.ApplicationViews;
+using Agatha.DVDRental.ApplicationService.ApplicationViews;
 using Agatha.DVDRental.Ui.Controllers;
 using AutoMapper;
 using NServiceBus;

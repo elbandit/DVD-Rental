@@ -3,7 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion></ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{772E4197-A7B5-47E4-8E9A-64A24676C808}</ProjectGuid>
     <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -81,8 +82,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\ApplicationViews\FilmView.cs" />
-    <Compile Include="Application\Renting.cs" />
     <Compile Include="BootStrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmsController.cs" />
@@ -211,9 +210,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Agatha.DVDRental.Application\Agatha.DVDRental.Application.csproj">
-      <Project>{ECC71DE4-C79D-4F56-9CBC-8286134E300C}</Project>
-      <Name>Agatha.DVDRental.Application</Name>
+    <ProjectReference Include="..\Agatha.DVDRental.ApplicationService\Agatha.DVDRental.ApplicationService.csproj">
+      <Project>{0758A98F-0FD2-4CD8-B507-0604281D7483}</Project>
+      <Name>Agatha.DVDRental.ApplicationService</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">
       <Project>{96BFCC1C-266F-4750-8C2C-F2EC595A04EF}</Project>
@@ -252,10 +251,12 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51704</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl></IISUrl>
+          <IISUrl>
+          </IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl></CustomServerUrl>
+          <CustomServerUrl>
+          </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

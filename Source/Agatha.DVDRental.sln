@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Application", "Agatha.DVDRental.Application\Agatha.DVDRental.Application.csproj", "{ECC71DE4-C79D-4F56-9CBC-8286134E300C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Ui", "Agatha.DVDRental.Ui\Agatha.DVDRental.Ui.csproj", "{772E4197-A7B5-47E4-8E9A-64A24676C808}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Messages", "Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj", "{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{4052D44E-6FB1-431B-A3B3-F60E0F4EFBA7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applcation", "Applcation", "{4052D44E-6FB1-431B-A3B3-F60E0F4EFBA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Infrastructure", "Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj", "{90422275-5A87-47BC-8630-5829E1BD1F96}"
 EndProject
@@ -18,9 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{F79A68
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Functions", "Business Functions", "{E0A57C4A-48BF-462D-8A5D-242707ACA125}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5B9F5EE8-5545-4F66-A555-0B26A756E3C9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{E0A57C4A-48BF-462D-8A5D-242707ACA125}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Domain", "Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj", "{96BFCC1C-266F-4750-8C2C-F2EC595A04EF}"
 EndProject
@@ -30,16 +26,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Subscripti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.FulfillmentPolicy", "Agatha.DVDRental.FulfillmentPolicy\Agatha.DVDRental.FulfillmentPolicy.csproj", "{A6F9D03D-DD8D-4D63-817B-6C0C953342D3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.ApplicationService", "Agatha.DVDRental.ApplicationService\Agatha.DVDRental.ApplicationService.csproj", "{0758A98F-0FD2-4CD8-B507-0604281D7483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Application.Ui", "Agatha.DVDRental.Application.Ui\Agatha.DVDRental.Application.Ui.csproj", "{056106D3-768E-4B4E-A19F-2413236098DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ECC71DE4-C79D-4F56-9CBC-8286134E300C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECC71DE4-C79D-4F56-9CBC-8286134E300C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECC71DE4-C79D-4F56-9CBC-8286134E300C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECC71DE4-C79D-4F56-9CBC-8286134E300C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{772E4197-A7B5-47E4-8E9A-64A24676C808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{772E4197-A7B5-47E4-8E9A-64A24676C808}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{772E4197-A7B5-47E4-8E9A-64A24676C808}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -68,6 +64,14 @@ Global
 		{A6F9D03D-DD8D-4D63-817B-6C0C953342D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F9D03D-DD8D-4D63-817B-6C0C953342D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F9D03D-DD8D-4D63-817B-6C0C953342D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0758A98F-0FD2-4CD8-B507-0604281D7483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0758A98F-0FD2-4CD8-B507-0604281D7483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0758A98F-0FD2-4CD8-B507-0604281D7483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0758A98F-0FD2-4CD8-B507-0604281D7483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{056106D3-768E-4B4E-A19F-2413236098DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056106D3-768E-4B4E-A19F-2413236098DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056106D3-768E-4B4E-A19F-2413236098DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{056106D3-768E-4B4E-A19F-2413236098DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,11 +79,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1EAF46F7-B505-4A94-9BD7-3AEC457BD668} = {E0A57C4A-48BF-462D-8A5D-242707ACA125}
 		{90422275-5A87-47BC-8630-5829E1BD1F96} = {E0A57C4A-48BF-462D-8A5D-242707ACA125}
-		{ECC71DE4-C79D-4F56-9CBC-8286134E300C} = {E0A57C4A-48BF-462D-8A5D-242707ACA125}
 		{EC4A759C-3ACB-435D-8B6B-2CF05642AE80} = {E0A57C4A-48BF-462D-8A5D-242707ACA125}
 		{5AAF47F6-2567-4EA4-96F1-CE8D05507C14} = {E0A57C4A-48BF-462D-8A5D-242707ACA125}
 		{A6F9D03D-DD8D-4D63-817B-6C0C953342D3} = {E0A57C4A-48BF-462D-8A5D-242707ACA125}
+		{96BFCC1C-266F-4750-8C2C-F2EC595A04EF} = {E0A57C4A-48BF-462D-8A5D-242707ACA125}
 		{772E4197-A7B5-47E4-8E9A-64A24676C808} = {4052D44E-6FB1-431B-A3B3-F60E0F4EFBA7}
-		{96BFCC1C-266F-4750-8C2C-F2EC595A04EF} = {5B9F5EE8-5545-4F66-A555-0B26A756E3C9}
+		{0758A98F-0FD2-4CD8-B507-0604281D7483} = {4052D44E-6FB1-431B-A3B3-F60E0F4EFBA7}
+		{056106D3-768E-4B4E-A19F-2413236098DD} = {4052D44E-6FB1-431B-A3B3-F60E0F4EFBA7}
 	EndGlobalSection
 EndGlobal

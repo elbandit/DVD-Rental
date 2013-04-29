@@ -34,6 +34,9 @@
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="NServiceBus">
+      <HintPath>..\Agatha.DVDRental.Ui\Bin\NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\Agatha.DVDRental.Ui\Bin\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
@@ -47,13 +50,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationViews\FilmView.cs" />
-    <Compile Include="Renting.cs" />
+    <Compile Include="RentingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">
       <Project>{82EB53BC-3479-4C7C-8F95-1C6CD2A847E7}</Project>
       <Name>Agatha.DVDRental.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
+      <Project>{90422275-5A87-47BC-8630-5829E1BD1F96}</Project>
+      <Name>Agatha.DVDRental.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj">
+      <Project>{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}</Project>
+      <Name>Agatha.DVDRental.Messages</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
