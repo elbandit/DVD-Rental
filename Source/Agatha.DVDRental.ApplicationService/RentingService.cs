@@ -12,7 +12,6 @@ using AutoMapper;
 using NServiceBus;
 using Raven.Client;
 
-
 namespace Agatha.DVDRental.ApplicationService
 {
     public class RentingService
@@ -30,6 +29,8 @@ namespace Agatha.DVDRental.ApplicationService
             _rentalRequestRepository = rentalRequestRepository;
             _filmRepository = filmRepository;
         }
+
+        // Methods are like use cases of the system
 
         public IEnumerable<FilmView> CustomerWantsToViewFilmsAvailableForRent(int memberId)
         {      
