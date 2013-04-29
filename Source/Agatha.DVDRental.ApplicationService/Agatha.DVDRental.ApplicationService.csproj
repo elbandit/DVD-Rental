@@ -55,6 +55,7 @@
     <Compile Include="OperationService.cs" />
     <Compile Include="RentingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubscriptionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">

@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Ui", "Agat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Messages", "Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj", "{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applcation", "Applcation", "{4052D44E-6FB1-431B-A3B3-F60E0F4EFBA7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Public", "Public", "{4052D44E-6FB1-431B-A3B3-F60E0F4EFBA7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agatha.DVDRental.Infrastructure", "Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj", "{90422275-5A87-47BC-8630-5829E1BD1F96}"
 EndProject
