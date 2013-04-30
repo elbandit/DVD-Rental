@@ -1,4 +1,5 @@
-﻿using Agatha.DVDRental.Messages;
+﻿using Agatha.DVDRental.Fulfillment.Contracts;
+using Agatha.DVDRental.Subscription.Contracts;
 using NServiceBus;
 
 namespace Agatha.DVDRental.SubscriptionPolicy

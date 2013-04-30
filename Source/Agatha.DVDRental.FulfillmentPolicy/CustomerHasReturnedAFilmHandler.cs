@@ -1,6 +1,6 @@
 ﻿using System;
-using Agatha.DVDRental.Domain;
-using Agatha.DVDRental.Domain.Stock;
+using Agatha.DVDRental.Fulfillment.Infrastructure;
+using Agatha.DVDRental.Fulfillment.Model.Stock;
 using Agatha.DVDRental.Messages.CustomerScenarios.Events;
 using Agatha.DVDRental.Messages.OperationalScenarios.Events;
 using NServiceBus;

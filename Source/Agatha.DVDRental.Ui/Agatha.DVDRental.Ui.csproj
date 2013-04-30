@@ -210,21 +210,9 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Agatha.DVDRental.ApplicationService\Agatha.DVDRental.ApplicationService.csproj">
-      <Project>{0758A98F-0FD2-4CD8-B507-0604281D7483}</Project>
-      <Name>Agatha.DVDRental.ApplicationService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">
-      <Project>{96BFCC1C-266F-4750-8C2C-F2EC595A04EF}</Project>
-      <Name>Agatha.DVDRental.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
-      <Project>{90422275-5A87-47BC-8630-5829E1BD1F96}</Project>
-      <Name>Agatha.DVDRental.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj">
-      <Project>{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}</Project>
-      <Name>Agatha.DVDRental.Messages</Name>
+    <ProjectReference Include="..\Agatha.DVDRental.Public.ApplicationService\Agatha.DVDRental.Public.ApplicationService.csproj">
+      <Project>{B1394E20-ABEA-4F24-BE0B-0D94CB7BA2DA}</Project>
+      <Name>Agatha.DVDRental.Public.ApplicationService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

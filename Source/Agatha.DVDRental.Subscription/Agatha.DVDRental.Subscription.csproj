@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2199A021-3EB3-4538-94B6-BF5482C68813}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Agatha.DVDRental.Subscription</RootNamespace>
+    <AssemblyName>Agatha.DVDRental.Subscription</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Raven.Abstractions">
+      <HintPath>..\packages\RavenDB.Client.2.0.2330\lib\net40\Raven.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\packages\RavenDB.Client.2.0.2330\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
+    <Compile Include="Infrastructure\RentalRequestRepository.cs" />
+    <Compile Include="Model\Allocation\Allocation.cs" />
+    <Compile Include="Model\Allocation\IAllocationRepository.cs" />
+    <Compile Include="Model\DomainEvents.cs" />
+    <Compile Include="Model\RentalHistory\CurrentPeriodRentals.cs" />
+    <Compile Include="Model\RentalHistory\IRentalRepository.cs" />
+    <Compile Include="Model\RentalHistory\Rental.cs" />
+    <Compile Include="Model\RentalRequests\FilmRequested.cs" />
+    <Compile Include="Model\RentalRequests\IRentalRequestRepository.cs" />
+    <Compile Include="Model\RentalRequests\RentalRequest.cs" />
+    <Compile Include="Model\RentalRequests\RentalRequestList.cs" />
+    <Compile Include="Model\Subscriptions\CancelSubscriptionSpecification.cs" />
+    <Compile Include="Model\Subscriptions\DeliveryAddress.cs" />
+    <Compile Include="Model\Subscriptions\DowngradeSubscriptionSpecification.cs" />
+    <Compile Include="Model\Subscriptions\ISubscriptionRepository.cs" />
+    <Compile Include="Model\Subscriptions\Money.cs" />
+    <Compile Include="Model\Subscriptions\MonthlyRentalAllowanceSpecification.cs" />
+    <Compile Include="Model\Subscriptions\NewReleaseSpecification.cs" />
+    <Compile Include="Model\Subscriptions\Package.cs" />
+    <Compile Include="Model\Subscriptions\PaymentHoliday.cs" />
+    <Compile Include="Model\Subscriptions\Subscription.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Infrastructure\packages.config" />
+    <None Include="Model\UML.cd" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

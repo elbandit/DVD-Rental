@@ -70,13 +70,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Agatha.DVDRental.Domain\Agatha.DVDRental.Domain.csproj">
-      <Project>{96BFCC1C-266F-4750-8C2C-F2EC595A04EF}</Project>
-      <Name>Agatha.DVDRental.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj">
-      <Project>{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}</Project>
-      <Name>Agatha.DVDRental.Messages</Name>
+    <ProjectReference Include="..\Agatha.DVDRental.Fulfillment\Agatha.DVDRental.Fulfillment.csproj">
+      <Project>{1ABD8B53-FEB3-441C-9EB8-E88F9C58A39E}</Project>
+      <Name>Agatha.DVDRental.Fulfillment</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

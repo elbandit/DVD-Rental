@@ -59,14 +59,18 @@
     <Compile Include="SubscriptionCancellation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Agatha.DVDRental.Messages\Agatha.DVDRental.Messages.csproj">
-      <Project>{1EAF46F7-B505-4A94-9BD7-3AEC457BD668}</Project>
-      <Name>Agatha.DVDRental.Messages</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agatha.DVDRental.Fulfillment.Contracts\Agatha.DVDRental.Fulfillment.Contracts.csproj">
+      <Project>{BA561918-67D6-45A6-A704-A20796E92264}</Project>
+      <Name>Agatha.DVDRental.Fulfillment.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Subscription.Contracts\Agatha.DVDRental.Subscription.Contracts.csproj">
+      <Project>{F9BA254F-299C-4FB1-A3DD-1C74A5FD95EE}</Project>
+      <Name>Agatha.DVDRental.Subscription.Contracts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
