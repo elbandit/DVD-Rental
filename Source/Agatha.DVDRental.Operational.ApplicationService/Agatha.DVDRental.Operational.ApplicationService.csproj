@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NServiceBus">
+      <HintPath>..\packages\NServiceBus.Interfaces.3.3.6\lib\net40\NServiceBus.dll</HintPath>
+    </Reference>
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\Agatha.DVDRental.Ui\bin\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
@@ -50,6 +53,10 @@
     <ProjectReference Include="..\Agatha.DVDRental.Catalogue\Agatha.DVDRental.Catalogue.csproj">
       <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
       <Name>Agatha.DVDRental.Catalogue</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Fulfillment.Contracts\Agatha.DVDRental.Fulfillment.Contracts.csproj">
+      <Project>{BA561918-67D6-45A6-A704-A20796E92264}</Project>
+      <Name>Agatha.DVDRental.Fulfillment.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Fulfillment\Agatha.DVDRental.Fulfillment.csproj">
       <Project>{1ABD8B53-FEB3-441C-9EB8-E88F9C58A39E}</Project>

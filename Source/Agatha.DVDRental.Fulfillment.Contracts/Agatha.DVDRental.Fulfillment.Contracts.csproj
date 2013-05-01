@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="AddFilmToStock.cs" />
     <Compile Include="AddFilmToStockMessage.cs" />
+    <Compile Include="FilmAddedToStock.cs" />
     <Compile Include="FilmReturned.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnFilm.cs" />

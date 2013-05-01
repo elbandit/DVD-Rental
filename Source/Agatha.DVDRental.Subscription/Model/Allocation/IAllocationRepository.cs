@@ -6,5 +6,6 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
     {
         Allocation FindBy(int filmId);
         IEnumerable<Allocation> FindAllocationsFor(int subscriptionId);
+        void Add(Allocation filmAllocations);
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="Model\Fulfilment\IFulfilmentRepository.cs" />
     <Compile Include="Model\Stock\CurrentLoan.cs" />
     <Compile Include="Model\Stock\Dvd.cs" />
+    <Compile Include="Model\Stock\DvdAdded.cs" />
     <Compile Include="Model\Stock\DvdReturned.cs" />
     <Compile Include="Model\Stock\FilmLoanedToMember.cs" />
     <Compile Include="Model\Stock\DvdBackInStock.cs" />

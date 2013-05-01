@@ -8,6 +8,7 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
         public Dvd(int filmId)
         {
             this.FilmId = filmId;
+            DomainEvents.Raise(new DvdAdded() {FilmId = filmId});
         }
 
         public int Id { get; private set; }
