@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Agatha.DVDRental.Catalogue.Catalogue;
+using Agatha.DVDRental.Fulfillment.Model.Stock;
 using Raven.Client;
 
 namespace Agatha.DVDRental.Operational.ApplicationService
@@ -49,6 +52,16 @@ namespace Agatha.DVDRental.Operational.ApplicationService
             _filmRepository.Add(film);
 
             _ravenDbSession.SaveChanges();
+        }
+
+        public IEnumerable<Film> ViewAllFilms()
+        {
+            return _ravenDbSession.Query<Film>().Take(10).ToList();
+        }
+
+        public IEnumerable<Dvd> ViewStockFor(int filmId)
+        {
+            return _ravenDbSession.Query<Dvd>().Take(10).ToList();
         }
     }
 }

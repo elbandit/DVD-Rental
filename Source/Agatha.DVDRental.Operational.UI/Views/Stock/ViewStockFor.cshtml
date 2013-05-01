@@ -1,0 +1,17 @@
+﻿@using Agatha.DVDRental.Fulfillment.Model.Stock
+@model Agatha.DVDRental.Operational.UI.Models.StockModel
+
+@{
+    
+}
+
+ @foreach (Dvd dvd in Model.Stock)
+ {
+             <h3>@dvd.Id</h3>                  
+             <hr/>
+ } 
+                 
+@using (Html.BeginForm("AddStockFor", "Stock", new { FilmID = Model.FilmId }))
+{
+            <p><input class="btn" value="Add stock &raquo;" type="submit" /></p>
+}   

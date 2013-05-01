@@ -2,7 +2,6 @@
 using System.Linq;
 using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Domain.RentalLists;
-using Agatha.DVDRental.Domain.Subscriptions.RentalRequests;
 
 namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 {

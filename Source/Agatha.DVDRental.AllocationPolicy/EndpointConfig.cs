@@ -2,6 +2,8 @@ using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Domain.RentalLists;
 using Agatha.DVDRental.Infrastructure;
+using Agatha.DVDRental.Subscription.Infrastructure;
+using Agatha.DVDRental.Subscription.Model.Subscriptions;
 using Raven.Client;
 using DocumentStoreFactory = Agatha.DVDRental.Infrastructure.DocumentStoreFactory;
 
@@ -38,6 +40,7 @@ namespace Agatha.DVDRental.AllocationPolicy
             {
                 For<IFilmRepository>().Use<FilmRepository>();
                 For<IRentalRequestRepository>().Use<RentalRequestRepository>();
+                For<ISubscriptionRepository>().Use<SubscriptionRepository>();
 
                 For<IDocumentStore>().Singleton()
                                 .Use(DocumentStoreFactory.DocumentStore);

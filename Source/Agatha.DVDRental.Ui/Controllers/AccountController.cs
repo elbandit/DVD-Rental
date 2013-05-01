@@ -5,12 +5,20 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using Agatha.DVDRental.Public.ApplicationService;
 using Agatha.DVDRental.Ui.Models;
 
 namespace Agatha.DVDRental.Ui.Controllers
 {
     public class AccountController : Controller
     {
+        private SubscriptionService _subscriptionService;
+
+        public AccountController(SubscriptionService subscriptionService)
+        {
+            _subscriptionService = subscriptionService;
+        }
+
 
         //
         // GET: /Account/LogOn
@@ -77,18 +85,18 @@ namespace Agatha.DVDRental.Ui.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Attempt to register the user
-                MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                var subscriptionExists = _subscriptionService.AlreadyHaveSubscriptionWithEmail(model.Email);
 
-                if (createStatus == MembershipCreateStatus.Success)
+                if (!subscriptionExists)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    _subscriptionService.CreateSubscription(model.Email);
+
+                    FormsAuthentication.SetAuthCookie(model.Email, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                    ModelState.AddModelError("", "Could not create.");
                 }
             }
 

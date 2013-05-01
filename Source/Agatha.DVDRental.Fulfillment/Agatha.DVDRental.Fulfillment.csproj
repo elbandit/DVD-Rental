@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Infrastructure\DomainEvents.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequest.cs" />
+    <Compile Include="Model\Fulfilment\FulfilmentRequestAssignedForPicking.cs" />
+    <Compile Include="Model\Fulfilment\FulfilmentRequestDispatched.cs" />
     <Compile Include="Model\Fulfilment\IFulfilmentRepository.cs" />
     <Compile Include="Model\Stock\CurrentLoan.cs" />
     <Compile Include="Model\Stock\Dvd.cs" />

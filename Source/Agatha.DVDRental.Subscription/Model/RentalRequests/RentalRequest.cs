@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Agatha.DVDRental.Domain.Subscriptions.RentalRequests
+namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 {
     public class RentalRequest
     {      

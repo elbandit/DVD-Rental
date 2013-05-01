@@ -218,6 +218,10 @@
       <Project>{B1394E20-ABEA-4F24-BE0B-0D94CB7BA2DA}</Project>
       <Name>Agatha.DVDRental.Public.ApplicationService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Subscription\Agatha.DVDRental.Subscription.csproj">
+      <Project>{2199A021-3EB3-4538-94B6-BF5482C68813}</Project>
+      <Name>Agatha.DVDRental.Subscription</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Scripts\jquery-1.9.1.min.map" />

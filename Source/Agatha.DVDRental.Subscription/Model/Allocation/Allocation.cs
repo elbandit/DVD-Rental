@@ -1,4 +1,5 @@
 ﻿using System;
+using Agatha.DVDRental.Domain;
 
 namespace Agatha.DVDRental.Subscription.Model.Allocation
 {
@@ -9,6 +10,7 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
         public int Stock { get; set; }
         public int Available { get; set; }
 
+        // Don't need this as its only for decision..
         public bool StockAvailble()
         {
             throw new NotImplementedException();
@@ -18,10 +20,12 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
         {
             throw new NotImplementedException();
 
+            // don't allocate the same film twice
+
             // New SubscriptionAllocation
             // Add to inner list
 
-            //  DomainEvents.Raise(new FilmAllocated(FilmId, subscriptionId));
+            DomainEvents.Raise(new FilmAllocated(FilmId, subscriptionId));
         }
     }
 }

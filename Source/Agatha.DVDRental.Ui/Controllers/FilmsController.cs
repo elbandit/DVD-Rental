@@ -21,7 +21,7 @@ namespace Agatha.DVDRental.Ui.Controllers
 
         public ActionResult Index()
         {
-            var films = _renting.CustomerWantsToViewFilmsAvailableForRent(1);
+            var films = _renting.CustomerWantsToViewFilmsAvailableForRent(User.Identity.Name);
 
             return View(films);
         }

@@ -51,6 +51,10 @@
       <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
       <Name>Agatha.DVDRental.Catalogue</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Fulfillment\Agatha.DVDRental.Fulfillment.csproj">
+      <Project>{1ABD8B53-FEB3-441C-9EB8-E88F9C58A39E}</Project>
+      <Name>Agatha.DVDRental.Fulfillment</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

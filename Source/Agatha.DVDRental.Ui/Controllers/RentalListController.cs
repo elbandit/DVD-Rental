@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Agatha.DVDRental.Public.ApplicationService;
+using System.Web.Security;
 
 namespace Agatha.DVDRental.Ui.Controllers
 {
@@ -21,13 +22,15 @@ namespace Agatha.DVDRental.Ui.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var rentalList = _renting.ViewRentalListFor(User.Identity.Name);
+
+            return View(rentalList);
         }
 
         [HttpPost]
         public ActionResult AddFilmToList(int filmId)
-        {
-            _renting.CustomerWantsToRentTheFim(filmId, 1);
+        {                        
+            _renting.CustomerWantsToRentTheFim(filmId, User.Identity.Name);
 
             return RedirectToAction("Index", "Films");
         }
@@ -35,9 +38,11 @@ namespace Agatha.DVDRental.Ui.Controllers
         [HttpPost]
         public ActionResult RemoveFilmFromList(int filmId)
         {
-            _renting.CustomerDoesNotWantToRentTheFim(filmId, 1);
+            _renting.CustomerDoesNotWantToRentTheFim(filmId, User.Identity.Name);
 
             return RedirectToAction("Index", "Films");
         }
+
+    
     }
 }

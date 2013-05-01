@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
+using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Agatha.DVDRental.Ui.Controllers;
 using AutoMapper;
 using NServiceBus;
@@ -47,6 +48,7 @@ namespace Agatha.DVDRental.Ui
             BootStrapper.ConfigureDependencies();
 
             Mapper.CreateMap<Film, FilmView>();
+            Mapper.CreateMap<RentalRequest, RentalRequestView>();
 
             ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }

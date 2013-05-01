@@ -15,7 +15,11 @@ namespace Agatha.DVDRental.Subscription.Model.Subscriptions
 
         public Package Package { get; set; }
              
-        public int PaymentHolidays { get; set; } // Payment Holiday class
+        public int PaymentHolidays { get; set; }
+
+        public string EmailAddress { get; set; }
+
+// Payment Holiday class
 
         // public bool CanRentAfilm(CurrentPeriodRentals rentals)
 

@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FilmHasBeenAllocatedHandler.cs" />
     <Compile Include="ReturnFilmHandler.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,6 +78,10 @@
     <ProjectReference Include="..\Agatha.DVDRental.Fulfillment\Agatha.DVDRental.Fulfillment.csproj">
       <Project>{1ABD8B53-FEB3-441C-9EB8-E88F9C58A39E}</Project>
       <Name>Agatha.DVDRental.Fulfillment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Subscription.Contracts\Agatha.DVDRental.Subscription.Contracts.csproj">
+      <Project>{F9BA254F-299C-4FB1-A3DD-1C74A5FD95EE}</Project>
+      <Name>Agatha.DVDRental.Subscription.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -5,11 +5,12 @@ using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Domain.RentalLists;
-using Agatha.DVDRental.Domain.Subscriptions.RentalRequests;
 using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
 using Agatha.DVDRental.Subscription.Contracts;
+using Agatha.DVDRental.Subscription.Infrastructure;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
+using Agatha.DVDRental.Subscription.Model.Subscriptions;
 using AutoMapper;
 using NServiceBus;
 using Raven.Client;
@@ -22,27 +23,33 @@ namespace Agatha.DVDRental.Public.ApplicationService
         private readonly IBus _bus;
         private readonly RentalRequestRepository _rentalRequestRepository;
         private readonly FilmRepository _filmRepository;
+        private ISubscriptionRepository _subscriptionRepository;
 
         public RentingService(IDocumentSession ravenDbSession, IBus bus, 
-                       RentalRequestRepository rentalRequestRepository, FilmRepository filmRepository)
+                              RentalRequestRepository rentalRequestRepository, FilmRepository filmRepository, 
+                              ISubscriptionRepository subscriptionRepository)
         {
             _ravenDbSession = ravenDbSession;
             _bus = bus;
             _rentalRequestRepository = rentalRequestRepository;
             _filmRepository = filmRepository;
+            _subscriptionRepository = subscriptionRepository;
         }
 
         // Methods are like use cases of the system
 
-        public IEnumerable<FilmView> CustomerWantsToViewFilmsAvailableForRent(int memberId)
-        {      
+        public IEnumerable<FilmView> CustomerWantsToViewFilmsAvailableForRent(string memberEmail)
+        {
+
+            var subscription = _subscriptionRepository.FindBy(memberEmail);
+
             // Find all films
             var all_films = _ravenDbSession.Query<Film>().Take(10).ToList();
 
             var all_filmviews = Mapper.Map<IEnumerable<Film>, IEnumerable<FilmView>>(all_films);             
      
             // Find all films in rental list
-            var all_rentals = _ravenDbSession.Query<RentalRequest>().Where(x => x.MemberId == memberId);
+            var all_rentals = _ravenDbSession.Query<RentalRequest>().Where(x => x.MemberId == subscription.Id);
 
             foreach (var rentalRequest in all_rentals)
             {
@@ -57,17 +64,18 @@ namespace Agatha.DVDRental.Public.ApplicationService
             return all_filmviews;
         }
 
-        public void CustomerWantsToRentTheFim(int filmid, int memberId)
+        public void CustomerWantsToRentTheFim(int filmid, string memberEmail)
         {
             // quick check for valid command
+            var subscription = _subscriptionRepository.FindBy(memberEmail);
 
             Film film = _filmRepository.FindBy(filmid);
 
             using (DomainEvents.Register(AllocateFilm()))
             {
-                RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(memberId);
+                RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(subscription.Id);
 
-                var request = rentalRequestList.CreateRequestFor(film.Id, memberId); // try and create
+                var request = rentalRequestList.CreateRequestFor(film.Id, subscription.Id); // try and create
 
                 _rentalRequestRepository.Add(request);
                 _ravenDbSession.SaveChanges();
@@ -80,9 +88,11 @@ namespace Agatha.DVDRental.Public.ApplicationService
             return (FilmRequested s) => _bus.Send(new AllocateRentalRequest());
         }
 
-        public void CustomerDoesNotWantToRentTheFim(int filmid, int memberId)
+        public void CustomerDoesNotWantToRentTheFim(int filmid, string memberEmail)
         {
-            RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(memberId);
+            var subscription = _subscriptionRepository.FindBy(memberEmail);
+
+            RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(subscription.Id);
 
             using (DomainEvents.Register(DeAllocateFilm()))
             {
@@ -96,6 +106,15 @@ namespace Agatha.DVDRental.Public.ApplicationService
         private Action<RentalRequestRemoved> DeAllocateFilm()
         {
             return (RentalRequestRemoved s) => _bus.Send(new AllocateRentalRequest()); // See if someone else wants this film
+        }
+
+        public IEnumerable<RentalRequestView> ViewRentalListFor(string name)
+        {
+            var allRequests = _ravenDbSession.Query<RentalRequest>().ToList();
+
+            var allRequestViews = Mapper.Map<IEnumerable<RentalRequest>, IEnumerable<RentalRequestView>>(allRequests);
+
+            return allRequestViews;
         }
     }
 }

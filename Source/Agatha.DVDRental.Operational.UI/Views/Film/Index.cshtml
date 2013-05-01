@@ -1,0 +1,15 @@
+﻿@using Agatha.DVDRental.Catalogue.Catalogue
+@model System.Collections.Generic.IEnumerable<Agatha.DVDRental.Catalogue.Catalogue.Film>
+
+@{
+    ViewBag.Title = "title";
+}
+
+<h2>title</h2>
+ @foreach (Film film in Model)
+         {
+             <h3>@Html.ActionLink("Stock", "ViewStockFor", "Stock", new { FilmId = film.Id })</h3>
+                
+             <b>@film.Title</b>                 
+             <hr/>
+         } 

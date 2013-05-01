@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Agatha.DVDRental.Domain.RentalLists;
-using Agatha.DVDRental.Domain.Subscriptions.RentalRequests;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Raven.Client;
-using Raven.Client.Document;
-using Raven.Client.Extensions;
 
-namespace Agatha.DVDRental.Infrastructure
+namespace Agatha.DVDRental.Subscription.Infrastructure
 {
     public class RentalRequestRepository : IRentalRequestRepository
     {
