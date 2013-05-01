@@ -27,13 +27,15 @@ namespace Agatha.DVDRental.Operational.UI.Controllers
             stockModel.Stock = stock;
             stockModel.FilmId = filmId;
 
-           return View(stock);
+           return View(stockModel);
         }
         
         [HttpPost]
         public ActionResult AddStockFor(int filmId)
         {
-            return RedirectToAction("ViewStockFor", filmId);
+            _operationService.OperatorWantsToAddStock(filmId, "xxxx");
+
+            return RedirectToAction("ViewStockFor", new {filmId = filmId});
         }
 
     }

@@ -8,7 +8,7 @@
 <h2>title</h2>
  @foreach (Film film in Model)
          {
-             <h3>@Html.ActionLink("Stock", "ViewStockFor", "Stock", new { FilmId = film.Id })</h3>
+             <h3>@Html.ActionLink("Stock Check", "ViewStockFor", "Stock", new { filmId = film.Id }, new{})</h3>
                 
              <b>@film.Title</b>                 
              <hr/>

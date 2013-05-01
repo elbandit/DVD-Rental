@@ -1,5 +1,7 @@
 ﻿using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
+using Agatha.DVDRental.Fulfillment.Infrastructure;
+using Agatha.DVDRental.Fulfillment.Model.Stock;
 using NServiceBus;
 using Raven.Client;
 using StructureMap;
@@ -26,6 +28,7 @@ namespace Agatha.DVDRental.Operational.UI
                 For<IDocumentSession>().LifecycleIs(new HttpSessionLifecycle()).Use(DocumentStoreFactory.DocumentStore.OpenSession);
 
                 For<IFilmRepository>().Use<FilmRepository>();
+                For<IDvdRepository>().Use<DvdRepository>();
 
                var bus = NServiceBus.Configure.WithWeb()
                    .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Agatha.DVDRental.Fulfillment.Contracts"))

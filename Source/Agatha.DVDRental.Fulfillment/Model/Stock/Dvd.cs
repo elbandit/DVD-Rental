@@ -5,6 +5,11 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
 {
     public class Dvd
     {
+        public Dvd(int filmId)
+        {
+            this.FilmId = filmId;
+        }
+
         public int Id { get; private set; }
         public int FilmId { get; private set; }
         public CurrentLoan CurrentLoan { get; private set; }

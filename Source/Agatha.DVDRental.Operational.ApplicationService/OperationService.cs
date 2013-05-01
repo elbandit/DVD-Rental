@@ -11,18 +11,25 @@ namespace Agatha.DVDRental.Operational.ApplicationService
     {
         private readonly IFilmRepository _filmRepository;
         private readonly IDocumentSession _ravenDbSession;
+        private readonly IDvdRepository _dvdRepository;
 
-        public OperationService(IFilmRepository filmRepository, IDocumentSession ravenDbSession)
+        public OperationService(IFilmRepository filmRepository, 
+                                IDocumentSession ravenDbSession, IDvdRepository dvdRepository)
         {
             _filmRepository = filmRepository;
             _ravenDbSession = ravenDbSession;
+            _dvdRepository = dvdRepository;
         }
 
         // Methods are like use cases of the system
 
         public void OperatorWantsToAddStock(int filmId, string barcode  )
         {
+            var dvd = new Dvd(filmId);           
 
+            _dvdRepository.Add(dvd);
+
+            _ravenDbSession.SaveChanges();
         }       
 
         public void OperatorWantsToProceesAFilmReturn(string barcode)
@@ -61,7 +68,7 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         public IEnumerable<Dvd> ViewStockFor(int filmId)
         {
-            return _ravenDbSession.Query<Dvd>().Take(10).ToList();
+            return _ravenDbSession.Query<Dvd>().Where(x => x.FilmId == filmId).ToList();
         }
     }
 }

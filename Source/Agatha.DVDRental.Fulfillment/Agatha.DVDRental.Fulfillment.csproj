@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Raven.Client.Lightweight">
+      <HintPath>..\Agatha.DVDRental.Ui\bin\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\DomainEvents.cs" />
+    <Compile Include="Infrastructure\DvdRepository.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequest.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequestAssignedForPicking.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequestDispatched.cs" />
