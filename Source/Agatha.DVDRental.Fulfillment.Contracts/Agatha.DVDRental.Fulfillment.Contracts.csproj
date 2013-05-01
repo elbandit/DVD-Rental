@@ -53,9 +53,9 @@
   <ItemGroup>
     <Compile Include="AddFilmToStock.cs" />
     <Compile Include="AddFilmToStockMessage.cs" />
-    <Compile Include="DVDReturned.cs" />
+    <Compile Include="FilmReturned.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReturnFilmMessage.cs" />
+    <Compile Include="ReturnFilm.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

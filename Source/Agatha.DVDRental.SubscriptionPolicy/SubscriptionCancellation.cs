@@ -17,7 +17,7 @@ namespace Agatha.DVDRental.SubscriptionPolicy
             // kill the saga
         }
 
-        public void Handle(DVDReturned message)
+        public void Handle(FilmReturned message)
         {                     
             // Subscription.Cancel() // This will fire an event so that billing will cancel
 

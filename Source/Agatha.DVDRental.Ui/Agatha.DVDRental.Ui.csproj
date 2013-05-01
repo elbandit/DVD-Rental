@@ -210,6 +210,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Agatha.DVDRental.Catalogue\Agatha.DVDRental.Catalogue.csproj">
+      <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
+      <Name>Agatha.DVDRental.Catalogue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Public.ApplicationService\Agatha.DVDRental.Public.ApplicationService.csproj">
       <Project>{B1394E20-ABEA-4F24-BE0B-0D94CB7BA2DA}</Project>
       <Name>Agatha.DVDRental.Public.ApplicationService</Name>

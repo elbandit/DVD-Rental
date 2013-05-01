@@ -9,7 +9,7 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
         public int FilmId { get; private set; }
         public CurrentLoan CurrentLoan { get; private set; }
 
-        public void LoanTo(int memberId, DeliveryAddress address)
+        public void LoanTo(int memberId)
         {
             CurrentLoan = new CurrentLoan(memberId, DateTime.Now);
 
@@ -20,7 +20,7 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
         {
             CurrentLoan = null;
 
-            DomainEvents.Raise(new FilmReturned()); // Needs to update the rental history list
+            DomainEvents.Raise(new DvdBackInStock()); // Needs to update the rental history list
         }
     }
 }

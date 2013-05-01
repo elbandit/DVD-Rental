@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Agatha.DVDRental.Catalogue.Catalogue;
+using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Domain.RentalLists;
 using Agatha.DVDRental.Domain.Subscriptions.RentalRequests;
@@ -8,6 +10,7 @@ using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
 using Agatha.DVDRental.Subscription.Contracts;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
+using AutoMapper;
 using NServiceBus;
 using Raven.Client;
 
@@ -64,7 +67,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
             {
                 RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(memberId);
 
-                var request = rentalRequestList.CreateRequestFor(film, memberId); // try and create
+                var request = rentalRequestList.CreateRequestFor(film.Id, memberId); // try and create
 
                 _rentalRequestRepository.Add(request);
                 _ravenDbSession.SaveChanges();
@@ -73,6 +76,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
 
         private Action<FilmRequested> AllocateFilm()
         {
+            // Could put a delay in, just in case most customers decide to remove from list within 5 mins
             return (FilmRequested s) => _bus.Send(new AllocateRentalRequest());
         }
 

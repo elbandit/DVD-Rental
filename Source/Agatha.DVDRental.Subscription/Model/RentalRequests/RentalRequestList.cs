@@ -17,16 +17,16 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
             _rentalRequests = rentalRequests;
         }
 
-        public RentalRequest CreateRequestFor(Film film, int memberid)
+        public RentalRequest CreateRequestFor(int filmId, int memberid)
         {
             // make sure we don't already have this in the list
 
             // does this list have an age restriction?
 
             // give it a priority order
-            var request = new RentalRequest(film.Id, memberid);
+            var request = new RentalRequest(filmId, memberid);
 
-            DomainEvents.Raise(new FilmRequested(film.Id, memberid));
+            DomainEvents.Raise(new FilmRequested(filmId, memberid));
 
             return request;
         }

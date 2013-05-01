@@ -17,15 +17,15 @@ namespace Agatha.DVDRental.Subscription.Model.Subscriptions
             return true;
         }
 
-        public bool CanRent(Film film)
-        {
-            // Not this month
-            // Too many Dvds currently out
-            // Used up all new releases this month
-            // too many new releases out at the same time
+        //public bool CanRent(Film film)
+        //{
+        //    // Not this month
+        //    // Too many Dvds currently out
+        //    // Used up all new releases this month
+        //    // too many new releases out at the same time
 
-            return true;
-        }
+        //    return true;
+        //}
 
         public bool IsADowngradeFrom(Package package)
         {

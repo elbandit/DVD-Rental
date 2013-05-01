@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -67,6 +70,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Agatha.DVDRental.Catalogue\Agatha.DVDRental.Catalogue.csproj">
+      <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
+      <Name>Agatha.DVDRental.Catalogue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Subscription.Contracts\Agatha.DVDRental.Subscription.Contracts.csproj">
       <Project>{F9BA254F-299C-4FB1-A3DD-1C74A5FD95EE}</Project>
       <Name>Agatha.DVDRental.Subscription.Contracts</Name>

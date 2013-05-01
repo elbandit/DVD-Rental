@@ -1,7 +1,9 @@
-using Agatha.DVDRental.Domain.Films;
+using Agatha.DVDRental.Catalogue.Catalogue;
+using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Domain.RentalLists;
 using Agatha.DVDRental.Infrastructure;
 using Raven.Client;
+using DocumentStoreFactory = Agatha.DVDRental.Infrastructure.DocumentStoreFactory;
 
 namespace Agatha.DVDRental.AllocationPolicy 
 {    

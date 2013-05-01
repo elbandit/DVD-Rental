@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Agatha.DVDRental.Operational.UI.Controllers;
 
 namespace Agatha.DVDRental.Operational.UI
 {
@@ -35,6 +36,13 @@ namespace Agatha.DVDRental.Operational.UI
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            DocumentStoreFactory.InitializeDocumentStore();
+
+            BootStrapper.ConfigureDependencies();
+            
+
+            ControllerBuilder.Current.SetControllerFactory(new StructureMapControllerFactory());
         }
     }
 }

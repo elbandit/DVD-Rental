@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Agatha.DVDRental.Catalogue.Catalogue;
+﻿using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
 using NServiceBus;
 using Raven.Client;
@@ -10,7 +6,7 @@ using StructureMap;
 using StructureMap.Configuration.DSL;
 using StructureMap.Pipeline;
 
-namespace Agatha.DVDRental.Ui
+namespace Agatha.DVDRental.Operational.UI
 {
     public class BootStrapper
     {
@@ -27,7 +23,9 @@ namespace Agatha.DVDRental.Ui
         {
             public ControllerRegistry()
             {               
-                For<IDocumentSession>().LifecycleIs(new HttpSessionLifecycle()).Use(DocumentStoreFactory.DocumentStore.OpenSession);               
+                For<IDocumentSession>().LifecycleIs(new HttpSessionLifecycle()).Use(DocumentStoreFactory.DocumentStore.OpenSession);
+
+                For<IFilmRepository>().Use<FilmRepository>();
 
                var bus = NServiceBus.Configure.WithWeb()
                    .DefiningCommandsAs(t => t.Namespace != null && t.Namespace.StartsWith("Agatha.DVDRental.Fulfillment.Contracts"))
