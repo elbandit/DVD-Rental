@@ -52,6 +52,7 @@
     <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
     <Compile Include="Infrastructure\RentalRequestRepository.cs" />
     <Compile Include="Model\Allocation\Allocation.cs" />
+    <Compile Include="Model\Allocation\AllocationService.cs" />
     <Compile Include="Model\Allocation\IAllocationRepository.cs" />
     <Compile Include="Model\DomainEvents.cs" />
     <Compile Include="Model\RentalHistory\CurrentPeriodRentals.cs" />

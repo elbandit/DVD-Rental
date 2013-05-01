@@ -17,6 +17,11 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
         public void AllocateUnitTo(int subscriptionId)
         {
             throw new NotImplementedException();
+
+            // New SubscriptionAllocation
+            // Add to inner list
+
+            //  DomainEvents.Raise(new FilmAllocated(FilmId, subscriptionId));
         }
     }
 }

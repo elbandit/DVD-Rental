@@ -89,7 +89,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
                 var rentalRequest = rentalRequestList.RemoveFromTheList(filmid);
 
                 _ravenDbSession.Delete(rentalRequest);
-                _ravenDbSession.SaveChanges(); // Need to hook this up to HttpRequest           
+                _ravenDbSession.SaveChanges(); // Need to hook this up to HttpRequest
             }
         }
 
