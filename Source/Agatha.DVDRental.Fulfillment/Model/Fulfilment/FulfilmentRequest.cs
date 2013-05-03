@@ -7,6 +7,7 @@ namespace Agatha.DVDRental.Fulfillment.Model.Fulfilment
     {
         public int Id { get; set; }
         public int FilmId { get; set; }
+        public int SubscriptionId { get; set; }
         public DateTime Requested { get; set; }
         public bool IsDispatched { get; private set; }
 

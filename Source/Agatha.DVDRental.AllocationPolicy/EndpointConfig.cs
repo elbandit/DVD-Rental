@@ -1,13 +1,15 @@
+using System;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Domain.RentalLists;
-using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Subscription.Infrastructure;
 using Agatha.DVDRental.Subscription.Model.Allocation;
 using Agatha.DVDRental.Subscription.Model.RentalHistory;
 using Agatha.DVDRental.Subscription.Model.Subscriptions;
+using NServiceBus.UnitOfWork;
 using Raven.Client;
-using DocumentStoreFactory = Agatha.DVDRental.Infrastructure.DocumentStoreFactory;
+using Raven.Client.Document;
+using DocumentStoreFactory = Agatha.DVDRental.Subscription.Infrastructure.DocumentStoreFactory;
 
 namespace Agatha.DVDRental.AllocationPolicy 
 {    
@@ -32,26 +34,37 @@ namespace Agatha.DVDRental.AllocationPolicy
             Configure.With()
                 .StructureMapBuilder()
                 //this overrides the NServiceBus default convention of IEvent                
-                .DefiningMessagesAs(t => t.Namespace != null && t.Namespace.Contains("Agatha.DVDRental.Messages"));
+                .DefiningEventsAs(
+                    t =>
+                    t.Namespace != null && (t.Namespace.Contains("Agatha.DVDRental.Fulfillment.Contracts") ||
+                    t.Namespace.Contains("Agatha.DVDRental.Subscription.Contracts")));
 
         }
 
         public class ControllerRegistry : Registry
         {
             public ControllerRegistry()
-            {
+            {               
+                var store = new DocumentStore { ConnectionStringName = "RavenDB" };
+                store.ResourceManagerId = Guid.NewGuid();
+                store.Initialize();
+
                 For<IFilmRepository>().Use<FilmRepository>();
                 For<IRentalRequestRepository>().Use<RentalRequestRepository>();
                 For<ISubscriptionRepository>().Use<SubscriptionRepository>();
                 For<IRentalRepository>().Use<RentalRepository>();
                 For<IAllocationRepository>().Use<AllocationRepository>();
 
-                For<IDocumentStore>().Singleton()
-                                .Use(DocumentStoreFactory.DocumentStore);
-                
+                For<IDocumentStore>()
+                    .Singleton()
+                    .Use(store);
+
                 For<IDocumentSession>()
                     .Use(ctx => ctx.GetInstance<IDocumentStore>()
-                    .OpenSession());
+                                      .OpenSession());
+
+                For<IManageUnitsOfWork>()
+                    .Use<RavenUnitOfWork>();
                            
             }
         }

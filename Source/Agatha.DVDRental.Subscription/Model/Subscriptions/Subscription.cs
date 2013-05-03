@@ -59,7 +59,7 @@ namespace Agatha.DVDRental.Subscription.Model.Subscriptions
 
         public bool IsEligibleToRecieveAFilm(CurrentPeriodRentals currentPeriodRentals, IEnumerable<Allocation.Allocation> currentFulfilmentRequests)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

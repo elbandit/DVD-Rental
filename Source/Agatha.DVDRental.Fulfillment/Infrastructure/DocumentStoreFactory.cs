@@ -1,6 +1,6 @@
 ﻿using Raven.Client.Document;
 
-namespace Agatha.DVDRental.Subscription.Infrastructure
+namespace Agatha.DVDRental.Fulfillment.Infrastructure
 {
     public static class DocumentStoreFactory
     {

@@ -7,9 +7,7 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
 {
     public class FilmAllocated
     {
-        public FilmAllocated(int filmId, int subscriptionId)
-        {
-            
-        }
+        public int FilmId { get; set; }
+        public int SubscriptionId { get; set; }        
     }
 }

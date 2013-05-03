@@ -5,7 +5,6 @@ using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Domain.RentalLists;
-using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
 using Agatha.DVDRental.Subscription.Contracts;
 using Agatha.DVDRental.Subscription.Infrastructure;
@@ -85,7 +84,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
         private Action<FilmRequested> AllocateFilm()
         {
             // Could put a delay in, just in case most customers decide to remove from list within 5 mins
-            return (FilmRequested s) => _bus.Send(new AllocateRentalRequest());
+            return (FilmRequested s) => _bus.Send(new AllocateRentalRequest() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId});
         }
 
         public void CustomerDoesNotWantToRentTheFim(int filmid, string memberEmail)
@@ -105,7 +104,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
 
         private Action<RentalRequestRemoved> DeAllocateFilm()
         {
-            return (RentalRequestRemoved s) => _bus.Send(new AllocateRentalRequest()); // See if someone else wants this film
+            return (RentalRequestRemoved s) => _bus.Send(new DeAllocateRentalRequest()); // See if someone else wants this film
         }
 
         public IEnumerable<RentalRequestView> ViewRentalListFor(string name)

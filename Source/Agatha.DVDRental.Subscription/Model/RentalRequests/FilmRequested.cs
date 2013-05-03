@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Agatha.DVDRental.Domain.RentalLists
+﻿namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 {
     public class FilmRequested
     {
-        public FilmRequested(int filmId, int memberId)
+        public FilmRequested(int filmId, int subscriptionId)
         {
             FilmId = filmId;
-            MemberId = memberId;
+            SubscriptionId = subscriptionId;
         }
 
         public int FilmId { get; set; }
 
-        public int MemberId { get; set; }
+        public int SubscriptionId { get; set; }
     }
 }

@@ -5,16 +5,20 @@ using System.Text;
 using Agatha.DVDRental.Fulfillment.Contracts;
 using Agatha.DVDRental.Subscription.Model.Allocation;
 using NServiceBus;
+using Raven.Client;
 
 namespace Agatha.DVDRental.AllocationPolicy
 {
     public class StockAddedHandler : IHandleMessages<FilmAddedToStock>
     {
         private IAllocationRepository _allocationRepository;
+        private readonly IDocumentSession _ravenDbSession;  
 
-        public StockAddedHandler(IAllocationRepository allocationRepository)
+        public StockAddedHandler(IAllocationRepository allocationRepository, 
+                                 IDocumentSession ravenDbSession)
         {
             _allocationRepository = allocationRepository;
+            _ravenDbSession = ravenDbSession;
         }
 
         public void Handle(FilmAddedToStock message)
@@ -31,7 +35,7 @@ namespace Agatha.DVDRental.AllocationPolicy
                 filmAllocations.IncreaseStock();
             }
 
-            
+            //_ravenDbSession.SaveChanges();
         }
     }
 }

@@ -16,10 +16,9 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
         {
             if (subscription.IsEligibleToRecieveAFilm(currentPeriodRentals, currentAllocations))
             {               
-                if (allocation.StockAvailble())
-                {
+                
                     allocation.AllocateUnitTo(subscription.Id); 
-                }
+               
             }
         }
     }

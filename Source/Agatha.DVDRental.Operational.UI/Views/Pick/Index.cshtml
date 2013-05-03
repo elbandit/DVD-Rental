@@ -1,0 +1,22 @@
+﻿@using Agatha.DVDRental.Fulfillment.Model.Fulfilment
+@model System.Collections.Generic.IEnumerable<Agatha.DVDRental.Fulfillment.Model.Fulfilment.FulfilmentRequest>
+
+
+
+ @foreach (FulfilmentRequest request in Model)
+ {
+             <h3>@request.FilmId</h3>  
+             <p>@request.Requested</p>                             
+             <hr/>
+ } 
+ 
+ @using (Html.BeginForm("Assign"))
+             {
+                <p><input class="btn" value="Assign units &raquo;" type="submit" /></p>
+             }   
+             
+<hr/>
+ @using (Html.BeginForm("Dispatch"))
+             {
+                <p><input class="btn" value="Mark asssigned units as dispatched &raquo;" type="submit" /></p>
+             }   

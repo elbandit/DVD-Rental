@@ -20,7 +20,7 @@ namespace Agatha.DVDRental.Subscription.Infrastructure
         {
             return _documentSession.Load<Allocation>(filmId);
         }
-
+         
         public IEnumerable<Allocation> FindAllocationsFor(int subscriptionId)
         {
             return _documentSession.Query<Allocation>().Where(x => x.HasAllocatedFor(subscriptionId));

@@ -44,7 +44,7 @@ namespace Agatha.DVDRental.AllocationPolicy
 
         private Action<FilmAllocated> FilmAllocatedCallBack()
         {
-            return (FilmAllocated s) => _bus.Publish(new FilmHasBeenAllocated());
+            return (FilmAllocated s) => _bus.Publish(new FilmHasBeenAllocated() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId});
         }
     }
 }

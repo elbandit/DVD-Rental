@@ -28,7 +28,11 @@ namespace Agatha.DVDRental.FulfillmentPolicy
             // create one
             var fulfilmentRequest = new FulfilmentRequest();  // event thrown
 
+            fulfilmentRequest.FilmId = message.FilmId;
+            fulfilmentRequest.SubscriptionId = message.SubscriptionId;
+
             _fulfilmentRepository.Add(fulfilmentRequest);
         }
     }
 }
+ 

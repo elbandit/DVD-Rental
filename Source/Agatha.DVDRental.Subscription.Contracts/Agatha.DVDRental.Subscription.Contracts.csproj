@@ -55,6 +55,7 @@
     <Compile Include="CannotCancelSubscribtion.cs" />
     <Compile Include="CustomerWantsToCancelSubscription.cs" />
     <Compile Include="CustomerWantsToKeepSubscription.cs" />
+    <Compile Include="DeAllocateRentalRequest.cs" />
     <Compile Include="FilmHasBeenAllocated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SubscriptionCancelled.cs" />

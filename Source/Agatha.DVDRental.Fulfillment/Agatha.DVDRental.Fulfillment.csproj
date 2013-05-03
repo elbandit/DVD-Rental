@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
     <Compile Include="Infrastructure\DomainEvents.cs" />
     <Compile Include="Infrastructure\DvdRepository.cs" />
+    <Compile Include="Infrastructure\FulfilmentRepository.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequest.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequestAssignedForPicking.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequestDispatched.cs" />

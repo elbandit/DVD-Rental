@@ -83,6 +83,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PickController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Models\StockModel.cs" />
     <Compile Include="Controllers\StructureMapControllerFactory.cs" />
@@ -187,6 +188,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Stock\ViewStockFor.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Pick\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

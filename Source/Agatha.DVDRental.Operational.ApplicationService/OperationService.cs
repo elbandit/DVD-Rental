@@ -4,6 +4,7 @@ using System.Linq;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Fulfillment.Contracts;
 using Agatha.DVDRental.Fulfillment.Infrastructure;
+using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
 using Agatha.DVDRental.Fulfillment.Model.Stock;
 using NServiceBus;
 using Raven.Client;
@@ -13,37 +14,24 @@ namespace Agatha.DVDRental.Operational.ApplicationService
     public class OperationService
     {
         private readonly IFilmRepository _filmRepository;
-        private readonly IDocumentSession _ravenDbSession;
-        private readonly IDvdRepository _dvdRepository;
+        private readonly IDocumentSession _ravenDbSession;        
         private readonly IBus _bus;
 
         public OperationService(IFilmRepository filmRepository, 
                                 IDocumentSession ravenDbSession, 
-                                IDvdRepository dvdRepository, IBus bus)
+                                IBus bus)
         {
             _filmRepository = filmRepository;
             _ravenDbSession = ravenDbSession;
-            _dvdRepository = dvdRepository;
             _bus = bus;
         }
 
         // Methods are like use cases of the system
 
         public void OperatorWantsToAddStock(int filmId, string barcode  )
-        {           
-            using (DomainEvents.Register(HandleEvent()))
-            {
-                var dvd = new Dvd(filmId);
-
-                _dvdRepository.Add(dvd);
-
-                _ravenDbSession.SaveChanges();
-            }
-        }
-
-        private Action<DvdAdded> HandleEvent()
         {
-            return (DvdAdded s) => _bus.Publish(new FilmAddedToStock() {FilmId = s.FilmId}); // See if someone else wants this film
+
+            _bus.Send(new AddFilmToStock() {FilmId = filmId});
         }
 
         public void OperatorWantsToProceesAFilmReturn(string barcode)
@@ -83,6 +71,11 @@ namespace Agatha.DVDRental.Operational.ApplicationService
         public IEnumerable<Dvd> ViewStockFor(int filmId)
         {
             return _ravenDbSession.Query<Dvd>().Where(x => x.FilmId == filmId).ToList();
+        }
+
+        public IEnumerable<FulfilmentRequest> ViewAllFulfilmentRequests()
+        {
+            return _ravenDbSession.Query<FulfilmentRequest>().Take(100).ToList();
         }
     }
 }
