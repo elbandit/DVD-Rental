@@ -37,7 +37,7 @@ namespace Agatha.DVDRental.Operational.UI
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            DocumentStoreFactory.InitializeDocumentStore();
+          
 
             BootStrapper.ConfigureDependencies();
             

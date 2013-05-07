@@ -53,8 +53,12 @@
   <ItemGroup>
     <Compile Include="AddFilmToStock.cs" />
     <Compile Include="AddFilmToStockMessage.cs" />
+    <Compile Include="AssignRentalAllocations.cs" />
     <Compile Include="FilmAddedToStock.cs" />
+    <Compile Include="FilmBeingPicked.cs" />
+    <Compile Include="FilmDispatched.cs" />
     <Compile Include="FilmReturned.cs" />
+    <Compile Include="MarkRentalAllocationsAsDispatched.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnFilm.cs" />
   </ItemGroup>

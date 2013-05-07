@@ -26,5 +26,16 @@ namespace Agatha.DVDRental.Fulfillment.Infrastructure
         {
             _documentSession.Store(fulfilmentRequest);
         }
+
+        public IEnumerable<FulfilmentRequest> FindAllAssignedTo(string pickerName)
+        {
+            return _documentSession.Query<FulfilmentRequest>().Where(
+                x => x.AssignedTo == pickerName).ToList();
+        }
+        
+        public IEnumerable<FulfilmentRequest> FindOldsetUnassignedTop(int number)
+        {
+            return _documentSession.Query<FulfilmentRequest>().OrderByDescending(x => x.Requested).Take(number).ToList();
+        }
     }
 }

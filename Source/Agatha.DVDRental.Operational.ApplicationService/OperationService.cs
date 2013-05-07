@@ -41,7 +41,7 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         public void OperatorWantsToPickRentalAllocations(string processorName)
         {
-
+            _bus.Send(new AssignRentalAllocations() { PickerName = processorName });
         }
 
         public string OperatorWantsToViewAssignedRentalAllocations(string processorName)
@@ -51,7 +51,7 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         public void OperatorWantsToMarkRentalAllocationsAsDispatched(string processorName)
         {
-
+            _bus.Send(new MarkRentalAllocationsAsDispatched() { PickerName = processorName });
         }
 
         public void AddFilmToCatalogue(string title)

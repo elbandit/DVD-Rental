@@ -18,13 +18,14 @@ namespace Agatha.DVDRental.Fulfillment.Model.Fulfilment
             // can assign?
             AssignedTo = picker;
 
-            DomainEvents.Raise(new FulfilmentRequestAssignedForPicking());
+            DomainEvents.Raise(new FulfilmentRequestAssignedForPicking() { FilmId = FilmId, SubscriptionId = SubscriptionId });
         }
 
         public void Dispatched()
         {
             IsDispatched = true;
-            DomainEvents.Raise(new FulfilmentRequestDispatched());
+
+            DomainEvents.Raise(new FulfilmentRequestDispatched() {FilmId = FilmId, SubscriptionId = SubscriptionId});
         }
     }
 }

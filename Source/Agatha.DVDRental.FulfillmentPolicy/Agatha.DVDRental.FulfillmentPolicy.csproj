@@ -69,7 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddFilmToStockHandler.cs" />
+    <Compile Include="AssignRentalAllocationsHandler.cs" />
     <Compile Include="FilmHasBeenAllocatedHandler.cs" />
+    <Compile Include="MarkRentalAllocationsAsDispatchedHandler.cs" />
     <Compile Include="RavenUnitOfWork.cs" />
     <Compile Include="ReturnFilmHandler.cs" />
     <Compile Include="EndpointConfig.cs" />
