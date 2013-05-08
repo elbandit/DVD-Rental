@@ -4,7 +4,6 @@ using System.Linq;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Domain;
-using Agatha.DVDRental.Domain.RentalLists;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
 using Agatha.DVDRental.Subscription.Contracts;
 using Agatha.DVDRental.Subscription.Infrastructure;

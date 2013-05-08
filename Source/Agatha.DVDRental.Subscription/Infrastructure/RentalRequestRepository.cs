@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Agatha.DVDRental.Domain.RentalLists;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Raven.Client;
 
@@ -23,6 +22,15 @@ namespace Agatha.DVDRental.Subscription.Infrastructure
                     .Where(x => x.MemberId == memberId).ToList();
 
             return new RentalRequestList(results, memberId);
+        }
+
+
+        public RentalRequest FindBy(int subscriptionId, int filmId)
+        {            
+            RentalRequest request = _documentSession.Query<RentalRequest>()
+                .SingleOrDefault(x => x.MemberId == subscriptionId && x.FilmId == filmId);
+
+            return request;
         }
 
         public void Add(RentalRequest request)

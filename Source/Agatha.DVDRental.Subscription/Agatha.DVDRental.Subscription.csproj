@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Infrastructure\AllocationRepository.cs" />
     <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
+    <Compile Include="Infrastructure\Indexes\RentalRequest_RequestedDate.cs" />
     <Compile Include="Infrastructure\RentalRepository.cs" />
     <Compile Include="Infrastructure\RentalRequestRepository.cs" />
     <Compile Include="Infrastructure\SubscriptionRepository.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Model\RentalRequests\IRentalRequestRepository.cs" />
     <Compile Include="Model\RentalRequests\RentalRequest.cs" />
     <Compile Include="Model\RentalRequests\RentalRequestList.cs" />
+    <Compile Include="Model\RentalRequests\RentalRequestRemoved.cs" />
     <Compile Include="Model\Subscriptions\CancelSubscriptionSpecification.cs" />
     <Compile Include="Model\Subscriptions\DeliveryAddress.cs" />
     <Compile Include="Model\Subscriptions\DowngradeSubscriptionSpecification.cs" />

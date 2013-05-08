@@ -65,9 +65,11 @@
   <ItemGroup>
     <Compile Include="AllocateRentalRequestHandler.cs" />
     <Compile Include="EndpointConfig.cs" />
+    <Compile Include="FulfillmentIntegration\FilmBeingPickedHandler.cs" />
+    <Compile Include="FulfillmentIntegration\FilmDispatchedHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RavenUnitOfWork.cs" />
-    <Compile Include="StockAddedHandler.cs" />
+    <Compile Include="FulfillmentIntegration\StockAddedHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

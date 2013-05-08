@@ -5,27 +5,44 @@ namespace Agatha.DVDRental.Fulfillment.Model.Fulfilment
 {
     public class FulfilmentRequest
     {
+        public FulfilmentRequest(int filmId, int subscriptionId)
+        {
+            this.FilmId = filmId;
+            this.SubscriptionId = subscriptionId;
+            Requested = DateTime.Now;
+        }
+
         public int Id { get; set; }
-        public int FilmId { get; set; }
-        public int SubscriptionId { get; set; }
-        public DateTime Requested { get; set; }
+        public int FilmId { get; private set; }
+        public int SubscriptionId { get; private set; }
+        public DateTime Requested { get; private set; }
         public bool IsDispatched { get; private set; }
 
-        public string AssignedTo { get; private set; } // the person who is going to pick the Dvd. Fires 'Ready to dispatch' event   
-     
+        public string AssignedTo { get; private set; }
+
+        public bool IsAssigned()
+        {
+            return !String.IsNullOrEmpty(AssignedTo);
+        }
+
         public void AssignForPickingTo(string picker)
         {
-            // can assign?
-            AssignedTo = picker;
+            if (String.IsNullOrEmpty(AssignedTo))
+            {
+                AssignedTo = picker;
 
-            DomainEvents.Raise(new FulfilmentRequestAssignedForPicking() { FilmId = FilmId, SubscriptionId = SubscriptionId });
+                DomainEvents.Raise(new FulfilmentRequestAssignedForPicking() { FilmId = FilmId, SubscriptionId = SubscriptionId });
+            }           
         }
 
         public void Dispatched()
         {
-            IsDispatched = true;
+            if (!IsDispatched)
+            {
+                IsDispatched = true;
 
-            DomainEvents.Raise(new FulfilmentRequestDispatched() {FilmId = FilmId, SubscriptionId = SubscriptionId});
+                DomainEvents.Raise(new FulfilmentRequestDispatched() { FilmId = FilmId, SubscriptionId = SubscriptionId });
+            }           
         }
     }
 }

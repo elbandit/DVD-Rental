@@ -19,6 +19,11 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 
         public DateTime Requested { get; private set; }
 
-        public string Status { get; set; }      
+        public string Status { get; set; }        
+
+        public void IsReadyForDispatch()
+        {
+            Status = "Is being picked";
+        }
     }
 }

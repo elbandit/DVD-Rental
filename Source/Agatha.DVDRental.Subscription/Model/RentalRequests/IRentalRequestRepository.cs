@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Agatha.DVDRental.Subscription.Model.RentalRequests;
-
-namespace Agatha.DVDRental.Domain.RentalLists
+﻿namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 {
     public interface IRentalRequestRepository
     {
         RentalRequestList FindBy(int memberId);
+        RentalRequest FindBy(int subscriptionId, int filmId);
         void Add(RentalRequest request);
     }
 }

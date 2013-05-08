@@ -1,10 +1,10 @@
 using System;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
-using Agatha.DVDRental.Domain.RentalLists;
 using Agatha.DVDRental.Subscription.Infrastructure;
 using Agatha.DVDRental.Subscription.Model.Allocation;
 using Agatha.DVDRental.Subscription.Model.RentalHistory;
+using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Agatha.DVDRental.Subscription.Model.Subscriptions;
 using NServiceBus.UnitOfWork;
 using Raven.Client;

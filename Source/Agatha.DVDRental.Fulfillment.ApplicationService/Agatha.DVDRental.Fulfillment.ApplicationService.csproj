@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1ABD8B53-FEB3-441C-9EB8-E88F9C58A39E}</ProjectGuid>
+    <ProjectGuid>{722806C5-5372-47CE-91C0-36B4A1488D78}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Agatha.DVDRental.Fulfillment</RootNamespace>
-    <AssemblyName>Agatha.DVDRental.Fulfillment</AssemblyName>
+    <RootNamespace>Agatha.DVDRental.Fulfillment.ApplicationService</RootNamespace>
+    <AssemblyName>Agatha.DVDRental.Fulfillment.ApplicationService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\Agatha.DVDRental.Ui\bin\Raven.Client.Lightweight.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,24 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
-    <Compile Include="Infrastructure\DomainEvents.cs" />
-    <Compile Include="Infrastructure\DvdRepository.cs" />
-    <Compile Include="Infrastructure\FulfilmentRepository.cs" />
-    <Compile Include="Model\Fulfilment\FulfilmentRequest.cs" />
-    <Compile Include="Model\Fulfilment\FulfilmentRequestAssignedForPicking.cs" />
-    <Compile Include="Model\Fulfilment\FulfilmentRequestDispatched.cs" />
-    <Compile Include="Model\Fulfilment\IFulfilmentRepository.cs" />
-    <Compile Include="Model\Stock\CurrentLoan.cs" />
-    <Compile Include="Model\Stock\Dvd.cs" />
-    <Compile Include="Model\Stock\DvdAdded.cs" />
-    <Compile Include="Model\Stock\DvdReturned.cs" />
-    <Compile Include="Model\Stock\FilmLoanedOut.cs" />
-    <Compile Include="Model\Stock\FilmReturned.cs" />
-    <Compile Include="Model\Stock\IDvdRepository.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

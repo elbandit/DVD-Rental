@@ -4,6 +4,7 @@ using Agatha.DVDRental.Fulfillment.Infrastructure;
 using Agatha.DVDRental.Fulfillment.Model.Stock;
 using NServiceBus;
 using Raven.Client;
+using FilmReturned = Agatha.DVDRental.Fulfillment.Contracts.FilmReturned;
 
 namespace Agatha.DVDRental.FulfillmentPolicy
 {

@@ -4,13 +4,13 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
 {
     public class CurrentLoan
     {       
-        public CurrentLoan(int member, DateTime dateLoanedOut)
+        public CurrentLoan(int subscriptionId, DateTime dateLoanedOut)
         {
-            MemberId = member;
+            SubscriptionId = subscriptionId;
             DateLoanedOut = dateLoanedOut;
         }
 
-        public int MemberId { get; private set; }
+        public int SubscriptionId { get; private set; }
         public DateTime DateLoanedOut { get; private set; }
     }
 }

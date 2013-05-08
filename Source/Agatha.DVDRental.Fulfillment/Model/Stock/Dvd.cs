@@ -8,6 +8,7 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
         public Dvd(int filmId)
         {
             this.FilmId = filmId;
+
             DomainEvents.Raise(new DvdAdded() {FilmId = filmId});
         }
 
@@ -15,18 +16,21 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
         public int FilmId { get; private set; }
         public CurrentLoan CurrentLoan { get; private set; }
 
-        public void LoanTo(int memberId)
+        public void LoanTo(int subscriptionId)
         {
-            CurrentLoan = new CurrentLoan(memberId, DateTime.Now);
+            CurrentLoan = new CurrentLoan(subscriptionId, DateTime.Now);
 
-            DomainEvents.Raise(new FilmLoanedToMember(FilmId, memberId));  // Needs to be removed from the rental list            
+            DomainEvents.Raise(new FilmLoanedOut() {FilmId = FilmId, SubscriptionId = subscriptionId});  // Needs to be removed from the rental list            
         }
 
         public void ReturnLoan()
-        {
-            CurrentLoan = null;
+        {           
+            if (CurrentLoan != null)
+            {
+                DomainEvents.Raise(new FilmReturned() { FilmId = FilmId, SubscriptionId = CurrentLoan.SubscriptionId }); // Needs to update the rental history list
 
-            DomainEvents.Raise(new DvdBackInStock()); // Needs to update the rental history list
+                CurrentLoan = null;
+            }            
         }
     }
 }
