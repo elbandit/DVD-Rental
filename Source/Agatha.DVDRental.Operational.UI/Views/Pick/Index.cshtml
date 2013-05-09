@@ -5,8 +5,8 @@
 
  @foreach (FulfilmentRequest request in Model)
  {
-             <h3>@request.FilmId</h3>  
-             <p>@request.Requested</p>             
+             <h3>Film Id: @request.FilmId</h3>  
+             <p>Requested On: @request.Requested</p>             
              if (request.IsAssigned())
              {
                  <p>Assigned To: @request.AssignedTo</p>   

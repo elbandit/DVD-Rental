@@ -5,11 +5,23 @@
     
 }
 
- @foreach (Dvd dvd in Model.Stock)
- {
-             <h3>@dvd.Id</h3>                  
-             <hr/>
- } 
+<table class="table table-striped table-bordered table-condensed">
+    <tr>
+        <td>Id</td>
+        <td>Barcode</td>
+        <td>Status</td>
+    </tr>
+
+    @foreach (Dvd dvd in Model.Stock)
+    {
+     <tr>
+        <td>@dvd.Id</td>
+         <td>@dvd.Barcode</td>
+         <td></td>
+    </tr>
+    } 
+ 
+</table>
                  
 @using (Html.BeginForm("AddStockFor", "Stock", new { FilmID = Model.FilmId }))
 {

@@ -33,10 +33,22 @@ namespace Agatha.DVDRental.Operational.UI.Controllers
         [HttpPost]
         public ActionResult AddStockFor(int filmId)
         {
-            _operationService.OperatorWantsToAddStock(filmId, "xxxx");
+            // Generate Barcode
+            var barcode = Guid.NewGuid().ToString(); // This would be a call to an infrastructure service
 
-            return RedirectToAction("ViewStockFor", new {filmId = filmId});
+            _operationService.OperatorWantsToAddStock(filmId, barcode);
+
+            return RedirectToAction("StockAdded", new { filmId = filmId, barcode = barcode });
         }
 
+        public ActionResult StockAdded(int filmId, string barcode)
+        {
+            var stockAddedModel = new StockAddedModel();
+
+            stockAddedModel.FilmId = filmId;
+            stockAddedModel.Barcode = barcode;
+
+            return View(stockAddedModel);
+        }
     }
 }

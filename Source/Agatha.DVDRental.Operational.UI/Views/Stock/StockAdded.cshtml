@@ -1,0 +1,12 @@
+﻿@model Agatha.DVDRental.Operational.UI.Models.StockAddedModel
+
+
+<div class="alert alert-success">
+    <p><b>Stock Added</b>
+        The barcode for this Dvd is <i>@Model.Barcode</i>.
+    </p>
+</div>
+
+<p>  @Html.ActionLink("Add more stock?", "ViewStockFor", "Stock", new { filmId = Model.FilmId }, new { })   </p>
+
+       

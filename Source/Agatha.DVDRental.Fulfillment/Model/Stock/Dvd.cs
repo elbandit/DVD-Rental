@@ -5,15 +5,17 @@ namespace Agatha.DVDRental.Fulfillment.Model.Stock
 {
     public class Dvd
     {
-        public Dvd(int filmId)
+        public Dvd(int filmId, string barcode)
         {
             this.FilmId = filmId;
+            Barcode = barcode;
 
             DomainEvents.Raise(new DvdAdded() {FilmId = filmId});
         }
 
         public int Id { get; private set; }
         public int FilmId { get; private set; }
+        public string Barcode { get; private set; }
         public CurrentLoan CurrentLoan { get; private set; }
 
         public void LoanTo(int subscriptionId)

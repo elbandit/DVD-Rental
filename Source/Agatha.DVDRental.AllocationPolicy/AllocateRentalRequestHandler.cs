@@ -30,15 +30,18 @@ namespace Agatha.DVDRental.AllocationPolicy
         {
             var subscription = _subscriptionRepository.FindBy(message.SubscriptionId);
 
-            var currentPeriodRentals = _rentalRepository.FindRentalsForCurrentPeriod();
-
-            var currentAllocations = _allocationRepository.FindAllocationsFor(message.SubscriptionId);
-
-            Allocation allocation = _allocationRepository.FindBy(message.FilmId);
-
-            using (DomainEvents.Register(FilmAllocatedCallBack()))
+            if (subscription != null)
             {
-                new AllocationService().Allocate(subscription, currentPeriodRentals, currentAllocations, allocation);
+                var currentPeriodRentals = _rentalRepository.FindRentalsForCurrentPeriod();
+
+                var currentAllocations = _allocationRepository.FindAllocationsFor(message.SubscriptionId);
+
+                Allocation allocation = _allocationRepository.FindBy(message.FilmId);
+
+                using (DomainEvents.Register(FilmAllocatedCallBack()))
+                {
+                    new AllocationService().Allocate(subscription, currentPeriodRentals, currentAllocations, allocation);
+                }
             }
         }
 

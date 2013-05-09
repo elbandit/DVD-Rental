@@ -10,15 +10,16 @@ namespace Agatha.DVDRental.Fulfillment.Model.Fulfilment
             this.FilmId = filmId;
             this.SubscriptionId = subscriptionId;
             Requested = DateTime.Now;
+            Id = String.Format("{0}-{1}", filmId, subscriptionId);
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int FilmId { get; private set; }
         public int SubscriptionId { get; private set; }
         public DateTime Requested { get; private set; }
         public bool IsDispatched { get; private set; }
 
-        public string AssignedTo { get; private set; }
+        public string AssignedTo { get;  set; }
 
         public bool IsAssigned()
         {

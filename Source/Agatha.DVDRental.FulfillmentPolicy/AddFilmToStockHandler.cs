@@ -27,11 +27,9 @@ namespace Agatha.DVDRental.FulfillmentPolicy
         {
              using (DomainEvents.Register(HandleEvent()))
             {
-                var dvd = new Dvd(message.FilmId);
+                var dvd = new Dvd(message.FilmId, message.Barcode);
 
                 _dvdRepository.Add(dvd);
-
-               // _ravenDbSession.SaveChanges();
             }
         }
 

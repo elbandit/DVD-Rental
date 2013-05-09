@@ -16,7 +16,7 @@ namespace Agatha.DVDRental.FulfillmentPolicy.SubscriptionIntegration
         public void Handle(FilmHasBeenAllocated message)
         {            
             var request = _fulfilmentRepository.FindBy(message.FilmId, message.SubscriptionId);
-
+          
             if (request == null)
             {
                 var fulfilmentRequest = new FulfilmentRequest(message.FilmId, message.SubscriptionId);

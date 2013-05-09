@@ -1,0 +1,9 @@
+﻿@model Agatha.DVDRental.Operational.UI.Models.FilmAddedModel
+
+<div class="alert alert-success">
+    <p><b>Film Added</b>
+        A film with the title <i>@Model.Title</i> has been added.
+    </p>
+</div>
+
+<p>  @Html.ActionLink("Add another film?", "Index", "AddFilm")</p>

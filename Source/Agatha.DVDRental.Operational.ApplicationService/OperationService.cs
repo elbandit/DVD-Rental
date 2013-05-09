@@ -28,10 +28,9 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         // Methods are like use cases of the system
 
-        public void OperatorWantsToAddStock(int filmId, string barcode  )
-        {
-
-            _bus.Send(new AddFilmToStock() {FilmId = filmId});
+        public void OperatorWantsToAddStock(int filmId, string barcode)
+        {            
+            _bus.Send(new AddFilmToStock() { FilmId = filmId, Barcode = barcode });
         }
 
         public void OperatorWantsToProceesAFilmReturn(string barcode)
@@ -56,7 +55,7 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         public void AddFilmToCatalogue(string title)
         {
-            var film = new Film(DateTime.Now);
+            var film = new Film(DateTime.Now, title);
 
             _filmRepository.Add(film);
 

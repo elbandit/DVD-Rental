@@ -1,0 +1,26 @@
+﻿@model Agatha.DVDRental.Operational.UI.Models.FilmModel
+
+@{
+    ViewBag.Title = "title";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true, "Film creation was unsuccessful. Please correct the errors and try again.")
+    <div>
+        <fieldset>
+            <legend>Film Information</legend>
+
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Title)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(m => m.Title)
+                @Html.ValidationMessageFor(m => m.Title)
+            </div>                       
+
+            <p>
+                <input type="submit" value="Add Film" />
+            </p>
+        </fieldset>
+    </div>
+}
