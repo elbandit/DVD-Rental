@@ -1,4 +1,5 @@
 ﻿using System;
+using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Agatha.DVDRental.Subscription.Model.Subscriptions;
 
 namespace Agatha.DVDRental.Public.ApplicationService
@@ -6,10 +7,13 @@ namespace Agatha.DVDRental.Public.ApplicationService
     public class SubscriptionService
     {
         private ISubscriptionRepository _subscriptionRepository;
+        private IRentalRequestRepository _rentalRequestRepository;
 
-        public SubscriptionService(ISubscriptionRepository subscriptionRepository)
+        public SubscriptionService(ISubscriptionRepository subscriptionRepository, 
+                                   IRentalRequestRepository rentalRequestRepository)
         {
             _subscriptionRepository = subscriptionRepository;
+            _rentalRequestRepository = rentalRequestRepository;
         }
 
         public void CustomerWantsToCancelSubscription(int subscriptionId)
@@ -36,7 +40,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
             var subscription = new Subscription.Model.Subscriptions.Subscription(package);
 
             subscription.EmailAddress = email;
-
+         
             _subscriptionRepository.Add(subscription);
         }
 

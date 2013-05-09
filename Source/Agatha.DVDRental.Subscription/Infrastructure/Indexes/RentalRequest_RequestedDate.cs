@@ -21,7 +21,7 @@ namespace Agatha.DVDRental.Subscription.Infrastructure.Indexes
         {
             Map = rentalRequestLists => from rentalRequestList in rentalRequestLists
                                         from rentalRequest in rentalRequestList.RentalRequests
-                                        where rentalRequest.Status == ""                       
+                                        where rentalRequest.IsBeingPicked == false                    
 			                            select new
 			                                 {
                                                 rentalRequest.Requested,

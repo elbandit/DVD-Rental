@@ -15,10 +15,9 @@ namespace Agatha.DVDRental.AllocationPolicy.FulfillmentIntegration
 
         public void Handle(FilmBeingPicked message)
         {
-            RentalRequest request = _rentalRequestRepository.FindBy(message.SubscriptionId, message.FilmId);
+            RentalRequestList requestList = _rentalRequestRepository.FindBy(message.SubscriptionId);
 
-            if (request != null)
-                request.IsReadyForDispatch();
+            requestList.MarkAsReadyForDispatch(message.FilmId);
         }
     }
 }

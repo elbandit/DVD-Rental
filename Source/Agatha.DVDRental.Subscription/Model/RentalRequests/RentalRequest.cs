@@ -4,26 +4,31 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 {
     public class RentalRequest
     {      
-        public RentalRequest(int filmId, int memberId)
+        public RentalRequest(int filmId, int subscriptionId)
         {
             FilmId = filmId;
-            MemberId = memberId;
+            SubscriptionId = subscriptionId;
             Requested = DateTime.Now;
+            IsBeingPicked = false;
         }
-
-        public string Id { get; private set; }
-
+       
         public int FilmId { get; private set; }
 
-        public int MemberId { get; private set; }
+        public int SubscriptionId { get; private set; }
 
         public DateTime Requested { get; private set; }
 
-        public string Status { get; set; }        
+        public bool IsBeingPicked { get; private set; }        
 
-        public void IsReadyForDispatch()
+        public void IsBeingPickedForDispatch()
         {
-            Status = "Is being picked";
+            IsBeingPicked = true;
+        }
+
+        public bool CanBeRemovedFromList
+        {
+            get { return !IsBeingPicked; }
+
         }
     }
 }

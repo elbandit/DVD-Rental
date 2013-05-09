@@ -2,8 +2,7 @@
 {
     public interface IRentalRequestRepository
     {
-        RentalRequestList FindBy(int memberId);
-        RentalRequest FindBy(int subscriptionId, int filmId);
-        void Add(RentalRequest request);
+        RentalRequestList FindBy(int memberId);        
+        void Add(RentalRequestList request);
     }
 }

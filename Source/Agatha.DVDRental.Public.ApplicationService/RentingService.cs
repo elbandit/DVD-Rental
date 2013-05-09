@@ -44,17 +44,18 @@ namespace Agatha.DVDRental.Public.ApplicationService
             // Find all films
             var all_films = _ravenDbSession.Query<Film>().Take(10).ToList();
 
-            var all_filmviews = Mapper.Map<IEnumerable<Film>, IEnumerable<FilmView>>(all_films);             
-     
+            var all_filmviews = Mapper.Map<IEnumerable<Film>, IEnumerable<FilmView>>(all_films);
+         
             // Find all films in rental list
-            var all_rentals = _ravenDbSession.Query<RentalRequest>().Where(x => x.MemberId == subscription.Id);
+            RentalRequestList rentalList = GetRentalListFor(subscription.Id);
 
-            foreach (var rentalRequest in all_rentals)
-            {
-                var film = all_filmviews.SingleOrDefault(x => x.Id == rentalRequest.FilmId);
+            if (rentalList != null)
+                foreach (var rentalRequest in rentalList.RentalRequests)
+                {
+                    var film = all_filmviews.SingleOrDefault(x => x.Id == rentalRequest.FilmId);
 
-                film.IsOnRentalList = true;
-            }
+                    film.IsOnRentalList = true;
+                }
 
             // Find all films currently being rented
             // _ravenDbSession.Query<Film>();
@@ -71,11 +72,10 @@ namespace Agatha.DVDRental.Public.ApplicationService
 
             using (DomainEvents.Register(AllocateFilm()))
             {
-                RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(subscription.Id);
-
-                var request = rentalRequestList.CreateRequestFor(film.Id, subscription.Id); // try and create
-
-                _rentalRequestRepository.Add(request);
+                RentalRequestList rentalRequestList = GetRentalListFor(subscription.Id);
+              
+                rentalRequestList.CreateRequestFor(film.Id); 
+               
                 _ravenDbSession.SaveChanges();
             }
         }
@@ -90,13 +90,12 @@ namespace Agatha.DVDRental.Public.ApplicationService
         {
             var subscription = _subscriptionRepository.FindBy(memberEmail);
 
-            RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(subscription.Id);
+            RentalRequestList rentalRequestList = GetRentalListFor(subscription.Id);
 
             using (DomainEvents.Register(DeAllocateFilm()))
             {
-                var rentalRequest = rentalRequestList.RemoveFromTheList(filmid);
-
-                _ravenDbSession.Delete(rentalRequest);
+                rentalRequestList.RemoveFromTheList(filmid);
+                
                 _ravenDbSession.SaveChanges(); // Need to hook this up to HttpRequest
             }
         }
@@ -106,13 +105,30 @@ namespace Agatha.DVDRental.Public.ApplicationService
             return (RentalRequestRemoved s) => _bus.Send(new DeAllocateRentalRequest()); // See if someone else wants this film
         }
 
-        public IEnumerable<RentalRequestView> ViewRentalListFor(string name)
+        public IEnumerable<RentalRequestView> ViewRentalListFor(string memberEmail)
         {
-            var allRequests = _ravenDbSession.Query<RentalRequest>().ToList();
+            var subscription = _subscriptionRepository.FindBy(memberEmail);
 
-            var allRequestViews = Mapper.Map<IEnumerable<RentalRequest>, IEnumerable<RentalRequestView>>(allRequests);
+            var allRequests = GetRentalListFor(subscription.Id);
+
+            var allRequestViews = Mapper.Map<IEnumerable<RentalRequest>, IEnumerable<RentalRequestView>>(allRequests.RentalRequests);
 
             return allRequestViews;
         }
+
+        
+        public RentalRequestList GetRentalListFor(int subscriptionId)
+        {
+            RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(subscriptionId);
+
+            if (rentalRequestList == null)
+            {
+                rentalRequestList = new RentalRequestList(subscriptionId);
+                _rentalRequestRepository.Add(rentalRequestList);
+            }
+
+            return rentalRequestList;
+        }
+
     }
 }

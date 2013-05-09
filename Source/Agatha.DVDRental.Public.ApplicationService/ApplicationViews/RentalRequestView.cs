@@ -11,7 +11,7 @@ namespace Agatha.DVDRental.Public.ApplicationService.ApplicationViews
 
         public int FilmId { get; private set; }
 
-        public int MemberId { get; private set; }
+        public int SubscriptionId { get; private set; }
 
         public DateTime Requested { get; private set; }
 

@@ -14,26 +14,12 @@ namespace Agatha.DVDRental.Subscription.Infrastructure
             _documentSession = documentSession;
         }
 
-        public RentalRequestList FindBy(int memberId)
+        public RentalRequestList FindBy(int subscriptionId)
         {
-            IList<RentalRequest> results = new List<RentalRequest>();
-          
-            results = _documentSession.Query<RentalRequest>()
-                    .Where(x => x.MemberId == memberId).ToList();
-
-            return new RentalRequestList(results, memberId);
+            return _documentSession.Load<RentalRequestList>(subscriptionId);
         }
 
-
-        public RentalRequest FindBy(int subscriptionId, int filmId)
-        {            
-            RentalRequest request = _documentSession.Query<RentalRequest>()
-                .SingleOrDefault(x => x.MemberId == subscriptionId && x.FilmId == filmId);
-
-            return request;
-        }
-
-        public void Add(RentalRequest request)
+        public void Add(RentalRequestList request)
         {           
              _documentSession.Store(request);                                                              
         }

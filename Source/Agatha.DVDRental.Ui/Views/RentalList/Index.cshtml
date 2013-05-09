@@ -12,7 +12,10 @@
              <img src="@Url.Content("~/Content/images/noimage-140x200.png")" />
              if (film.CanBeRemovedFromList)
              {
-                 <p><input class="btn  btn-block btn-danger" value="Remove From List" type="submit" /></p> 
+                 using (Html.BeginForm("RemoveFilmFromList", "RentalList", new { FilmID = film.FilmId }))
+                    {
+                        <p><input class="btn btn-block btn-dange" value="Remove from list" type="submit" /></p>
+                    }                 
              }
              else
              {

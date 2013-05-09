@@ -15,10 +15,8 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
                              Allocation allocation)
         {
             if (subscription.IsEligibleToRecieveAFilm(currentPeriodRentals, currentAllocations))
-            {               
-                
-                    allocation.AllocateUnitTo(subscription.Id); 
-               
+            {                               
+                    allocation.AllocateUnitTo(subscription.Id);                
             }
         }
     }
