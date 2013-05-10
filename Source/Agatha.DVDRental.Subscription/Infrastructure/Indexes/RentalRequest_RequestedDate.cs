@@ -12,7 +12,7 @@ namespace Agatha.DVDRental.Subscription.Infrastructure.Indexes
     {
         public class ReduceResult
 		{
-            public DateTimeOffset Requested { get; set; }
+            public DateTime Requested { get; set; }
 			public int SubscriptionId { get; set; }
 			public int FilmId { get; set; }
 		}

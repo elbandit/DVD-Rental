@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Raven.Abstractions, Version=2.0.3.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL" />
     <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\Agatha.DVDRental.Ui\bin\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
@@ -47,6 +48,8 @@
     <Compile Include="Catalogue\IFilmRepository.cs" />
     <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
     <Compile Include="Infrastructure\FilmRepository.cs" />
+    <Compile Include="Infrastructure\Indexes\FilmResult.cs" />
+    <Compile Include="Infrastructure\Indexes\Films.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

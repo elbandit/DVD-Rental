@@ -24,6 +24,11 @@ namespace Agatha.DVDRental.FulfillmentPolicy
          {
              IEnumerable<FulfilmentRequest> assignedRequests = _fulfilmentRepository.FindAllAssignedTo(message.PickerName);
 
+            // Get the DVD update it
+
+             // then event will mark the FulfilmentRequest as dispatched
+            // and the event will update the other BC
+
              using (DomainEvents.Register(HandleEvent()))
              {
                  foreach (FulfilmentRequest request in assignedRequests)

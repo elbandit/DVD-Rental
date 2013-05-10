@@ -8,7 +8,7 @@
     <div class="span9">
          @foreach (RentalRequestView film in Model)
          {
-             <h3>@film.FilmId</h3>
+             <h3>@film.FilmTitle</h3>
              <img src="@Url.Content("~/Content/images/noimage-140x200.png")" />
              if (film.CanBeRemovedFromList)
              {

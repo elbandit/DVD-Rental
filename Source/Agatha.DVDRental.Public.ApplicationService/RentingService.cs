@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
+using Agatha.DVDRental.Catalogue.Infrastructure.Indexes;
 using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
+using Agatha.DVDRental.Public.ApplicationService.Queries;
 using Agatha.DVDRental.Subscription.Contracts;
 using Agatha.DVDRental.Subscription.Infrastructure;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
@@ -38,6 +40,17 @@ namespace Agatha.DVDRental.Public.ApplicationService
 
         public IEnumerable<FilmView> CustomerWantsToViewFilmsAvailableForRent(string memberEmail)
         {
+
+            IEnumerable<FilmResult> query = _ravenDbSession
+                .Query<Film, FilmsUnTyped>()
+                .Take(100)
+                .AsProjection<FilmResult>();
+
+            foreach(FilmResult fr in query)
+            {
+                Console.WriteLine(fr.Title);
+            }
+
 
             var subscription = _subscriptionRepository.FindBy(memberEmail);
 
@@ -109,11 +122,15 @@ namespace Agatha.DVDRental.Public.ApplicationService
         {
             var subscription = _subscriptionRepository.FindBy(memberEmail);
 
-            var allRequests = GetRentalListFor(subscription.Id);
+            IEnumerable<RentalRequestView> allRequestViews = _ravenDbSession
+                                                        .Query<RentalRequestView, RentalRequestIndex>()
+                                                        .Take(100)
+                                                        .Where(x => x.SubscriptionId == subscription.Id)
+                                                        .AsProjection<RentalRequestView>();
 
-            var allRequestViews = Mapper.Map<IEnumerable<RentalRequest>, IEnumerable<RentalRequestView>>(allRequests.RentalRequests);
+            var dfff = allRequestViews.ToList();
 
-            return allRequestViews;
+            return allRequestViews.ToList();
         }
 
         

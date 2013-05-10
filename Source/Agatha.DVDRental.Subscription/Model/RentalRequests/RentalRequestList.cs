@@ -17,33 +17,40 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 
         public void CreateRequestFor(int filmId)
         {
-            // make sure we don't already have this in the list
+            if (!IsContainedInTheList(filmId) )
+            {
+                // does this list have an age restriction?
 
-            // does this list have an age restriction?
+                // give it a priority order
+                var request = new RentalRequest(filmId, Id);
 
-            // give it a priority order
-            var request = new RentalRequest(filmId, Id);
+                RentalRequests.Add(request);
 
-            RentalRequests.Add(request);
-
-            DomainEvents.Raise(new FilmRequested(filmId, Id));
+                DomainEvents.Raise(new FilmRequested(filmId, Id));
+            }         
         }
 
         public void RemoveFromTheList(int filmId)
         {
-            DomainEvents.Raise(new RentalRequestRemoved(filmId, Id));
-
-            RentalRequest request = RentalRequests.SingleOrDefault(x => x.FilmId == filmId);
-      
-            if(request != null)
-            {
+            if (!IsContainedInTheList(filmId))
+            {                
+                RentalRequest request = RentalRequests.SingleOrDefault(x => x.FilmId == filmId);
+          
                 RentalRequests.Remove(request);
+
+                DomainEvents.Raise(new RentalRequestRemoved(filmId, Id));
             }
+        }
+
+        private bool IsContainedInTheList(int filmId)
+        {
+            return RentalRequests.Count(x => x.FilmId == filmId) > 0;
         }
 
         public void MarkAsReadyForDispatch(int filmId)
         {
-            RentalRequests.SingleOrDefault(x => x.FilmId == filmId).IsBeingPickedForDispatch();
+            if (IsContainedInTheList(filmId))
+                RentalRequests.SingleOrDefault(x => x.FilmId == filmId).IsBeingPickedForDispatch();
         }
     }
 }

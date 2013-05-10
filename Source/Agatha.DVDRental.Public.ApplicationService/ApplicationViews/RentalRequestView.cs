@@ -7,14 +7,18 @@ namespace Agatha.DVDRental.Public.ApplicationService.ApplicationViews
 {
     public class RentalRequestView
     {
-        public string Id { get; private set; }
+        public int Id { get; set; }
 
-        public int FilmId { get; private set; }
+        public int FilmId { get;  set; }
 
-        public int SubscriptionId { get; private set; }
+        public int SubscriptionId { get;  set; }
 
-        public DateTime Requested { get; private set; }
+        public DateTime Requested { get;  set; }
 
         public bool CanBeRemovedFromList { get; set; }
+
+        public string SubscriptionIdString { get; set; }
+
+        public string FilmTitle { get; set; }
     }
 }

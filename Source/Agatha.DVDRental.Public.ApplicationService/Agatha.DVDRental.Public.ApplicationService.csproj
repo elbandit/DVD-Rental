@@ -64,6 +64,7 @@
     <Compile Include="ApplicationViews\FilmView.cs" />
     <Compile Include="ApplicationViews\RentalRequestView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\RentalRequestIndex.cs" />
     <Compile Include="RentingService.cs" />
     <Compile Include="SubscriptionService.cs" />
   </ItemGroup>

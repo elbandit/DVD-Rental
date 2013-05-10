@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Agatha.DVDRental.Catalogue.Catalogue;
+using Agatha.DVDRental.Catalogue.Infrastructure.Indexes;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
+using Agatha.DVDRental.Public.ApplicationService.Queries;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Agatha.DVDRental.Ui.Controllers;
 using AutoMapper;
 using NServiceBus;
 using Raven.Client.Document;
+using Raven.Client.Indexes;
 
 namespace Agatha.DVDRental.Ui
 {
@@ -44,6 +47,9 @@ namespace Agatha.DVDRental.Ui
             RegisterRoutes(RouteTable.Routes);            
 
             DocumentStoreFactory.InitializeDocumentStore();
+
+            IndexCreation.CreateIndexes(typeof(Films).Assembly, DocumentStoreFactory.DocumentStore);
+            IndexCreation.CreateIndexes(typeof(RentalRequestIndex).Assembly, DocumentStoreFactory.DocumentStore);
 
             BootStrapper.ConfigureDependencies();
 

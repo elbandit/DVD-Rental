@@ -74,6 +74,8 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         public IEnumerable<FulfilmentRequest> ViewAllFulfilmentRequests()
         {
+
+
             return _ravenDbSession.Query<FulfilmentRequest>().Take(100).ToList();
         }
     }

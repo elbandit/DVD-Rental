@@ -6,22 +6,17 @@
  @foreach (FulfilmentRequest request in Model)
  {
              <h3>Film Id: @request.FilmId</h3>  
-             <p>Requested On: @request.Requested</p>             
-             if (request.IsAssigned())
-             {
-                 <p>Assigned To: @request.AssignedTo</p>   
-                 <p>Dvd Picked: <select name="year">
-                        @for (var i = 0; i < 6; i++)
-                        {
-                            <option>@(DateTime.Now.AddYears(i).Year)</option>
-                        }
-                    </select>
-                    </p>
-                  using (Html.BeginForm("Dispatch", "Pick"))
-                  {
-                      <input class="btn" value="Dispatch &raquo;" type="submit" />
-                  }
-             }
+     <p>Requested On: @request.Requested</p>
+      <img src="@Url.Content("~/Content/images/preprinted_small_1.jpg")" />             
+     if (request.IsAssigned())
+     {
+         using (Html.BeginForm("Dispatch", "Pick"))
+         {                      
+                         <p>Assigned To: @request.AssignedTo</p>   
+                         <p></p>
+                        <p>Dvd Picked: <input class="btn" value="SIMULATE PICKING AND SCANNING A DVD" type="submit" /></p>     
+         }
+     }
      <hr/>
  } 
  

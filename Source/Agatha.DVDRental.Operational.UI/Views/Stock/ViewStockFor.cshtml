@@ -17,7 +17,12 @@
      <tr>
         <td>@dvd.Id</td>
          <td>@dvd.Barcode</td>
-         <td></td>
+         <td>
+         @if (dvd.CurrentLoan != null)
+         {
+             <i>on loan to @dvd.CurrentLoan.SubscriptionId</i>
+         }
+         </td>
     </tr>
     } 
  
