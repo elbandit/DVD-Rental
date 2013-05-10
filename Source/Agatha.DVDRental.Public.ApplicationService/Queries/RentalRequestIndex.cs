@@ -11,8 +11,6 @@ namespace Agatha.DVDRental.Public.ApplicationService.Queries
     {
         public RentalRequestIndex()
         {
-
-
             Map = rentalRequestLists => from rentalRequestList in rentalRequestLists
                                         from rentalRequest in rentalRequestList.RentalRequests                                             
                                         select new RentalRequestView

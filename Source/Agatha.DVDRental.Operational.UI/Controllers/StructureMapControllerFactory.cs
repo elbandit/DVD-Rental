@@ -9,7 +9,7 @@ namespace Agatha.DVDRental.Operational.UI.Controllers
     {
         protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
         {
-            return ObjectFactory.GetInstance(controllerType) as IController;
+           return ObjectFactory.GetInstance(controllerType) as IController;
         }
     } 
 }

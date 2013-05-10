@@ -69,10 +69,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
 
                     film.IsOnRentalList = true;
                 }
-
-            // Find all films currently being rented
-            // _ravenDbSession.Query<Film>();
-
+            
             return all_filmviews;
         }
 
@@ -126,10 +123,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
                                                         .Query<RentalRequestView, RentalRequestIndex>()
                                                         .Take(100)
                                                         .Where(x => x.SubscriptionId == subscription.Id)
-                                                        .AsProjection<RentalRequestView>();
-
-            var dfff = allRequestViews.ToList();
-
+                                                        .AsProjection<RentalRequestView>();            
             return allRequestViews.ToList();
         }
 

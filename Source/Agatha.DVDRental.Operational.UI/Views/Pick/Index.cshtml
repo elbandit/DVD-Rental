@@ -1,27 +1,39 @@
 ﻿@using Agatha.DVDRental.Fulfillment.Model.Fulfilment
 @model System.Collections.Generic.IEnumerable<Agatha.DVDRental.Fulfillment.Model.Fulfilment.FulfilmentRequest>
+      
+      <hr/>
+@foreach (FulfilmentRequest request in Model)
+     {         
+        <div class="row-fluid">                              
+         <div class="span6">
+            <h3>Film Id: @request.FilmId</h3>  
+             <p>Requested On: @request.Requested</p>  
+             @if (request.IsAssigned())
+             {
+                <p>Being Picked By: @request.AssignedTo</p>     
+             }             
+         </div>
+    
+        <div class="span6">
+            @if (request.IsAssigned())
+            {
+                <h3>Fulfill</h3>
+                using (Html.BeginForm("Dispatch", "Pick"))
+                {                                                                                       
+                    <p><input class="btn" value="SIMULATE FULFILLING WITH DVD ID: 7" type="submit" /></p>  
+                    <p><input class="btn" value="SIMULATE FULFILLING WITH DVD ID: 8" type="submit" /></p>  
+                    <p><input class="btn" value="SIMULATE FULFILLING WITH DVD ID: 9" type="submit" /></p>  
+                }
+            }             
+             
+        </div>
+        </div>
+         <hr/>
+     }     
 
-
-
- @foreach (FulfilmentRequest request in Model)
- {
-             <h3>Film Id: @request.FilmId</h3>  
-     <p>Requested On: @request.Requested</p>
-      <img src="@Url.Content("~/Content/images/preprinted_small_1.jpg")" />             
-     if (request.IsAssigned())
-     {
-         using (Html.BeginForm("Dispatch", "Pick"))
-         {                      
-                         <p>Assigned To: @request.AssignedTo</p>   
-                         <p></p>
-                        <p>Dvd Picked: <input class="btn" value="SIMULATE PICKING AND SCANNING A DVD" type="submit" /></p>     
-         }
-     }
-     <hr/>
- } 
  
- @using (Html.BeginForm("Assign", "Pick"))
- {
+@using (Html.BeginForm("Assign", "Pick"))
+{
                 <p><input class="btn" value="Assign units &raquo;" type="submit" /></p>
  }   
              
