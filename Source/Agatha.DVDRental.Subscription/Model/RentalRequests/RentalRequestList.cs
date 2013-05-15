@@ -52,5 +52,12 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
             if (IsContainedInTheList(filmId))
                 RentalRequests.SingleOrDefault(x => x.FilmId == filmId).IsBeingPickedForDispatch();
         }
+
+        public void Fulfilled(int filmId)
+        {
+            RentalRequest request = RentalRequests.SingleOrDefault(x => x.FilmId == filmId);
+
+            RentalRequests.Remove(request);
+        }
     }
 }

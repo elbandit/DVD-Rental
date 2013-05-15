@@ -6,6 +6,7 @@ using Agatha.DVDRental.Fulfillment.Contracts;
 using Agatha.DVDRental.Fulfillment.Infrastructure;
 using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
 using Agatha.DVDRental.Fulfillment.Model.Stock;
+using Agatha.DVDRental.Operational.ApplicationService.ApplicationViews;
 using NServiceBus;
 using Raven.Client;
 
@@ -43,14 +44,37 @@ namespace Agatha.DVDRental.Operational.ApplicationService
             _bus.Send(new AssignRentalAllocations() { PickerName = processorName });
         }
 
-        public string OperatorWantsToViewAssignedRentalAllocations(string processorName)
+        public PickListView OperatorWantsToViewAssignedRentalAllocations(string processorName)
         {
-            return "";
+            var fulfilmentRequests = _ravenDbSession.Query<FulfilmentRequest>().Where(x => x.AssignedTo == processorName).ToList();
+
+            var pickListView = new PickListView();
+
+            pickListView.PickRequests = new List<PickRequestView>();
+            pickListView.AssignedTo = processorName;
+
+            foreach(FulfilmentRequest request in fulfilmentRequests)
+            {
+                PickRequestView pickRequestView = new PickRequestView();
+                
+                pickRequestView.FilmTitle = _ravenDbSession.Load<Film>(request.FilmId).Title;
+                pickRequestView.DvdIdsToFulfil = new List<int>();
+                pickRequestView.FulfilmentRequestId = request.Id;
+
+                foreach (Dvd dvd in _ravenDbSession.Query<Dvd>().Where(x => x.CurrentLoan == null && x.FilmId == request.FilmId).ToList())
+                {
+                    pickRequestView.DvdIdsToFulfil.Add(dvd.Id);
+                }
+
+                pickListView.PickRequests.Add(pickRequestView);
+            }
+
+            return pickListView;
         }
 
-        public void OperatorWantsToMarkRentalAllocationsAsDispatched(string processorName)
+        public void OperatorWantsToMarkRentalAllocationsAsDispatched(string processorName, string FulfilmentRequestId, int DvdId)
         {
-            _bus.Send(new MarkRentalAllocationsAsDispatched() { PickerName = processorName });
+            _bus.Send(new FulfilLoan() { PickerName = processorName, DvdId = DvdId, FulfilmentRequestId = FulfilmentRequestId });
         }
 
         public void AddFilmToCatalogue(string title)

@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddFilmToStockHandler.cs" />
+    <Compile Include="AssignDvdToSubscriptionHandler.cs" />
     <Compile Include="AssignRentalAllocationsHandler.cs" />
     <Compile Include="SubscriptionIntegration\FilmHasBeenAllocatedHandler.cs" />
     <Compile Include="MarkRentalAllocationsAsDispatchedHandler.cs" />

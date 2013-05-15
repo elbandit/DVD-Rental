@@ -20,7 +20,7 @@ namespace Agatha.DVDRental.Fulfillment.Infrastructure
         {
             var id = String.Format("{0}-{1}", filmId, subscriptionId);
 
-            return _documentSession.Load<FulfilmentRequest>(id);
+            return FindBy(id);
         }
 
         public void Add(FulfilmentRequest fulfilmentRequest)
@@ -37,6 +37,11 @@ namespace Agatha.DVDRental.Fulfillment.Infrastructure
         public IEnumerable<FulfilmentRequest> FindOldsetUnassignedTop(int number)
         {
             return _documentSession.Query<FulfilmentRequest>().Where(x => x.AssignedTo == null).OrderByDescending(x => x.Requested).Take(number).ToList();
+        }
+
+        public FulfilmentRequest FindBy(string fulfilmentRequestId)
+        {
+            return _documentSession.Load<FulfilmentRequest>(fulfilmentRequestId);
         }
     }
 }

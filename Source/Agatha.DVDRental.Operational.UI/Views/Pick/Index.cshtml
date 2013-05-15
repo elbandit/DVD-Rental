@@ -1,39 +1,42 @@
 ﻿@using Agatha.DVDRental.Fulfillment.Model.Fulfilment
-@model System.Collections.Generic.IEnumerable<Agatha.DVDRental.Fulfillment.Model.Fulfilment.FulfilmentRequest>
+@using Agatha.DVDRental.Operational.ApplicationService.ApplicationViews
+@model Agatha.DVDRental.Operational.ApplicationService.ApplicationViews.PickListView
       
-      <hr/>
-@foreach (FulfilmentRequest request in Model)
+      
+<p>Pick List For: @Model.AssignedTo</p>
+@using (Html.BeginForm("Assign", "Pick"))
+{
+    <p><input class="btn" value="Assign units &raquo;" type="submit" /></p>
+}   
+<hr/>
+@foreach (PickRequestView request in Model.PickRequests)
      {         
         <div class="row-fluid">                              
          <div class="span6">
-            <h3>Film Id: @request.FilmId</h3>  
+            <h3>@request.FilmTitle</h3>  
              <p>Requested On: @request.Requested</p>  
-             @if (request.IsAssigned())
-             {
-                <p>Being Picked By: @request.AssignedTo</p>     
-             }             
+             <p>Dispatch to:</p>
+             <p>221B Baker St,</p>
+             <p>London</p>
+             <p>Greater London</p>
+             <p>NW1 6XE</p>                                                     
          </div>
     
-        <div class="span6">
-            @if (request.IsAssigned())
-            {
-                <h3>Fulfill</h3>
+        <div class="span6">           
+            <h3>Fulfill</h3>
+            @foreach(int dvdId in request.DvdIdsToFulfil)
+            {                
                 using (Html.BeginForm("Dispatch", "Pick"))
-                {                                                                                       
-                    <p><input class="btn" value="SIMULATE FULFILLING WITH DVD ID: 7" type="submit" /></p>  
-                    <p><input class="btn" value="SIMULATE FULFILLING WITH DVD ID: 8" type="submit" /></p>  
-                    <p><input class="btn" value="SIMULATE FULFILLING WITH DVD ID: 9" type="submit" /></p>  
+                {                                                          
+                    <input type="hidden" name="FulfilmentRequestId" value="@request.FulfilmentRequestId"/>    
+                    <input type="hidden" name="DvdId" value="@dvdId"/>                             
+                    <p><input class="btn" value="SIMULATE FULFILLING WITH DVD ID: @dvdId" type="submit" /></p>                 
                 }
-            }             
-             
+            }
         </div>
         </div>
          <hr/>
      }     
 
  
-@using (Html.BeginForm("Assign", "Pick"))
-{
-                <p><input class="btn" value="Assign units &raquo;" type="submit" /></p>
- }   
              

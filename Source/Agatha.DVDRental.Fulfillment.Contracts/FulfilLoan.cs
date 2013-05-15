@@ -5,8 +5,12 @@ using System.Text;
 
 namespace Agatha.DVDRental.Fulfillment.Contracts
 {
-    public class MarkRentalAllocationsAsDispatched
+    public class FulfilLoan
     {
         public string PickerName { get; set;  }
+
+        public int DvdId { get; set; }
+
+        public string FulfilmentRequestId { get; set; }
     }
 }

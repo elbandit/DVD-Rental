@@ -5,42 +5,46 @@ using System.Text;
 using Agatha.DVDRental.Fulfillment.Contracts;
 using Agatha.DVDRental.Fulfillment.Infrastructure;
 using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
+using Agatha.DVDRental.Fulfillment.Model.Stock;
 using NServiceBus;
 
 namespace Agatha.DVDRental.FulfillmentPolicy
 {
-    public class MarkRentalAllocationsAsDispatchedHandler : IHandleMessages<MarkRentalAllocationsAsDispatched>
+    public class MarkRentalAllocationsAsDispatchedHandler : IHandleMessages<FulfilLoan>
     {
         private IFulfilmentRepository _fulfilmentRepository;
+        private IDvdRepository _dvdRepository;
         private IBus _bus;
 
-        public MarkRentalAllocationsAsDispatchedHandler(IFulfilmentRepository fulfilmentRepository, IBus bus)
+        public MarkRentalAllocationsAsDispatchedHandler(IFulfilmentRepository fulfilmentRepository, IBus bus, 
+                                                        IDvdRepository dvdRepository)
         {
             _fulfilmentRepository = fulfilmentRepository;
             _bus = bus;
+            _dvdRepository = dvdRepository;
         }
 
-        public void Handle(MarkRentalAllocationsAsDispatched message)
-         {
-             IEnumerable<FulfilmentRequest> assignedRequests = _fulfilmentRepository.FindAllAssignedTo(message.PickerName);
+        public void Handle(FulfilLoan message)
+        {
+            var request = _fulfilmentRepository.FindBy(message.FulfilmentRequestId);        
 
-            // Get the DVD update it
-
-             // then event will mark the FulfilmentRequest as dispatched
-            // and the event will update the other BC
+            var dvd = _dvdRepository.FindBy(message.DvdId);
 
              using (DomainEvents.Register(HandleEvent()))
-             {
-                 foreach (FulfilmentRequest request in assignedRequests)
-                 {
-                     request.Dispatched();
-                 }
+             {               
+                request.FulfilledWith(dvd.Id);                  
              }           
          }
 
          private Action<FulfilmentRequestDispatched> HandleEvent()
          {
-             return (FulfilmentRequestDispatched s) => _bus.Publish(new FilmDispatched() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId }); // See if someone else wants this film
+             return (FulfilmentRequestDispatched s) =>
+                        {
+                            _bus.Publish(new FilmDispatched() {FilmId = s.FilmId, SubscriptionId = s.SubscriptionId});
+
+                            _bus.Send(new AssignDvdToSubscription() { DvdId = s.DvdId, SubscriptionId = s.SubscriptionId });
+                        };
+             
          }
     }
 }

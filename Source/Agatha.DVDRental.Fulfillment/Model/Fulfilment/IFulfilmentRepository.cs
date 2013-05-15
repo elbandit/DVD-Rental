@@ -8,5 +8,6 @@ namespace Agatha.DVDRental.Fulfillment.Model.Fulfilment
         void Add(FulfilmentRequest fulfilmentRequest);
         IEnumerable<FulfilmentRequest> FindAllAssignedTo(string pickerName);
         IEnumerable<FulfilmentRequest> FindOldsetUnassignedTop(int number);
+        FulfilmentRequest FindBy(string fulfilmentRequestId);
     }
 }

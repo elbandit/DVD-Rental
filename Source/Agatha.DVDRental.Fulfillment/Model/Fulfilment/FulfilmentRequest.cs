@@ -36,13 +36,13 @@ namespace Agatha.DVDRental.Fulfillment.Model.Fulfilment
             }           
         }
 
-        public void Dispatched()
+        public void FulfilledWith(int dvdId)
         {
             if (!IsDispatched)
             {
                 IsDispatched = true;
 
-                DomainEvents.Raise(new FulfilmentRequestDispatched() { FilmId = FilmId, SubscriptionId = SubscriptionId });
+                DomainEvents.Raise(new FulfilmentRequestDispatched() { FilmId = FilmId, SubscriptionId = SubscriptionId, DvdId = dvdId });
             }           
         }
     }

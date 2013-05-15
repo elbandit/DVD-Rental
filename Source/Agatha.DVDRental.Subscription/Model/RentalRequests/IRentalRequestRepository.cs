@@ -2,7 +2,7 @@
 {
     public interface IRentalRequestRepository
     {
-        RentalRequestList FindBy(int memberId);        
+        RentalRequestList FindBy(int subscriptionId);        
         void Add(RentalRequestList request);
     }
 }

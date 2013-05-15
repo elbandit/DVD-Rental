@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
 using Agatha.DVDRental.Operational.ApplicationService;
+using Agatha.DVDRental.Operational.ApplicationService.ApplicationViews;
+using Agatha.DVDRental.Operational.UI.Models;
 
 namespace Agatha.DVDRental.Operational.UI.Controllers
 {
@@ -22,9 +24,9 @@ namespace Agatha.DVDRental.Operational.UI.Controllers
 
         public ActionResult Index()
         {
-            IEnumerable<FulfilmentRequest> all = _operationService.ViewAllFulfilmentRequests();
+            PickListView pickListView = _operationService.OperatorWantsToViewAssignedRentalAllocations("Scott");
 
-            return View(all);
+            return View(pickListView);
         }
 
         [HttpPost]
@@ -36,9 +38,9 @@ namespace Agatha.DVDRental.Operational.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Dispatch()
+        public ActionResult Dispatch(DvdAssignmentModel form)
         {
-            _operationService.OperatorWantsToMarkRentalAllocationsAsDispatched("Scott");
+            _operationService.OperatorWantsToMarkRentalAllocationsAsDispatched("Scott", form.FulfilmentRequestId, form.DvdId);
 
             return RedirectToAction("Index");
         }

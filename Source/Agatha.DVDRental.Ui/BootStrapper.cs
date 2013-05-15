@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using Agatha.DVDRental.Catalogue.Catalogue;
@@ -29,9 +30,9 @@ namespace Agatha.DVDRental.Ui
         public class ControllerRegistry : Registry
         {
             public ControllerRegistry()
-            {               
-                For<IDocumentSession>().LifecycleIs(new HttpSessionLifecycle()).Use(DocumentStoreFactory.DocumentStore.OpenSession);
-
+            {
+                For<IDocumentSession>().HttpContextScoped().Use(DocumentStoreFactory.DocumentStore.OpenSession);
+                                     
                 For<ISubscriptionRepository>().Use<SubscriptionRepository>();
                 For<IRentalRequestRepository>().Use<RentalRequestRepository>();
 

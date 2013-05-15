@@ -35,7 +35,12 @@ namespace Agatha.DVDRental.FulfillmentPolicy
 
         private Action<DvdAdded> HandleEvent()
         {
-            return (DvdAdded s) => _bus.Publish(new FilmAddedToStock() {FilmId = s.FilmId}); // See if someone else wants this film
+            return (DvdAdded s) =>
+                       {
+                           _bus.Publish(new FilmAddedToStock() {FilmId = s.FilmId});
+
+                           //_ViewStore.Store(s);
+                       };           
         }
 
     }

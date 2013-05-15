@@ -12,8 +12,10 @@ using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Agatha.DVDRental.Ui.Controllers;
 using AutoMapper;
 using NServiceBus;
+using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Indexes;
+using StructureMap;
 
 namespace Agatha.DVDRental.Ui
 {
@@ -21,7 +23,24 @@ namespace Agatha.DVDRental.Ui
     // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
-    {            
+    {
+        public MvcApplication()
+        {           
+            EndRequest += (sender, args) =>
+            {
+                using (var session = (IDocumentSession)ObjectFactory.GetInstance<IDocumentSession>())
+                {
+                    if (session == null)
+                        return;
+
+                    if (Server.GetLastError() != null)
+                        return;
+
+                    session.SaveChanges();
+                }                
+            };
+        }
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
