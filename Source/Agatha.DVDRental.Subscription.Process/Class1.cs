@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Agatha.DVDRental.Fulfillment.ApplicationService
+namespace Agatha.DVDRental.Subscription.Process
 {
     public class Class1
     {

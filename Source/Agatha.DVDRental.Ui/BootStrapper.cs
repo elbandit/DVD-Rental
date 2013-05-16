@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
+using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Subscription.Infrastructure;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Agatha.DVDRental.Subscription.Model.Subscriptions;
@@ -31,8 +32,17 @@ namespace Agatha.DVDRental.Ui
         {
             public ControllerRegistry()
             {
+                Scan(s =>
+                         {
+                             s.Assembly("Agatha.DVDRental.Subscription.ApplicationService");
+                             s.ConnectImplementationsToTypesClosing(typeof (IBusinessUseCaseHandler<>));
+                         }
+                     );
+                
                 For<IDocumentSession>().HttpContextScoped().Use(DocumentStoreFactory.DocumentStore.OpenSession);
-                                     
+
+                For<ICommandHandlerRegistry>().Use<CommandHandlerRegistry>();
+                     
                 For<ISubscriptionRepository>().Use<SubscriptionRepository>();
                 For<IRentalRequestRepository>().Use<RentalRequestRepository>();
 

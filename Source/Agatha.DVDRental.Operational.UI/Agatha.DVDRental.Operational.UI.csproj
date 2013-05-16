@@ -181,9 +181,17 @@
       <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
       <Name>Agatha.DVDRental.Catalogue</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Fulfillment.ApplicationService\Agatha.DVDRental.Fulfillment.ApplicationService.csproj">
+      <Project>{722806C5-5372-47CE-91C0-36B4A1488D78}</Project>
+      <Name>Agatha.DVDRental.Fulfillment.ApplicationService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Fulfillment\Agatha.DVDRental.Fulfillment.csproj">
       <Project>{1ABD8B53-FEB3-441C-9EB8-E88F9C58A39E}</Project>
       <Name>Agatha.DVDRental.Fulfillment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
+      <Project>{B47391AE-ED24-4063-85F7-69607088D40E}</Project>
+      <Name>Agatha.DVDRental.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Operational.ApplicationService\Agatha.DVDRental.Operational.ApplicationService.csproj">
       <Project>{DC35F462-556C-440D-A84B-A922EFEB0B1E}</Project>

@@ -5,15 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1394E20-ABEA-4F24-BE0B-0D94CB7BA2DA}</ProjectGuid>
+    <ProjectGuid>{1E5BF27D-6836-427A-9B50-67F22AF0D9DA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Agatha.DVDRental.Public.ApplicationService</RootNamespace>
-    <AssemblyName>Agatha.DVDRental.Public.ApplicationService</AssemblyName>
+    <RootNamespace>Agatha.DVDRental.Subscription.ApplicationService</RootNamespace>
+    <AssemblyName>Agatha.DVDRental.Subscription.ApplicationService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,26 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
-    </Reference>
     <Reference Include="NServiceBus">
       <HintPath>..\packages\NServiceBus.Interfaces.3.3.6\lib\net40\NServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Core">
       <HintPath>..\packages\NServiceBus.3.3.6\lib\net40\NServiceBus.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Abstractions, Version=2.0.3.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Client.2.0.2360\lib\net40\Raven.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Lightweight, Version=2.0.3.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\packages\RavenDB.Client.2.0.2360\lib\net40\Raven.Client.Lightweight.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,20 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationViews\FilmView.cs" />
-    <Compile Include="ApplicationViews\RentalRequestView.cs" />
+    <Compile Include="BusinessUseCases\CustomerIsNotInterestedInRentingThisFim.cs" />
+    <Compile Include="BusinessUseCases\CustomerWantsToRentAFim.cs" />
+    <Compile Include="Handlers\CustomerIsNotInterestedInRentingThisFimHandler.cs" />
+    <Compile Include="Handlers\CustomerWantsToRentAFimHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\RentalRequestIndex.cs" />
-    <Compile Include="RentingService.cs" />
-    <Compile Include="SubscriptionService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agatha.DVDRental.Catalogue\Agatha.DVDRental.Catalogue.csproj">
       <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
       <Name>Agatha.DVDRental.Catalogue</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
+      <Project>{B47391AE-ED24-4063-85F7-69607088D40E}</Project>
+      <Name>Agatha.DVDRental.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Subscription.Contracts\Agatha.DVDRental.Subscription.Contracts.csproj">
       <Project>{F9BA254F-299C-4FB1-A3DD-1C74A5FD95EE}</Project>
@@ -85,8 +70,10 @@
       <Name>Agatha.DVDRental.Subscription</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

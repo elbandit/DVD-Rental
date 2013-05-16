@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Agatha.DVDRental.Fulfillment.ApplicationService.BusinessUseCases;
 using Agatha.DVDRental.Fulfillment.Contracts;
 using Agatha.DVDRental.Fulfillment.Infrastructure;
 using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
+using Agatha.DVDRental.Infrastructure;
 using NServiceBus;
 
-namespace Agatha.DVDRental.FulfillmentPolicy
+namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
 {
-    public class AssignRentalAllocationsHandler : IHandleMessages<AssignRentalAllocations>
+    public class AssignRentalAllocationsToPickerHandler : IBusinessUseCaseHandler<AssignRentalAllocationsToPicker>
     {
         private IFulfilmentRepository _fulfilmentRepository;
         private IBus _bus;
 
-        public AssignRentalAllocationsHandler(IFulfilmentRepository fulfilmentRepository, IBus bus)
-        {
-            _fulfilmentRepository = fulfilmentRepository;
-            _bus = bus;
-        }
-
-        public void Handle(AssignRentalAllocations message)
+        public void action(AssignRentalAllocationsToPicker businessUseCase)
         {
             IEnumerable<FulfilmentRequest> requestsToAssign = _fulfilmentRepository.FindOldsetUnassignedTop(10);
 
@@ -29,9 +24,9 @@ namespace Agatha.DVDRental.FulfillmentPolicy
             {
                 foreach (FulfilmentRequest request in requestsToAssign)
                 {
-                    request.AssignForPickingTo(message.PickerName);
+                    request.AssignForPickingTo(businessUseCase.PickerName);
                 }
-            }    
+            }   
         }
 
         private Action<FulfilmentRequestAssignedForPicking> HandleEvent()

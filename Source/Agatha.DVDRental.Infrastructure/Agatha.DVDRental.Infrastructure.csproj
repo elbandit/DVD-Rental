@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{B1394E20-ABEA-4F24-BE0B-0D94CB7BA2DA}</ProjectGuid>
+    <ProjectGuid>{B47391AE-ED24-4063-85F7-69607088D40E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Agatha.DVDRental.Public.ApplicationService</RootNamespace>
-    <AssemblyName>Agatha.DVDRental.Public.ApplicationService</AssemblyName>
+    <RootNamespace>Agatha.DVDRental.Infrastructure</RootNamespace>
+    <AssemblyName>Agatha.DVDRental.Infrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -33,23 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus">
-      <HintPath>..\packages\NServiceBus.Interfaces.3.3.6\lib\net40\NServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Core">
-      <HintPath>..\packages\NServiceBus.3.3.6\lib\net40\NServiceBus.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Abstractions, Version=2.0.3.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+    <Reference Include="Raven.Abstractions">
       <HintPath>..\packages\RavenDB.Client.2.0.2360\lib\net40\Raven.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.Lightweight, Version=2.0.3.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+    <Reference Include="Raven.Client.Lightweight">
       <HintPath>..\packages\RavenDB.Client.2.0.2360\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -61,29 +52,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationViews\FilmView.cs" />
-    <Compile Include="ApplicationViews\RentalRequestView.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="CommandHandlerRegistry.cs" />
+    <Compile Include="IBusinessUseCase.cs" />
+    <Compile Include="IBusinessUseCaseHandler.cs" />
+    <Compile Include="ICommandHandlerRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Queries\RentalRequestIndex.cs" />
-    <Compile Include="RentingService.cs" />
-    <Compile Include="SubscriptionService.cs" />
+    <Compile Include="TransactionHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Agatha.DVDRental.Catalogue\Agatha.DVDRental.Catalogue.csproj">
-      <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
-      <Name>Agatha.DVDRental.Catalogue</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Agatha.DVDRental.Subscription.Contracts\Agatha.DVDRental.Subscription.Contracts.csproj">
-      <Project>{F9BA254F-299C-4FB1-A3DD-1C74A5FD95EE}</Project>
-      <Name>Agatha.DVDRental.Subscription.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Agatha.DVDRental.Subscription\Agatha.DVDRental.Subscription.csproj">
-      <Project>{2199A021-3EB3-4538-94B6-BF5482C68813}</Project>
-      <Name>Agatha.DVDRental.Subscription</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />

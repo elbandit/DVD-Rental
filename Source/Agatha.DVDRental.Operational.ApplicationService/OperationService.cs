@@ -39,11 +39,6 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         }
 
-        public void OperatorWantsToPickRentalAllocations(string processorName)
-        {
-            _bus.Send(new AssignRentalAllocations() { PickerName = processorName });
-        }
-
         public PickListView OperatorWantsToViewAssignedRentalAllocations(string processorName)
         {
             var fulfilmentRequests = _ravenDbSession.Query<FulfilmentRequest>().Where(x => x.AssignedTo == processorName).ToList();
@@ -70,11 +65,6 @@ namespace Agatha.DVDRental.Operational.ApplicationService
             }
 
             return pickListView;
-        }
-
-        public void OperatorWantsToMarkRentalAllocationsAsDispatched(string processorName, string FulfilmentRequestId, int DvdId)
-        {
-            _bus.Send(new FulfilLoan() { PickerName = processorName, DvdId = DvdId, FulfilmentRequestId = FulfilmentRequestId });
         }
 
         public void AddFilmToCatalogue(string title)

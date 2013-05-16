@@ -73,48 +73,6 @@ namespace Agatha.DVDRental.Public.ApplicationService
             return all_filmviews;
         }
 
-        public void CustomerWantsToRentTheFim(int filmid, string memberEmail)
-        {
-            // quick check for valid command
-            var subscription = _subscriptionRepository.FindBy(memberEmail);
-
-            Film film = _filmRepository.FindBy(filmid);
-
-            using (DomainEvents.Register(AllocateFilm()))
-            {
-                RentalRequestList rentalRequestList = GetRentalListFor(subscription.Id);
-              
-                rentalRequestList.CreateRequestFor(film.Id); 
-               
-                _ravenDbSession.SaveChanges();
-            }
-        }
-
-        private Action<FilmRequested> AllocateFilm()
-        {
-            // Could put a delay in, just in case most customers decide to remove from list within 5 mins
-            return (FilmRequested s) => _bus.Send(new AllocateRentalRequest() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId});
-        }
-
-        public void CustomerDoesNotWantToRentTheFim(int filmid, string memberEmail)
-        {
-            var subscription = _subscriptionRepository.FindBy(memberEmail);
-
-            RentalRequestList rentalRequestList = GetRentalListFor(subscription.Id);
-
-            using (DomainEvents.Register(DeAllocateFilm()))
-            {
-                rentalRequestList.RemoveFromTheList(filmid);
-                
-                _ravenDbSession.SaveChanges(); // Need to hook this up to HttpRequest
-            }
-        }
-
-        private Action<RentalRequestRemoved> DeAllocateFilm()
-        {
-            return (RentalRequestRemoved s) => _bus.Send(new DeAllocateRentalRequest()); // See if someone else wants this film
-        }
-
         public IEnumerable<RentalRequestView> ViewRentalListFor(string memberEmail)
         {
             var subscription = _subscriptionRepository.FindBy(memberEmail);
