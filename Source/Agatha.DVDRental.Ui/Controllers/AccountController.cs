@@ -5,7 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Public.ApplicationService;
+using Agatha.DVDRental.Subscription.ApplicationService.BusinessUseCases;
 using Agatha.DVDRental.Ui.Models;
 
 namespace Agatha.DVDRental.Ui.Controllers
@@ -13,10 +15,12 @@ namespace Agatha.DVDRental.Ui.Controllers
     public class AccountController : Controller
     {
         private SubscriptionService _subscriptionService;
+        private readonly Application _application;
 
-        public AccountController(SubscriptionService subscriptionService)
+        public AccountController(SubscriptionService subscriptionService, Application application)
         {
             _subscriptionService = subscriptionService;
+            _application = application;
         }
 
 
@@ -89,7 +93,7 @@ namespace Agatha.DVDRental.Ui.Controllers
 
                 if (!subscriptionExists)
                 {
-                    _subscriptionService.CreateSubscription(model.Email);
+                    _application.action_request_to(new Register(){EmailAddress = model.Email});
 
                     FormsAuthentication.SetAuthCookie(model.Email, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");

@@ -4,16 +4,15 @@ namespace Agatha.DVDRental.Subscription.Model.RentalHistory
 {
     public class Rental
     {       
-        public Rental(int dvdId, int memberId, DateTime sentOut, DateTime returned)
+        public Rental(int dvdId, int subscriptionId, DateTime sentOut)
         {
             DvdId = dvdId;
-            MemberId = memberId;
-            DateSentOut = sentOut;
-            DateReturned = returned;
+            SubscriptionId = subscriptionId;
+            DateSentOut = sentOut;            
         }
 
         public int DvdId { get; private set; }
-        public int MemberId { get; private set; }
+        public int SubscriptionId { get; private set; }
         public DateTime DateSentOut { get; private set; }
         public DateTime DateReturned { get; private set; }
     }

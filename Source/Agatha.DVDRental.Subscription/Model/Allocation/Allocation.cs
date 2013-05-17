@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Agatha.DVDRental.Domain;
 using System.Linq;
+using Agatha.DVDRental.Infrastructure;
 
 namespace Agatha.DVDRental.Subscription.Model.Allocation
 {

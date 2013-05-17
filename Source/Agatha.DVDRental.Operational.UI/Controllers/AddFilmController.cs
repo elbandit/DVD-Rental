@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Agatha.DVDRental.Fulfillment.ApplicationService.BusinessUseCases;
+using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Operational.ApplicationService;
 using Agatha.DVDRental.Operational.UI.Models;
 
 namespace Agatha.DVDRental.Operational.UI.Controllers
 {
     public class AddFilmController : Controller
-    {
-        private OperationService _operationService;
+    {       
+        private readonly Application _application;
 
-        public AddFilmController(OperationService operationService)
-        {
-            _operationService = operationService;
+        public AddFilmController(Application application)
+        {    
+            _application = application;
         }
 
         //
@@ -27,8 +29,8 @@ namespace Agatha.DVDRental.Operational.UI.Controllers
 
         [HttpPost]
         public ActionResult Index(FilmModel filmModel)
-        {
-            _operationService.AddFilmToCatalogue(filmModel.Title);
+        {           
+            _application.action_request_to(new AddFilmToCatalogue(){ReleaseDate = DateTime.Now, Title = filmModel.Title});
 
             return RedirectToAction("FilmAdded", new { Title = filmModel.Title });
         }

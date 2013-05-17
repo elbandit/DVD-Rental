@@ -13,31 +13,13 @@ using Raven.Client;
 namespace Agatha.DVDRental.Operational.ApplicationService
 {
     public class OperationService
-    {
-        private readonly IFilmRepository _filmRepository;
+    {      
         private readonly IDocumentSession _ravenDbSession;        
-        private readonly IBus _bus;
 
-        public OperationService(IFilmRepository filmRepository, 
-                                IDocumentSession ravenDbSession, 
-                                IBus bus)
-        {
-            _filmRepository = filmRepository;
+        public OperationService(IDocumentSession ravenDbSession)
+        {           
             _ravenDbSession = ravenDbSession;
-            _bus = bus;
-        }
-
-        // Methods are like use cases of the system
-
-        public void OperatorWantsToAddStock(int filmId, string barcode)
-        {            
-            _bus.Send(new AddFilmToStock() { FilmId = filmId, Barcode = barcode });
-        }
-
-        public void OperatorWantsToProceesAFilmReturn(string barcode)
-        {
-
-        }
+        }        
 
         public PickListView OperatorWantsToViewAssignedRentalAllocations(string processorName)
         {
@@ -65,15 +47,6 @@ namespace Agatha.DVDRental.Operational.ApplicationService
             }
 
             return pickListView;
-        }
-
-        public void AddFilmToCatalogue(string title)
-        {
-            var film = new Film(DateTime.Now, title);
-
-            _filmRepository.Add(film);
-
-            _ravenDbSession.SaveChanges();
         }
 
         public IEnumerable<Film> ViewAllFilms()

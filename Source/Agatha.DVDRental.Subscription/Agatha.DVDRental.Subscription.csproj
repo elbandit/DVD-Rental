@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\AllocationRepository.cs" />
-    <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
     <Compile Include="Infrastructure\Indexes\RentalRequest_RequestedDate.cs" />
     <Compile Include="Infrastructure\RentalRepository.cs" />
     <Compile Include="Infrastructure\RentalRequestRepository.cs" />
@@ -60,7 +59,6 @@
     <Compile Include="Model\Allocation\FilmAllocated.cs" />
     <Compile Include="Model\Allocation\IAllocationRepository.cs" />
     <Compile Include="Model\Allocation\SubscriptionAllocation.cs" />
-    <Compile Include="Model\DomainEvents.cs" />
     <Compile Include="Model\RentalHistory\CurrentPeriodRentals.cs" />
     <Compile Include="Model\RentalHistory\IRentalRepository.cs" />
     <Compile Include="Model\RentalHistory\Rental.cs" />
@@ -69,6 +67,7 @@
     <Compile Include="Model\RentalRequests\RentalRequest.cs" />
     <Compile Include="Model\RentalRequests\RentalRequestList.cs" />
     <Compile Include="Model\RentalRequests\RentalRequestRemoved.cs" />
+    <Compile Include="Model\RentalRequests\RequestFulfilled.cs" />
     <Compile Include="Model\Subscriptions\CancelSubscriptionSpecification.cs" />
     <Compile Include="Model\Subscriptions\DeliveryAddress.cs" />
     <Compile Include="Model\Subscriptions\DowngradeSubscriptionSpecification.cs" />
@@ -81,7 +80,12 @@
     <Compile Include="Model\Subscriptions\Subscription.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
+      <Project>{B47391AE-ED24-4063-85F7-69607088D40E}</Project>
+      <Name>Agatha.DVDRental.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Infrastructure\packages.config" />
     <None Include="Model\UML.cd" />

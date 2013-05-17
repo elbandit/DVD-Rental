@@ -28,7 +28,7 @@ namespace Agatha.DVDRental.Ui
         {           
             EndRequest += (sender, args) =>
             {
-                using (var session = (IDocumentSession)ObjectFactory.GetInstance<IDocumentSession>())
+                using (var session = (IDocumentSession)ObjectFactory.TryGetInstance<IDocumentSession>())
                 {
                     if (session == null)
                         return;

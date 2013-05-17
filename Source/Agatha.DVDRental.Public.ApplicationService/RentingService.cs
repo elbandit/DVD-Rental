@@ -4,7 +4,6 @@ using System.Linq;
 using Agatha.DVDRental.Catalogue.Catalogue;
 using Agatha.DVDRental.Catalogue.Infrastructure;
 using Agatha.DVDRental.Catalogue.Infrastructure.Indexes;
-using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
 using Agatha.DVDRental.Public.ApplicationService.Queries;
 using Agatha.DVDRental.Subscription.Contracts;
@@ -20,19 +19,15 @@ namespace Agatha.DVDRental.Public.ApplicationService
     public class RentingService
     {
         private readonly IDocumentSession _ravenDbSession;
-        private readonly IBus _bus;
-        private readonly RentalRequestRepository _rentalRequestRepository;
-        private readonly FilmRepository _filmRepository;
+        private readonly RentalRequestRepository _rentalRequestRepository;       
         private ISubscriptionRepository _subscriptionRepository;
 
-        public RentingService(IDocumentSession ravenDbSession, IBus bus, 
-                              RentalRequestRepository rentalRequestRepository, FilmRepository filmRepository, 
+        public RentingService(IDocumentSession ravenDbSession, 
+                              RentalRequestRepository rentalRequestRepository,  
                               ISubscriptionRepository subscriptionRepository)
         {
             _ravenDbSession = ravenDbSession;
-            _bus = bus;
             _rentalRequestRepository = rentalRequestRepository;
-            _filmRepository = filmRepository;
             _subscriptionRepository = subscriptionRepository;
         }
 

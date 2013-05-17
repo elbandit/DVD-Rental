@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Catalogue\Film.cs" />
     <Compile Include="Catalogue\IFilmRepository.cs" />
-    <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
     <Compile Include="Infrastructure\FilmRepository.cs" />
     <Compile Include="Infrastructure\Indexes\FilmResult.cs" />
     <Compile Include="Infrastructure\Indexes\Films.cs" />

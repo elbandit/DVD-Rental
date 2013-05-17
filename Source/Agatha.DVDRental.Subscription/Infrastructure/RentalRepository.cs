@@ -20,5 +20,10 @@ namespace Agatha.DVDRental.Subscription.Infrastructure
         {
             return new CurrentPeriodRentals();
         }
+
+        public void Add(Rental rental)
+        {
+            _documentSession.Store(rental);
+        }
     }
 }

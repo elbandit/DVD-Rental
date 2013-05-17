@@ -1,5 +1,6 @@
 ﻿using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
 using Agatha.DVDRental.Subscription.Contracts;
+using Agatha.DVDRental.Subscription.Contracts.Events;
 using NServiceBus;
 
 namespace Agatha.DVDRental.FulfillmentPolicy.SubscriptionIntegration

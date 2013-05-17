@@ -1,6 +1,6 @@
 using NServiceBus;
 
-namespace Agatha.DVDRental.Subscription.Contracts
+namespace Agatha.DVDRental.Subscription.Contracts.InternalCommands
 {
     public class DeAllocateRentalRequest : ICommand
     {

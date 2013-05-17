@@ -9,7 +9,6 @@ using Agatha.DVDRental.Subscription.Model.Subscriptions;
 using NServiceBus.UnitOfWork;
 using Raven.Client;
 using Raven.Client.Document;
-using DocumentStoreFactory = Agatha.DVDRental.Subscription.Infrastructure.DocumentStoreFactory;
 
 namespace Agatha.DVDRental.AllocationPolicy 
 {    

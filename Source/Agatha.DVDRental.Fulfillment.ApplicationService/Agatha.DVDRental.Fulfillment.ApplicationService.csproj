@@ -12,6 +12,8 @@
     <AssemblyName>Agatha.DVDRental.Fulfillment.ApplicationService</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,13 +48,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessUseCases\AddFilmToCatalogue.cs" />
+    <Compile Include="BusinessUseCases\AddStock.cs" />
     <Compile Include="BusinessUseCases\AssignRentalAllocationsToPicker.cs" />
     <Compile Include="BusinessUseCases\MarkRentalAllocationAsDispatched.cs" />
+    <Compile Include="BusinessUseCases\ReturnAFilm.cs" />
+    <Compile Include="Handlers\AddFilmToCatalogueHandler.cs" />
+    <Compile Include="Handlers\AddStockHandler.cs" />
     <Compile Include="Handlers\AssignRentalAllocationsToPickerHandler.cs" />
     <Compile Include="Handlers\MarkRentalAllocationAsDispatchedHandler.cs" />
+    <Compile Include="Handlers\ReturnAFilmHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Agatha.DVDRental.Catalogue\Agatha.DVDRental.Catalogue.csproj">
+      <Project>{6ECEF29D-3830-4290-875E-622CE848120E}</Project>
+      <Name>Agatha.DVDRental.Catalogue</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Fulfillment.Contracts\Agatha.DVDRental.Fulfillment.Contracts.csproj">
       <Project>{BA561918-67D6-45A6-A704-A20796E92264}</Project>
       <Name>Agatha.DVDRental.Fulfillment.Contracts</Name>
@@ -70,6 +82,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

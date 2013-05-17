@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Agatha.DVDRental.Domain
+namespace Agatha.DVDRental.Infrastructure
 {
     /// <summary>
     /// Provides logic for raising and handling domain events.

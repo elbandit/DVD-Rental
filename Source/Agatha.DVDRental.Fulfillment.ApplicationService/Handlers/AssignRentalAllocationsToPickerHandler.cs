@@ -16,6 +16,12 @@ namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
         private IFulfilmentRepository _fulfilmentRepository;
         private IBus _bus;
 
+        public AssignRentalAllocationsToPickerHandler(IFulfilmentRepository fulfilmentRepository, IBus bus)
+        {
+            _fulfilmentRepository = fulfilmentRepository;
+            _bus = bus;
+        }
+
         public void action(AssignRentalAllocationsToPicker businessUseCase)
         {
             IEnumerable<FulfilmentRequest> requestsToAssign = _fulfilmentRepository.FindOldsetUnassignedTop(10);
@@ -31,6 +37,7 @@ namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
 
         private Action<FulfilmentRequestAssignedForPicking> HandleEvent()
         {
+            // Need a message forwarder here...
             return (FulfilmentRequestAssignedForPicking s) => _bus.Publish(new FilmBeingPicked() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId }); // See if someone else wants this film
         }
     }

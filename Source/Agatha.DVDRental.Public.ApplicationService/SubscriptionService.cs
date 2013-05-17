@@ -31,19 +31,6 @@ namespace Agatha.DVDRental.Public.ApplicationService
 
         }
 
-        public void CreateSubscription(string email)
-        {
-            var package = new Package();
-            package.DiscsOutAtSameTime = 1;
-            package.StartDate = DateTime.Now;
-
-            var subscription = new Subscription.Model.Subscriptions.Subscription(package);
-
-            subscription.EmailAddress = email;
-         
-            _subscriptionRepository.Add(subscription);
-        }
-
         public bool AlreadyHaveSubscriptionWithEmail(string email)
         {
            var subscription =  _subscriptionRepository.FindBy(email);

@@ -1,6 +1,8 @@
 ﻿using System;
-using Agatha.DVDRental.Domain;
+using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Subscription.Contracts;
+using Agatha.DVDRental.Subscription.Contracts.Events;
+using Agatha.DVDRental.Subscription.Contracts.InternalCommands;
 using Agatha.DVDRental.Subscription.Model.Allocation;
 using Agatha.DVDRental.Subscription.Model.RentalHistory;
 using Agatha.DVDRental.Subscription.Model.Subscriptions;

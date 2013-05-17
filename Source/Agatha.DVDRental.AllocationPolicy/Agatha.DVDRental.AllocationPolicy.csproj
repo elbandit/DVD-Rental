@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddRentalHistoryHandler.cs" />
     <Compile Include="AllocateRentalRequestHandler.cs" />
     <Compile Include="EndpointConfig.cs" />
     <Compile Include="FulfillmentIntegration\FilmBeingPickedHandler.cs" />
@@ -90,6 +91,10 @@
     <ProjectReference Include="..\Agatha.DVDRental.Fulfillment.Contracts\Agatha.DVDRental.Fulfillment.Contracts.csproj">
       <Project>{BA561918-67D6-45A6-A704-A20796E92264}</Project>
       <Name>Agatha.DVDRental.Fulfillment.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
+      <Project>{B47391AE-ED24-4063-85F7-69607088D40E}</Project>
+      <Name>Agatha.DVDRental.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\Agatha.DVDRental.Subscription.Contracts\Agatha.DVDRental.Subscription.Contracts.csproj">
       <Project>{F9BA254F-299C-4FB1-A3DD-1C74A5FD95EE}</Project>

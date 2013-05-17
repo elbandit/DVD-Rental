@@ -1,5 +1,5 @@
 ﻿using System;
-using Agatha.DVDRental.Fulfillment.Infrastructure;
+using Agatha.DVDRental.Infrastructure;
 
 namespace Agatha.DVDRental.Fulfillment.Model.Stock
 {

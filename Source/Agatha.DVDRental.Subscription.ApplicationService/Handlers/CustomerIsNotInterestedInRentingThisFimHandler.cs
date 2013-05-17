@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Agatha.DVDRental.Catalogue.Infrastructure;
-using Agatha.DVDRental.Domain;
 using Agatha.DVDRental.Infrastructure;
 using Agatha.DVDRental.Subscription.ApplicationService.BusinessUseCases;
 using Agatha.DVDRental.Subscription.Contracts;
+using Agatha.DVDRental.Subscription.Contracts.InternalCommands;
 using Agatha.DVDRental.Subscription.Infrastructure;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
-using Agatha.DVDRental.Subscription.Model.Subscriptions;
 using NServiceBus;
 
 namespace Agatha.DVDRental.Subscription.ApplicationService.Handlers

@@ -43,8 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Infrastructure\DocumentStoreFactory.cs" />
-    <Compile Include="Infrastructure\DomainEvents.cs" />
     <Compile Include="Infrastructure\DvdRepository.cs" />
     <Compile Include="Infrastructure\FulfilmentRepository.cs" />
     <Compile Include="Model\Fulfilment\FulfilmentRequest.cs" />
@@ -60,7 +58,12 @@
     <Compile Include="Model\Stock\IDvdRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Agatha.DVDRental.Infrastructure\Agatha.DVDRental.Infrastructure.csproj">
+      <Project>{B47391AE-ED24-4063-85F7-69607088D40E}</Project>
+      <Name>Agatha.DVDRental.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

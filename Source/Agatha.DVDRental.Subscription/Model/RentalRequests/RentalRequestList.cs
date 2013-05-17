@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Agatha.DVDRental.Domain;
+using Agatha.DVDRental.Infrastructure;
 
 namespace Agatha.DVDRental.Subscription.Model.RentalRequests
 {
@@ -58,6 +58,8 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
             RentalRequest request = RentalRequests.SingleOrDefault(x => x.FilmId == filmId);
 
             RentalRequests.Remove(request);
+
+            DomainEvents.Raise(new RequestFulfilled(filmId, Id));
         }
     }
 }

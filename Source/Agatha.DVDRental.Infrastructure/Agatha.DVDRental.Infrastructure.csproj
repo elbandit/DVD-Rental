@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Application.cs" />
     <Compile Include="CommandHandlerRegistry.cs" />
+    <Compile Include="DomainEvents.cs" />
     <Compile Include="IBusinessUseCase.cs" />
     <Compile Include="IBusinessUseCaseHandler.cs" />
     <Compile Include="ICommandHandlerRegistry.cs" />
