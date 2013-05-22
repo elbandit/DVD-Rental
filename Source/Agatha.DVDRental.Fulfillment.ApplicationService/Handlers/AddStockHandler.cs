@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Agatha.DVDRental.Fulfillment.ApplicationService.BusinessUseCases;
-using Agatha.DVDRental.Fulfillment.Contracts;
-using Agatha.DVDRental.Fulfillment.Infrastructure;
+using Agatha.DVDRental.Fulfillment.Contracts.Commands;
 using Agatha.DVDRental.Fulfillment.Model.Stock;
 using Agatha.DVDRental.Infrastructure;
 using NServiceBus;
@@ -15,6 +14,12 @@ namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
     {
         private readonly IDvdRepository _dvdRepository;
         private readonly IBus _bus;
+
+        public AddStockHandler(IDvdRepository dvdRepository, IBus bus)
+        {
+            _dvdRepository = dvdRepository;
+            _bus = bus;
+        }
 
         public void action(AddStock businessUseCase)
         {
@@ -30,7 +35,7 @@ namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
         {
             return (DvdAdded s) =>
             {
-                _bus.Publish(new FilmAddedToStock() { FilmId = s.FilmId });              
+                _bus.Send(new PublishThatACopyOfAFilmHasBeenAddedToTheStock() { FilmId = s.FilmId });              
             };
         }
     }

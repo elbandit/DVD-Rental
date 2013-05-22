@@ -8,6 +8,7 @@ using Agatha.DVDRental.Public.ApplicationService.ApplicationViews;
 using Agatha.DVDRental.Public.ApplicationService.Queries;
 using Agatha.DVDRental.Subscription.Contracts;
 using Agatha.DVDRental.Subscription.Infrastructure;
+using Agatha.DVDRental.Subscription.Model.RentalHistory;
 using Agatha.DVDRental.Subscription.Model.RentalRequests;
 using Agatha.DVDRental.Subscription.Model.Subscriptions;
 using AutoMapper;
@@ -94,5 +95,9 @@ namespace Agatha.DVDRental.Public.ApplicationService
             return rentalRequestList;
         }
 
+        public IEnumerable<Rental> GetRentalHistoryFor(string name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

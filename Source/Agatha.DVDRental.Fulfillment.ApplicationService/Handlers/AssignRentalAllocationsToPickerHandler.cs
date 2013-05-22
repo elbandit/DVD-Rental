@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Agatha.DVDRental.Fulfillment.ApplicationService.BusinessUseCases;
 using Agatha.DVDRental.Fulfillment.Contracts;
+using Agatha.DVDRental.Fulfillment.Contracts.Commands;
 using Agatha.DVDRental.Fulfillment.Infrastructure;
 using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
 using Agatha.DVDRental.Infrastructure;
@@ -38,7 +39,7 @@ namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
         private Action<FulfilmentRequestAssignedForPicking> HandleEvent()
         {
             // Need a message forwarder here...
-            return (FulfilmentRequestAssignedForPicking s) => _bus.Publish(new FilmBeingPicked() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId }); // See if someone else wants this film
+            return (FulfilmentRequestAssignedForPicking s) => _bus.Send(new PublishThatTheFilmIsBeingPicked() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId }); // See if someone else wants this film
         }
     }
 }

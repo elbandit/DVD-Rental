@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Agatha.DVDRental.Fulfillment.Contracts
+namespace Agatha.DVDRental.Fulfillment.Contracts.Commands
 {
-    public class FilmAddedToStock
+    public class PublishThatACopyOfAFilmHasBeenAddedToTheStock
     {
         public int FilmId { get; set; }
     }

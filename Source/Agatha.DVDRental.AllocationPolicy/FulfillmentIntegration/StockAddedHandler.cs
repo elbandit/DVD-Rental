@@ -4,7 +4,7 @@ using NServiceBus;
 
 namespace Agatha.DVDRental.AllocationPolicy.FulfillmentIntegration
 {
-    public class StockAddedHandler : IHandleMessages<FilmAddedToStock>
+    public class StockAddedHandler : IHandleMessages<ACopyOfAFilmHasBeenAddedToTheStock>
     {
         private IAllocationRepository _allocationRepository;       
 
@@ -13,7 +13,7 @@ namespace Agatha.DVDRental.AllocationPolicy.FulfillmentIntegration
             _allocationRepository = allocationRepository;
         }
 
-        public void Handle(FilmAddedToStock message)
+        public void Handle(ACopyOfAFilmHasBeenAddedToTheStock message)
         {
             var filmAllocations = _allocationRepository.FindBy(message.FilmId);
 

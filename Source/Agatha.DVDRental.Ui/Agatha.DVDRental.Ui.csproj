@@ -87,6 +87,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\FilmsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RentalHistoryController.cs" />
     <Compile Include="Controllers\RentalListController.cs" />
     <Compile Include="Controllers\StructureMapControllerFactory.cs" />
     <Compile Include="DocumentStoreFactory.cs" />

@@ -52,7 +52,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssignDvdToSubscription.cs" />
-    <Compile Include="FilmAddedToStock.cs" />
+    <Compile Include="Commands\PublishThatACopyOfAFilmHasBeenAddedToTheStock.cs" />
+    <Compile Include="Commands\PublishThatAFilmHasBeenDispatched.cs" />
+    <Compile Include="Commands\PublishThatTheFilmIsBeingPicked.cs" />
+    <Compile Include="ACopyOfAFilmHasBeenAddedToTheStock.cs" />
     <Compile Include="FilmBeingPicked.cs" />
     <Compile Include="FilmDispatched.cs" />
     <Compile Include="FilmReturned.cs" />
@@ -62,7 +65,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\" />
     <Folder Include="Events\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

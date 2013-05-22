@@ -36,7 +36,7 @@ namespace Agatha.DVDRental.AllocationPolicy
                 .DefiningEventsAs(
                     t =>
                     t.Namespace != null && (t.Namespace.Contains("Agatha.DVDRental.Fulfillment.Contracts") ||
-                    t.Namespace.Contains("Agatha.DVDRental.Subscription.Contracts")));
+                    t.Namespace.Contains("Agatha.DVDRental.Subscription.Contracts.Events")));
 
         }
 

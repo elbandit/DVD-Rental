@@ -23,7 +23,7 @@ namespace Agatha.DVDRental.Operational.ApplicationService
 
         public PickListView OperatorWantsToViewAssignedRentalAllocations(string processorName)
         {
-            var fulfilmentRequests = _ravenDbSession.Query<FulfilmentRequest>().Where(x => x.AssignedTo == processorName).ToList();
+            var fulfilmentRequests = _ravenDbSession.Query<FulfilmentRequest>().Where(x => x.AssignedTo == processorName && x.IsDispatched == false).ToList();
 
             var pickListView = new PickListView();
 

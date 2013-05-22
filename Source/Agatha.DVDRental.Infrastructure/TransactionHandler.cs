@@ -14,8 +14,13 @@ namespace Agatha.DVDRental.Infrastructure
 
         public void action<T>(T command, IBusinessUseCaseHandler<T> businessUseCaseHandler) where T : IBusinessUseCase
         {           
-            businessUseCaseHandler.action(command);
-            _unitOfWork.SaveChanges();           
+            using (_unitOfWork)
+            {
+                businessUseCaseHandler.action(command);
+
+                _unitOfWork.SaveChanges();           
+                _unitOfWork.Dispose();
+            }            
         }
     }
 }

@@ -24,22 +24,22 @@ namespace Agatha.DVDRental.Ui
 
     public class MvcApplication : System.Web.HttpApplication
     {
-        public MvcApplication()
-        {           
-            EndRequest += (sender, args) =>
-            {
-                using (var session = (IDocumentSession)ObjectFactory.TryGetInstance<IDocumentSession>())
-                {
-                    if (session == null)
-                        return;
+        //public MvcApplication()
+        //{           
+        //    EndRequest += (sender, args) =>
+        //    {
+        //        using (var session = (IDocumentSession)ObjectFactory.TryGetInstance<IDocumentSession>())
+        //        {
+        //            if (session == null)
+        //                return;
 
-                    if (Server.GetLastError() != null)
-                        return;
+        //            if (Server.GetLastError() != null)
+        //                return;
 
-                    session.SaveChanges();
-                }                
-            };
-        }
+        //            session.SaveChanges();
+        //        }                
+        //    };
+        //}
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {

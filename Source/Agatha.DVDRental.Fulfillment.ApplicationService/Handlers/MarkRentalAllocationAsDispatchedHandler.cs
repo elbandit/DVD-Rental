@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Agatha.DVDRental.Fulfillment.ApplicationService.BusinessUseCases;
 using Agatha.DVDRental.Fulfillment.Contracts;
+using Agatha.DVDRental.Fulfillment.Contracts.Commands;
 using Agatha.DVDRental.Fulfillment.Infrastructure;
 using Agatha.DVDRental.Fulfillment.Model.Fulfilment;
 using Agatha.DVDRental.Fulfillment.Model.Stock;
@@ -17,6 +18,13 @@ namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
         private IFulfilmentRepository _fulfilmentRepository;
         private IDvdRepository _dvdRepository;
         private IBus _bus;
+
+        public MarkRentalAllocationAsDispatchedHandler(IFulfilmentRepository fulfilmentRepository, IDvdRepository dvdRepository, IBus bus)
+        {
+            _fulfilmentRepository = fulfilmentRepository;
+            _dvdRepository = dvdRepository;
+            _bus = bus;
+        }
 
         public void action(MarkRentalAllocationAsDispatched businessUseCase)
         {
@@ -33,8 +41,8 @@ namespace Agatha.DVDRental.Fulfillment.ApplicationService.Handlers
         private Action<FulfilmentRequestDispatched> HandleEvent()
         {
             return (FulfilmentRequestDispatched s) =>
-            {
-                _bus.Publish(new FilmDispatched() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId });
+            {                            
+                _bus.Send(new PublishThatAFilmHasBeenDispatched() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId });
 
                 _bus.Send(new AssignDvdToSubscription() { DvdId = s.DvdId, SubscriptionId = s.SubscriptionId });
             };

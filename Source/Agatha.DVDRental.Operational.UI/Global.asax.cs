@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Agatha.DVDRental.Operational.UI.Controllers;
+using Raven.Client;
+using StructureMap;
 
 namespace Agatha.DVDRental.Operational.UI
 {
@@ -12,7 +14,7 @@ namespace Agatha.DVDRental.Operational.UI
     // visit http://go.microsoft.com/?LinkId=9394801
 
     public class MvcApplication : System.Web.HttpApplication
-    {
+    {       
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
