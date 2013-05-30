@@ -237,6 +237,7 @@
     <None Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Films\Index.cshtml" />
     <Content Include="Views\RentalList\Index.cshtml" />
+    <Content Include="Views\RentalHistory\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

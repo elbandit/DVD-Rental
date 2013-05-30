@@ -31,7 +31,7 @@ namespace Agatha.DVDRental.Subscription.Model.Allocation
         {                       
             if (!HasAllocatedFor(subscriptionId))
             {
-                SubscriptionAllocations.Add(new SubscriptionAllocation(){ SubscriptionId = subscriptionId});
+                SubscriptionAllocations.Add(new SubscriptionAllocation(){ SubscriptionId = subscriptionId});  // Add RentalRequest Id
 
                 DomainEvents.Raise(new FilmAllocated() { FilmId = Id, SubscriptionId = subscriptionId });
             }                      

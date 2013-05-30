@@ -20,6 +20,7 @@ namespace Agatha.DVDRental.FulfillmentPolicy.SubscriptionIntegration
           
             if (request == null)
             {
+                // Need a unique key for this order?
                 var fulfilmentRequest = new FulfilmentRequest(message.FilmId, message.SubscriptionId);
                            
                 _fulfilmentRepository.Add(fulfilmentRequest);

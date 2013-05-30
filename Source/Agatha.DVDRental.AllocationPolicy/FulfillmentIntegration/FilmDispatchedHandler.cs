@@ -38,6 +38,7 @@ namespace Agatha.DVDRental.AllocationPolicy.FulfillmentIntegration
                 // Should add film name
                 //_bus.Publish(new AddRentalHistory() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId });
 
+                // TODO: Send command
 
                 var rental = new Rental(s.FilmId, s.SubscriptionId, DateTime.Now);
 

@@ -42,7 +42,7 @@ namespace Agatha.DVDRental.Subscription.ApplicationService.Handlers
         private Action<FilmRequested> AllocateFilm()
         {
             // Could put a delay in, just in case most customers decide to remove from list within 5 mins
-            return (FilmRequested s) => _bus.Send(new AllocateRentalRequest() { FilmId = s.FilmId, SubscriptionId = s.SubscriptionId });
+            return (FilmRequested s) => _bus.Send(new AllocateRentalRequest() { RentalRequestId = s.Id, FilmId = s.FilmId, SubscriptionId = s.SubscriptionId });
         }
 
         public RentalRequestList GetRentalListFor(int subscriptionId)

@@ -16,7 +16,7 @@ namespace Agatha.DVDRental.Subscription.Infrastructure
             _documentSession = documentSession;
         }
 
-        public CurrentPeriodRentals FindRentalsForCurrentPeriod()
+        public CurrentPeriodRentals FindRentalsForCurrentBillingPeriod()
         {
             return new CurrentPeriodRentals();
         }

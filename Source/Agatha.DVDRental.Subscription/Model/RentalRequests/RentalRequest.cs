@@ -6,12 +6,15 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
     {      
         public RentalRequest(int filmId, int subscriptionId)
         {
+            Id = Guid.NewGuid().ToString();
             FilmId = filmId;
             SubscriptionId = subscriptionId;
             Requested = DateTime.Now;
             IsBeingPicked = false;
         }
-       
+
+        public string Id { get; private set; }
+
         public int FilmId { get; private set; }
 
         public int SubscriptionId { get; private set; }

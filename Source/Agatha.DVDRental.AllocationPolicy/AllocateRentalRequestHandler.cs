@@ -34,7 +34,7 @@ namespace Agatha.DVDRental.AllocationPolicy
 
             if (subscription != null)
             {
-                var currentPeriodRentals = _rentalRepository.FindRentalsForCurrentPeriod();
+                var currentPeriodRentals = _rentalRepository.FindRentalsForCurrentBillingPeriod();
 
                 var currentAllocations = _allocationRepository.FindAllocationsFor(message.SubscriptionId);
 

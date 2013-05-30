@@ -22,11 +22,13 @@ namespace Agatha.DVDRental.Subscription.Model.RentalRequests
                 // does this list have an age restriction?
 
                 // give it a priority order
+
+                // give a unique id
                 var request = new RentalRequest(filmId, Id);
 
                 RentalRequests.Add(request);
 
-                DomainEvents.Raise(new FilmRequested(filmId, Id));
+                DomainEvents.Raise(new FilmRequested(filmId, Id, request.Id));
             }         
         }
 

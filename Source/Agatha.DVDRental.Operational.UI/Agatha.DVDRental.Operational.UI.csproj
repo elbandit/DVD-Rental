@@ -84,6 +84,7 @@
     <Compile Include="Controllers\FilmController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PickController.cs" />
+    <Compile Include="Controllers\ReturnsController.cs" />
     <Compile Include="Controllers\StockController.cs" />
     <Compile Include="Models\DvdAssignmentModel.cs" />
     <Compile Include="Models\FilmAddedModel.cs" />
@@ -215,6 +216,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\AddFilm\FilmAdded.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Returns\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Returns\ReturnProcessed.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

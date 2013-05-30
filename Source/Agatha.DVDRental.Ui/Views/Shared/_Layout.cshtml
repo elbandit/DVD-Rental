@@ -83,19 +83,20 @@
                      <div class="container">
                          <ul class="nav">
                              <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
-                             <li>@Html.ActionLink("Films", "Index", "Films")</li>
-                             <li>@Html.ActionLink("Rental List", "Index", "RentalList")</li>
+                             <li>@Html.ActionLink("Films", "Index", "Films")</li>                             
                              <li><a href="#">How it works</a></li>
-                             <li>
-                                 @if(Request.IsAuthenticated) 
-                                     {
-                                         @Html.ActionLink("Log Off", "LogOff", "Account")
-                                     }
-                                     else
-                                     {
-                                     @Html.ActionLink("Log On", "LogOn", "Account")
-                                     }                 
-                             </li>
+                            
+                                @if (Request.IsAuthenticated)
+                                {
+                                    <li>@Html.ActionLink("Rental List", "Index", "RentalList")</li>
+                                    <li>@Html.ActionLink("Rental History", "Index", "RentalHistory")</li>
+                                    <li>@Html.ActionLink("Log Off", "LogOff", "Account")</li>
+                                }
+                                else
+                                {
+                                    <li>@Html.ActionLink("Log On", "LogOn", "Account")</li>
+                                }                 
+                             
                          </ul>
                      </div>
                  </div>
@@ -103,10 +104,7 @@
              <!-- /.navbar -->
          </div>
          
-      
-       
-            
-       
+                               
         <div id="main">
             @RenderBody()
         </div>

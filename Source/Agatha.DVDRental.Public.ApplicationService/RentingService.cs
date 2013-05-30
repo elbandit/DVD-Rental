@@ -37,18 +37,18 @@ namespace Agatha.DVDRental.Public.ApplicationService
         public IEnumerable<FilmView> CustomerWantsToViewFilmsAvailableForRent(string memberEmail)
         {
 
-            IEnumerable<FilmResult> query = _ravenDbSession
-                .Query<Film, FilmsUnTyped>()
-                .Take(100)
-                .AsProjection<FilmResult>();
+            //IEnumerable<FilmResult> query = _ravenDbSession
+            //    .Query<Film, FilmsUnTyped>()
+            //    .Take(100)
+            //    .AsProjection<FilmResult>();
 
-            foreach(FilmResult fr in query)
-            {
-                Console.WriteLine(fr.Title);
-            }
+            //foreach(FilmResult fr in query)
+            //{
+            //    Console.WriteLine(fr.Title);
+            //}
 
 
-            var subscription = _subscriptionRepository.FindBy(memberEmail);
+            //var subscription = _subscriptionRepository.FindBy(memberEmail);
 
             // Find all films
             var all_films = _ravenDbSession.Query<Film>().Take(10).ToList();
@@ -56,15 +56,15 @@ namespace Agatha.DVDRental.Public.ApplicationService
             var all_filmviews = Mapper.Map<IEnumerable<Film>, IEnumerable<FilmView>>(all_films);
          
             // Find all films in rental list
-            RentalRequestList rentalList = GetRentalListFor(subscription.Id);
+            //RentalRequestList rentalList = GetRentalListFor(subscription.Id);
 
-            if (rentalList != null)
-                foreach (var rentalRequest in rentalList.RentalRequests)
-                {
-                    var film = all_filmviews.SingleOrDefault(x => x.Id == rentalRequest.FilmId);
+            //if (rentalList != null)
+            //    foreach (var rentalRequest in rentalList.RentalRequests)
+            //    {
+            //        var film = all_filmviews.SingleOrDefault(x => x.Id == rentalRequest.FilmId);
 
-                    film.IsOnRentalList = true;
-                }
+            //        film.IsOnRentalList = true;
+            //    }
             
             return all_filmviews;
         }
@@ -82,7 +82,7 @@ namespace Agatha.DVDRental.Public.ApplicationService
         }
 
         
-        public RentalRequestList GetRentalListFor(int subscriptionId)
+        private RentalRequestList GetRentalListFor(int subscriptionId)
         {
             RentalRequestList rentalRequestList = _rentalRequestRepository.FindBy(subscriptionId);
 
@@ -95,9 +95,16 @@ namespace Agatha.DVDRental.Public.ApplicationService
             return rentalRequestList;
         }
 
-        public IEnumerable<Rental> GetRentalHistoryFor(string name)
+        public IEnumerable<Rental> GetRentalHistoryFor(string memberEmail)
         {
-            throw new NotImplementedException();
+            var subscription = _subscriptionRepository.FindBy(memberEmail);
+
+            IEnumerable<Rental> rentalHistory = _ravenDbSession
+                .Query<Rental>()
+                .Take(100)
+                .Where(x => x.SubscriptionId == subscription.Id);
+
+            return rentalHistory;
         }
     }
 }

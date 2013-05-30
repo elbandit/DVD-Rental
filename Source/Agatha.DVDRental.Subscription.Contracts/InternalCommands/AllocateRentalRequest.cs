@@ -7,5 +7,7 @@ namespace Agatha.DVDRental.Subscription.Contracts.InternalCommands
         public int SubscriptionId { get; set; }
 
         public int FilmId { get; set; }
+
+        public string RentalRequestId { get; set; }
     }
 }

@@ -63,5 +63,10 @@ namespace Agatha.DVDRental.Operational.ApplicationService
         {
             return _ravenDbSession.Query<FulfilmentRequest>().Take(100).ToList();
         }
+
+        public IEnumerable<Dvd> ViewAllPotentialReturns()
+        {
+            return _ravenDbSession.Query<Dvd>().Where(x => x.CurrentLoan != null).ToList();
+        }
     }
-}
+} 

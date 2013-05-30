@@ -2,7 +2,7 @@
 {
     public interface IRentalRepository
     {
-        CurrentPeriodRentals FindRentalsForCurrentPeriod();
+        CurrentPeriodRentals FindRentalsForCurrentBillingPeriod();
         void Add(Rental rental);
     }
 }
